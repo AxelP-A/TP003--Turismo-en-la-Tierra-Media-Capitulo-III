@@ -128,6 +128,4 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }
-

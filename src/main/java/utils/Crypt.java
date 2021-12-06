@@ -14,3 +14,4 @@ public class Crypt {
 		return BCrypt.checkpw(candidate, hashed);
 	}
 }
+

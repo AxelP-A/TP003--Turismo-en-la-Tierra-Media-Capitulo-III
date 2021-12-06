@@ -117,7 +117,6 @@ public class Atraccion implements Sugerible {
 		this.tipo = nuevoTipo;
 	}
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -149,5 +148,4 @@ public class Atraccion implements Sugerible {
 				&& Double.doubleToLongBits(tiempoNecesario) == Double.doubleToLongBits(other.tiempoNecesario)
 				&& Objects.equals(tipo, other.tipo);
 	}
-
 }

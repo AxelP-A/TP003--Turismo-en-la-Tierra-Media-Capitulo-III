@@ -48,7 +48,6 @@ public class EditAttractionServlet extends HttpServlet {
 			resp.sendRedirect("/turismo/attractions/index.do");
 		} else {
 			req.setAttribute("attraction", attraction);
-
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/attractions/edit.jsp");
 			dispatcher.forward(req, resp);
 		}

@@ -21,5 +21,4 @@ public class PromocionAxB extends Promocion {
 		}
 		return costoTotal;
 	}
-
 }

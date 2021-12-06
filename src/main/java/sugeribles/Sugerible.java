@@ -28,5 +28,4 @@ public interface Sugerible  {
 	//public int getCupo();
 	
 	// public int getId();
-
 }

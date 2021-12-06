@@ -39,6 +39,5 @@ public class ComparadorDeSugeribles implements Comparator<Sugerible> {
 			return 1;
 		}
 		return -1;
-	}
-	
+	}	
 }

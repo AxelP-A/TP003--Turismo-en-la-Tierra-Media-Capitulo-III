@@ -28,8 +28,8 @@ public class Usuario {
 		this.tiempoDisponible = tiempoDisponible;
 	}
 	
-	public Usuario(Integer id, String nombre, String password, String atraccionPreferida, int presupuesto,
-			double tiempoDisponible, boolean isAdmin) {
+	public Usuario(Integer id, String nombre, String atraccionPreferida, int presupuesto,
+			double tiempoDisponible, String password, boolean isAdmin) {
 		this.id = id;
 		this.nombre = nombre;
 		this.password = password;
@@ -107,8 +107,6 @@ public class Usuario {
 	public boolean tieneTiempo(Sugerible sugerible) {
 		return sugerible.getTiempoNecesario() <= this.tiempoDisponible;
 	}
-	
-	
 	
 	public void recibirItinerario(List<Sugerible> itinerario) {
 		this.itinerario = itinerario;
@@ -251,5 +249,4 @@ public class Usuario {
 				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible)
 				&& Objects.equals(tipoAtraccionPreferida, other.tipoAtraccionPreferida);
 	}
-
 }

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
 import persistence.PromocionDAO;
 import persistence.commons.ConnectionProvider;
 import persistence.commons.MissingDataException;
@@ -36,7 +35,6 @@ public class PromocionDAOImpl implements PromocionDAO {
 			throw new MissingDataException(e);
 		}
 	}
-
 
 	public int countAll() {
 		try {
@@ -96,7 +94,6 @@ public class PromocionDAOImpl implements PromocionDAO {
 		}
 	}
 
-	
 	private List<Atraccion> listarAtraccionesIncluidas(String atracciones, List<Atraccion> listaAtracciones) {
 		
 		String[] idAtraccionesIncluidas = atracciones.split(";");
@@ -133,11 +130,9 @@ public class PromocionDAOImpl implements PromocionDAO {
 		return 0;
 	}
 
-
 	@Override
 	public Promocion find(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

@@ -14,9 +14,9 @@ public class PromocionAbsoluta extends Promocion {
 		this.MONEDAS = monedas;
 	}
 	
-	/** En este método, tenemos 2 ideas distintas sobre como debería funcionar, por lo tanto, dejamos ambos escritos, uno funcionando actualmente, y el otro comentado.
+	/** En este mï¿½todo, tenemos 2 ideas distintas sobre como deberï¿½a funcionar, por lo tanto, dejamos ambos escritos, uno funcionando actualmente, y el otro comentado.
 	 *  Por un lado, entendemos que las promociones absolutas obtienen un descuento a partir de una cantidad de monedas que ingresa desde el archivo (caso funcionando actualmente).
-	 *  Por otro lado, interpretamos que también puede significar que el costo final va a ser el de las monedas que ingresen desde el archivo (sería el caso del return MONEDAS).
+	 *  Por otro lado, interpretamos que tambiï¿½n puede significar que el costo final va a ser el de las monedas que ingresen desde el archivo (serï¿½a el caso del return MONEDAS).
 	 */
 	
 	@Override
@@ -30,5 +30,4 @@ public class PromocionAbsoluta extends Promocion {
 		return costoTotal - MONEDAS;
 		// return MONEDAS;
 	}
-
 }

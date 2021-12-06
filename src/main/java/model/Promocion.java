@@ -100,7 +100,6 @@ public abstract class Promocion implements Sugerible {
 
 	/**
 	 * Pasamos por par�metro las atracciones que estar�n inclu�das en la promoci�n.
-	 * 
 	 * @param atraccionesIncluidas
 	 */
 	public void setArrayAtracciones(List<Atraccion>atraccionesIncluidas) {
@@ -128,5 +127,4 @@ public abstract class Promocion implements Sugerible {
 		return Objects.equals(atraccionesIncluidas, other.atraccionesIncluidas) && id == other.id
 				&& Objects.equals(nombre, other.nombre);
 	}
-	
 }

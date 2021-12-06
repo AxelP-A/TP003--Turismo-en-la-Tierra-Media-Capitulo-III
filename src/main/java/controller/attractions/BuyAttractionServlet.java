@@ -32,8 +32,8 @@ public class BuyAttractionServlet extends HttpServlet {
 		Usuario user = (Usuario) req.getSession().getAttribute("user");
 		Map<String, String> errors = buyAttractionService.buy(user.getId(), attractionId);
 		
-		Usuario user2 = DAOFactory.getUsuarioDAO().find(user.getId());
-		req.getSession().setAttribute("user", user2);
+		Usuario usuario = DAOFactory.getUsuarioDAO().find(user.getId());
+		req.getSession().setAttribute("user", usuario);
 		
 		if (errors.isEmpty()) {
 			req.setAttribute("flash", "¡Gracias por comprar!");
@@ -41,7 +41,6 @@ public class BuyAttractionServlet extends HttpServlet {
 			req.setAttribute("errors", errors);
 			req.setAttribute("flash", "No ha podido realizarse la compra");
 		}
-
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/attractions/index.do");
 		dispatcher.forward(req, resp);

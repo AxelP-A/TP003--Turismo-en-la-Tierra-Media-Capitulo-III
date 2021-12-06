@@ -21,7 +21,6 @@ public class AttractionService {
 			attractionDAO.insert(atraccion);
 			// XXX: si no devuelve "1", es que hubo más errores
 		}
-
 		return atraccion;
 	}
 
@@ -39,16 +38,13 @@ public class AttractionService {
 			atraccionDAO.update(atraccion);
 			// XXX: si no devuelve "1", es que hubo más errores
 		}
-
 		return atraccion;
 	}
 
-	
 	// Revisar manera de implementar correctamente, ya que nos null no los toma bien.
 	public void delete(int id) {
 		Atraccion atraccion = new Atraccion(id, null, null, null, null, null);
 		
-
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		atraccionDAO.delete(atraccion);
 	}
@@ -57,5 +53,4 @@ public class AttractionService {
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		return atraccionDAO.find(id);
 	}
-
 }

@@ -38,9 +38,6 @@ public class BuyAttractionService {
 			atraccionDAO.update(atraccion);
 			usuarioDAO.update(usuario);
 		}
-
 		return errors;
-
 	}
-
 }

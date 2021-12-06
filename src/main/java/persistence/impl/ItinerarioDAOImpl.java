@@ -147,7 +147,6 @@ public class ItinerarioDAOImpl implements ItinerarioDAO {
 		return null;
 	}
 
-
 	// Creaci�n de itinerario para cada usuario (revisando por id de usuario, los id
 	// de las atracciones o promociones).
 	// Cada una de las
@@ -168,5 +167,4 @@ public class ItinerarioDAOImpl implements ItinerarioDAO {
 	 * atraccionesIncluidas.add(listaAtracciones.get(k)); } } } return
 	 * atraccionesIncluidas; }
 	 */
-
 }

@@ -55,5 +55,4 @@ public class ConnectionProvider {
 		}
 		return connection;
 	}
-
 }

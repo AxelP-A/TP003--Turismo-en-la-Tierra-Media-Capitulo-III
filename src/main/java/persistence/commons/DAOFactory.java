@@ -9,7 +9,6 @@ import persistence.impl.PromocionDAOImpl;
 import persistence.UsuarioDAO;
 import persistence.impl.UsuarioDAOImpl;
 
-
 public class DAOFactory {
 	
 	public static UsuarioDAO getUsuarioDAO() {
@@ -27,5 +26,4 @@ public class DAOFactory {
 	public static ItinerarioDAO getItinerarioDAO() {
 		return new ItinerarioDAOImpl();
 	}
-	
 }

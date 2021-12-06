@@ -15,7 +15,7 @@ public class PromocionPorcentual extends Promocion {
 	}
 
 	/**
-	 * Como el porcentaje estaba definido como int, no estaba realizando el cálculo
+	 * Como el porcentaje estaba definido como int, no estaba realizando el cï¿½lculo
 	 * correctamente al dividir por 100. 
 	 */
 	@Override
@@ -28,5 +28,4 @@ public class PromocionPorcentual extends Promocion {
 			}
 		return (int) Math.round(costoTotal * (1 - PORCENTAJE_DESCUENTO / 100));
 	}
-
 }
