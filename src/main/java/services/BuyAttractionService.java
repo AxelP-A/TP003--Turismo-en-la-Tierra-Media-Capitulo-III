@@ -16,18 +16,18 @@ public class BuyAttractionService {
 	public Map<String, String> buy(Integer userId, int atraccionId) {
 		Map<String, String> errors = new HashMap<String, String>();
 
-		Usuario usuario = usuarioDAO.find(userId);
-		Atraccion atraccion = atraccionDAO.find(atraccionId);
+		Usuario usuario = usuarioDAO.findByUserId(userId);
+		Atraccion atraccion = atraccionDAO.findByAtraccionId(atraccionId);
 
 		if (!atraccion.comprobarCupo()) {
 			
-			errors.put("atraccion", "No hay cupo disponible");
+			errors.put("attraction", "No hay cupo disponible");
 		}
 		if (!usuario.tieneDinero(atraccion)) {
-			errors.put("usuario", "No tienes dinero suficiente");
+			errors.put("user", "No tienes dinero suficiente");
 		}
 		if (!usuario.tieneTiempo(atraccion)) {
-			errors.put("usuario", "No tienes tiempo suficiente");
+			errors.put("user", "No tienes tiempo suficiente");
 		}
 
 		if (errors.isEmpty()) {

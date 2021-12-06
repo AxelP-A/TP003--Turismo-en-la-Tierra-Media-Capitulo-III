@@ -309,9 +309,7 @@ public class App {
 		sistema.cargarPromociones();*/
 		
 		Gimena.setPassword("1234");
-		System.out.println(Gimena.getPassword());
-		
+		System.out.println(Gimena.getPassword());	
 		/*sistema.ofertarMientrasQueHayaOroYtiempoAtodosLosUsuarios();*/
 	}
-
 }

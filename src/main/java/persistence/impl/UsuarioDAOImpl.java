@@ -64,7 +64,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 	
-	public Usuario findByUserId(int id) {	//deber�amos buscar por id?
+	public Usuario findByUserId(Integer id) {	//deber�amos buscar por id?
 		try {
 			String sql = "SELECT * FROM USUARIOS WHERE ID_USUARIO = ?";
 			Connection conn = ConnectionProvider.getConnection();
