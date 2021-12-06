@@ -13,7 +13,7 @@ import model.Usuario;
 import persistence.commons.DAOFactory;
 import services.BuyAttractionService;
 
-@WebServlet("/attractions/buy.do")
+@WebServlet("/atraccion/buy.do")
 public class BuyAttractionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3455721046062278592L;
@@ -42,7 +42,7 @@ public class BuyAttractionServlet extends HttpServlet {
 			req.setAttribute("flash", "No ha podido realizarse la compra");
 		}
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/attractions/index.do");
+				.getRequestDispatcher("/atraccion/index.do");
 		dispatcher.forward(req, resp);
 	}
 }

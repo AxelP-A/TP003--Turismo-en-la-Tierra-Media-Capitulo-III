@@ -301,15 +301,15 @@ public class App {
 
 	public static void main(String[] args) throws InvalidNumberException, IOException {
 
-		/*Usuario Axel = new Usuario(1, "Axel", "AVENTURA", 10000, 12.00, "12345", true);*/
+		Usuario Gimena = new Usuario(1, "Gimena", "AVENTURA", 10000, 12.00, "12345", true);
 		
 		App sistema = new App();
 		/*sistema.cargarUsuarios();
 		sistema.cargarAtracciones();
 		sistema.cargarPromociones();*/
 		
-		/*Axel.setPassword("1234");
-		System.out.println(Axel.getPassword());*/
+		Gimena.setPassword("1234");
+		System.out.println(Gimena.getPassword());
 		
 		/*sistema.ofertarMientrasQueHayaOroYtiempoAtodosLosUsuarios();*/
 	}

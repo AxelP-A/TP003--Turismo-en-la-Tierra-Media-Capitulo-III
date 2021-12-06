@@ -13,7 +13,7 @@ public class BuyAttractionService {
 	AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 	UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
 
-	public Map<String, String> buy(Integer userId, Integer atraccionId) {
+	public Map<String, String> buy(Integer userId, int atraccionId) {
 		Map<String, String> errors = new HashMap<String, String>();
 
 		Usuario usuario = usuarioDAO.find(userId);

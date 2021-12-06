@@ -13,12 +13,13 @@
 
 		<c:if test="${attraction != null && !attraction.isValid()}">
 			<div class="alert alert-danger">
-				<p>Se encontraron errores al crear la atracción.</p>
+				<p>Se encontraron errores al actualizar la atracción.</p>
 			</div>
 		</c:if>
 
-		<form action="/turismo/attractions/create.do" method="post">
-			<jsp:include page="/views/attractions/form.jsp"></jsp:include>
+		<form action="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do" method="post">
+			<input type="hidden" name="id" value="${attraction.id}">
+			<jsp:include page="/views/atraccion/form.jsp"></jsp:include>
 		</form>
 	</main>
 </body>

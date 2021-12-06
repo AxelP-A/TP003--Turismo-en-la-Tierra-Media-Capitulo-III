@@ -27,6 +27,15 @@ public class Atraccion implements Sugerible {
 		this.tipo = tipo;
 	}
 
+	public Atraccion(String nombre, int costo, double tiempo, int cupo, String tipo)  { 
+		
+		this.nombre = nombre;;
+		this.costoDeVisita = costo;
+		this.tiempoNecesario = tiempo;
+		this.cupoDePersonas = cupo;
+		this.tipo = tipo;
+	}
+	
 	public Atraccion(int id2, Object nombre2, Object object, Object object2, Object object3, Object tipo2) {
 		// TODO Solución temporal, pero no correcta para el delete service.
 	}

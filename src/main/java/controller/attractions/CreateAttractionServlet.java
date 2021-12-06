@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Atraccion;
 import services.AttractionService;
 
-@WebServlet("/attractions/create.do")
+@WebServlet("/atraccion/create.do")
 public class CreateAttractionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3455721046062278592L;
@@ -25,26 +25,29 @@ public class CreateAttractionServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/attractions/create.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/atraccion/create.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		int id = -1; // crear otro constructor sin id?
+		
 		String nombre = req.getParameter("name");
 		int costo = Integer.parseInt(req.getParameter("cost"));
 		Double duracion = Double.parseDouble(req.getParameter("duration"));
 		int cupo = Integer.parseInt(req.getParameter("capacity"));
 		String tipo = req.getParameter("tipo");
 
-		Atraccion atraccion = attractionService.create(nombre, costo, duracion, cupo, tipo);
+		Atraccion atraccion = attractionService.create(id, nombre, costo, duracion, cupo, tipo);
 		if (atraccion.isValid()) {
-			resp.sendRedirect("/turismo/attractions/index.do");
+			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
 		} else {
 			req.setAttribute("atraccion", atraccion);
 
 			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/views/attractions/create.jsp");
+					.getRequestDispatcher("/views/atraccion/create.jsp");
 			dispatcher.forward(req, resp);
 		}
 	}
