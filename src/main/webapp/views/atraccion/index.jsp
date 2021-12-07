@@ -74,7 +74,7 @@
 							</c:if> <c:choose>
 
 								<c:when
-									test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo()}">
+									test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && user.noCompro(usuario)}">
 									<a href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}"
 										class="btn btn-success rounded" role="button">Comprar</a>
 								</c:when>

@@ -5,6 +5,7 @@ import java.util.Map;
 import model.Atraccion;
 import model.Usuario;
 import persistence.AtraccionDAO;
+import persistence.ItinerarioDAO;
 import persistence.UsuarioDAO;
 import persistence.commons.DAOFactory;
 
@@ -12,15 +13,20 @@ public class BuyAttractionService {
 
 	AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 	UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
+	ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
+	//ItinerarioService itinerarioService = new ItinerarioService(); 
 
 	public Map<String, String> buy(Integer userId, int atraccionId) {
 		Map<String, String> errors = new HashMap<String, String>();
 
 		Usuario usuario = usuarioDAO.findByUserId(userId);
 		Atraccion atraccion = atraccionDAO.findByAtraccionId(atraccionId);
-
-		if (!atraccion.comprobarCupo()) {
-			
+		
+		/*if(usuario.yaCompro(atraccion)) {
+			errors.put("attraction", "Ya se compró esta atracción");
+		}*/
+		
+		if (!atraccion.comprobarCupo()) {	
 			errors.put("attraction", "No hay cupo disponible");
 		}
 		if (!usuario.tieneDinero(atraccion)) {
@@ -37,7 +43,21 @@ public class BuyAttractionService {
 			// no grabamos para no afectar la base de pruebas
 			atraccionDAO.update(atraccion);
 			usuarioDAO.update(usuario);
+			itinerarioDAO.insertAtraccion(userId, atraccionId);
+				
 		}
 		return errors;
 	}
+	
+	/*private boolean yaCompro(Atraccion atraccion, Usuario usuario) {
+		
+	for (Atraccion Atr : itinerarioService.crearListaAtraccionesAceptadas(usuario)) {
+		
+		if (Atr.equals(atraccion)) {
+			return true;
+		}
+	}
+	return false;
+	}
+	*/
 }

@@ -52,6 +52,6 @@ public class AttractionService {
 
 	public Atraccion find(int id) {
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
-		return atraccionDAO.find(id);
+		return atraccionDAO.findByAtraccionId(id);
 	}
 }

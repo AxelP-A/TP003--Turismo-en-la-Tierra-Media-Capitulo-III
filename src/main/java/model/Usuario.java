@@ -1,10 +1,15 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.swing.*; // Necesario para la creaci�n del panel
 
+import persistence.AtraccionDAO;
+import persistence.ItinerarioDAO;
+import persistence.PromocionDAO;
+import persistence.commons.DAOFactory;
 import sugeribles.Sugerible;
 import utils.Crypt;
 
@@ -15,7 +20,7 @@ public class Usuario {
 	protected int presupuesto;
 	protected double tiempoDisponible;
 	private String tipoAtraccionPreferida;
-	private List<Sugerible> itinerario;
+	private List<Sugerible> itinerario = new ArrayList<Sugerible>();
 	private String password;
 	private boolean isAdmin;
 
@@ -113,7 +118,9 @@ public class Usuario {
 	}
 
 	public void agregarAlItinerario(Sugerible sugerible) {
-		itinerario.add(sugerible);		// Esto actualmente se realiza en el método aceptaOferta de la App.
+		this.itinerario.add(sugerible);		// Esto actualmente se realiza en el método aceptaOferta de la App.
+		aceptoOfertaSugeridaYseDescontoTiempoYpresupuesto(sugerible);
+		
 	}
 	
 	public void aceptoOfertaSugeridaYseDescontoTiempoYpresupuesto(Sugerible sugerencia) {
@@ -121,7 +128,123 @@ public class Usuario {
 		this.tiempoDisponible -= sugerencia.getTiempoNecesario();
 		this.presupuesto -= sugerencia.getCostoDeVisita();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private List<Promocion> promocionesVigentes = new ArrayList<Promocion>();
+	private List<Atraccion> atracciones = new ArrayList<Atraccion>();
+	
+	
+	public void cargarAtracciones() {
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		this.atracciones = new ArrayList<>(atraccionDAO.findAll());
+	}
 
+	public void cargarPromociones() {
+		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
+		this.promocionesVigentes = new ArrayList<>(promocionDAO.findAll(this.atracciones));
+	}
+	
+	public void cargarItinerario() {
+
+		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
+		this.itinerario = itinerarioDAO.findByUserId(this.id, this.atracciones, this.promocionesVigentes);		
+	}
+	
+	public List<Atraccion> crearListaAtraccionesAceptadas() {
+
+		List<Atraccion> atraccionesAceptadas = new ArrayList<Atraccion>();
+		List<Sugerible> itinerario = new ArrayList<Sugerible>();
+	
+		cargarItinerario();
+		recibirItinerario(this.itinerario);
+
+		for (int i = 0; i < itinerario.size(); i++) {
+			if (itinerario.get(i).esPromocion()) {
+				atraccionesAceptadas.addAll(((Promocion) itinerario.get(i)).getArrayAtracciones());
+			} else {
+				atraccionesAceptadas.add((Atraccion) itinerario.get(i));
+			}
+		}
+		return atraccionesAceptadas;
+
+	}
+	
+	public boolean noCompro(Atraccion atraccion) {
+		
+		if(crearListaAtraccionesAceptadas() == null) {
+			return true;
+		}
+		for (Atraccion Atr : crearListaAtraccionesAceptadas()) {
+			if (Atr.equals(atraccion)) {
+				return false;
+			}
+		}
+		return true;
+		}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * Mostramos la promo o atracci�n para que la misma pueda ser visualizada por
 	 * consola por el usuario. Inicializamos un String respuesta en null, el cual va

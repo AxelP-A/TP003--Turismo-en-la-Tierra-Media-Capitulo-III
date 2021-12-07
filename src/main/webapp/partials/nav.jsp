@@ -24,7 +24,7 @@
 							<i title="monedas" style="color: gold;" class="bi bi-coin"></i> <c:out value="${user.presupuesto}"></c:out>
 						</a></li>
 						<li><a class="dropdown-item disabled" style="color: black;">
-							<i title="tiempo" style="color: blue;" class="bi bi-clock-fill"></i> <c:out value="${user.tiempoDisponible}h"></c:out>
+							<i title="tiempo" style="color: blue;" class="bi bi-clock-fill"></i> <c:out value="${user.tiempoDisponible}hs"></c:out>
 						</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><a href="/Tp003-TurismoEnLaTierraMedia/logout" class="dropdown-item">Salir</a></li>
