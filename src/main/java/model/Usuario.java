@@ -205,10 +205,12 @@ public class Usuario {
 	
 	public boolean noCompro(Atraccion atraccion) {
 		
-		if(crearListaAtraccionesAceptadas() == null) {
+		List<Atraccion> listaAtraccion = crearListaAtraccionesAceptadas();
+		System.out.println(listaAtraccion);
+		if(listaAtraccion == null) {
 			return true;
 		}
-		for (Atraccion Atr : crearListaAtraccionesAceptadas()) {
+		for (Atraccion Atr : listaAtraccion) {
 			if (Atr.equals(atraccion)) {
 				return false;
 			}
@@ -216,6 +218,7 @@ public class Usuario {
 		return true;
 		}
 
+	
 	
 	
 	
