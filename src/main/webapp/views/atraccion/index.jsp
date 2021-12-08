@@ -7,7 +7,7 @@
 <jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
 <body>
-
+	<jsp:useBean id="buscarEnLista" class="services.BuscarEnListaService"/>
 	<jsp:include page="/partials/nav.jsp"></jsp:include>
 
 	<main class="container">
@@ -71,10 +71,11 @@
 								<a href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
-							</c:if> <c:choose>
-
-								<c:when
-									test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && user.noCompro(atraccion)}">
+							</c:if>
+							
+							 <c:choose>
+								<c:when								
+									test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && buscarEnLista.noCompro(atraccion, atraccionesAceptadas)}">
 									<a href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}"
 										class="btn btn-success rounded" role="button">Comprar</a>
 								</c:when>

@@ -213,6 +213,7 @@ public class App {
 		List<Sugerible> sugerencias = new ArrayList<Sugerible>();
 		
 		sugerencias = itinerarioDAO.findByUserId(usuario.getId(), this.atracciones, this.promocionesVigentes);
+		System.out.println(sugerencias);
 		return sugerencias;
 	}
 
@@ -303,13 +304,18 @@ public class App {
 
 		Usuario Bruno = new Usuario(1, "Bruno", "AVENTURA", 10000, 12.00, "12345", true);
 		
+	
 		App sistema = new App();
 		/*sistema.cargarUsuarios();
 		sistema.cargarAtracciones();
 		sistema.cargarPromociones();*/
 		
-		Bruno.setPassword("1234");
-		System.out.println(Bruno.getPassword());	
+		
+		sistema.cargarItinerario(Bruno);
+		
+		/*Bruno.setPassword("1234");
+		System.out.println(Bruno.getPassword());	*/
+		
 		/*sistema.ofertarMientrasQueHayaOroYtiempoAtodosLosUsuarios();*/
 	}
 }
