@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atracciones y promociones</title>
+
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+	integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-print-2.0.1/fh-3.2.0/kt-2.6.4/r-2.2.9/sb-1.3.0/sp-1.4.0/sl-1.3.3/datatables.min.css" />
+
+<link rel="stylesheet" href="css/dataTables.css">
+
+<link rel="stylesheet" href="css/styles.css">
+
+<script defer type="text/javascript"
+	src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-print-2.0.1/fh-3.2.0/kt-2.6.4/r-2.2.9/sb-1.3.0/sp-1.4.0/sl-1.3.3/datatables.min.js"></script>
+
+<script type="text/javascript">
+	window.addEventListener('DOMContentLoaded', function() {
+		$('.dataTable').DataTable({
+			"order" : [ [ 2, "asc" ], [ 5, "desc" ] ]
+		});
+	});
+</script>
+
+
+
+</head>
+<body>
+	<header>
+		<div class="contenedor">
+			<p>
+				<a href="Index.html"> <img src="img/tolkien-plano.jpg"
+					alt="logo"></a>
+			</p>
+			<div class="enlaces-contenedor">
+				<a href="index.html">Inicio</a> <a href="">Comunidad</a> <a href="">Acerca
+					de</a> <a href="">Soporte</a>
+			</div>
+			<a href="inicioSesion.html">Iniciar sesión</a>
+		</div>
+		<!-- 
+        <a href="https://google.com.ar/">Ir a google</a>
+		<a href="#principal">Ir a principal</a>
+		<a href="Turismo2.html">Ir a Turismo 2</a>
+         -->
+	</header>
+
+<!-- A LOS TD LE PODEMOS PONER LA CLASE dt-control , cambia mucho la interface de esos td y les da un botón +
+dt-hasChild pone el signo - en vez del +   -->
+
+	<main class="mainSugeribles">
+		<div class="background-seccionUno">
+			
+			<table class="dataTable table-promocion" style="width: 100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>Costo</th>
+						<th>Duración</th>
+						<th>Cupo</th>
+						<th>Tipo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Moria</td>
+						<td>10</td>
+						<td>2</td>
+						<td>6</td>
+						<td>AVENTURA</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>MinasTirith</td>
+						<td>5</td>
+						<td>2.5</td>
+						<td>25</td>
+						<td>PAISAJE</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>LaComarca</td>
+						<td>3</td>
+						<td>6.5</td>
+						<td>150</td>
+						<td>DEGUSTACIÓN</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Mordor</td>
+						<td>25</td>
+						<td>3</td>
+						<td>4</td>
+						<td>AVENTURA</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>AbismoDeHelm</td>
+						<td>5</td>
+						<td>2</td>
+						<td>15</td>
+						<td>PAISAJE</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Lothlorien</td>
+						<td>35</td>
+						<td>1</td>
+						<td>30</td>
+						<td>DEGUSTACIÓN</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Erebor</td>
+						<td>12</td>
+						<td>3</td>
+						<td>32</td>
+						<td>PAISAJE</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>BosqueNegro</td>
+						<td>3</td>
+						<td>4</td>
+						<td>12</td>
+						<td>AVENTURA</td>
+						<td><a href="#modal"><i class="fas fa-angle-double-right"></i></a></td>
+					</tr>
+				</tbody>
+
+			</table>
+
+			<br>
+
+			<table class="dataTable table-promocion" style="width: 100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Tipo</th>
+						<th>Nombre</th>
+						<th>Costo</th>
+						<th>Atracción incluída 1</th>
+						<th>Atracción incluída 2</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>ABSOLUTA</td>
+						<td>PromoAventura</td>
+						<td>11</td>
+						<td>Moria</td>
+						<td>BosqueNegro</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>PORCENTUAL</td>
+						<td>PromoDegustacion</td>
+						<td>10</td>
+						<td>LaComarca</td>
+						<td>LothLorien</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>AXB</td>
+						<td>PromoDegustacion</td>
+						<td></td>
+						<td>AbismoDeHelm</td>
+						<td>Erebor</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>ABSOLUTA</td>
+						<td>PromoAventura2</td>
+						<td>15</td>
+						<td>Mordor</td>
+						<td>BosqueNegro</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--POPUP-->
+		<!--<a href="#modal" class="btn-open-popup">Ver más</a>-->
+		<div class="container-all" id="modal">
+			<div class="popup">
+				<div class="img"></div>
+				<div class="container-text">
+					<h2>Nombre Atraccion/Promoción</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores distinctio quia fuga at ea, voluptas provident odio ducimus tempora consequuntur eos. Ipsam consectetur magnam neque non ratione numquam praesentium vero?</p>
+					<span><i class="fas fa-hourglass-start"></i> Tiempo:</span>
+					<span><i class="fas fa-users"></i> Cupo:</span>
+					<span><i class="fas fa-dollar-sign"></i> Precio:</span>
+					
+					
+				</div>
+				<a href="#" class="btn-close-popup">X</a>
+			</div>
+		</div>
+		<!--CIERRE POPUP-->
+	</main>
+	<footer>
+		<div class="contenedor">
+			<img src="img/tolkien-plano.jpg" alt="logo">
+			<div class="enlaces-footer">
+				<a href=""><i class="fas fa-wifi"></i></a> <a href=""><i
+					class="fab fa-twitter"></i></a> <a href=""><i
+					class="fab fa-instagram"></i></a> <a href=""><i
+					class="fab fa-facebook"></i></a> <a href=""><i
+					class="fab fa-linkedin"></i></a>
+			</div>
+			<p>
+				<i class="far fa-copyright"></i> 2021 - Todos los derechos
+				reservados
+			</p>
+		</div>
+	</footer>
+</body>
+</html>

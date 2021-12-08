@@ -1,0 +1,513 @@
+
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
+
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: "Motiva Sans", Sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100vw;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+}
+/*HEADER*/
+
+header{
+    background-color: #171a21;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 9%;
+}
+
+.contenedor{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedor img{
+    width: 100px;
+}
+
+.contenedor a{
+    color: #b8b6b4;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+.enlaces-contenedor{
+    display: flex;
+    flex-wrap: wrap;
+}
+.enlaces-contenedor a {
+    margin-left: 10px;
+    text-transform: uppercase;
+    color: #b8b6b4;
+    justify-content: space-between;
+}
+
+/*MAIN*/
+/*Seccion Uno*/
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 82%;  
+}
+
+main .background-seccionUno {
+    background-image: url(../img/main-background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height:800px;
+}
+
+@media (min-width: 1700px) {
+    main .background-seccionUno {
+        height:1100px; 
+    }
+}
+
+.background-seccionUno .seccion-uno{
+    width: 80%;
+}
+h1{
+    color:white;
+    font-size: 40px;
+    line-height: 32px;
+    text-overflow: ellipsis;
+    font-weight: 400; 
+    padding: 20px 0px;
+}
+.barra{
+    position: sticky;
+    top: 0px;
+    margin-top: 20px;
+    background-color: #54a5d4;
+    padding: 15px 5px;
+}
+.barra a {
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px #000000aa;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.barra a:hover {
+    color:#32353C;
+}
+
+/* Estilos de la galeria */
+h2{
+    color: #fff;
+    text-shadow: 1px 1px 2px #000000aa;
+    font-size: 30px;
+    margin-top: 30px;
+}
+.galeria {
+    width: 90%;
+    margin: auto;
+    list-style: none;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.galeria li {
+    margin: 15px;
+}
+.galeria img {
+    width: 220px;
+    height: 150px;
+}
+
+@media (min-width:1450px){
+    .galeria li {
+        margin: 15px;
+    }
+    .galeria img {
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@media (min-width: 1700px) {
+    .galeria img {
+        width: 350px;
+        height: 300px;
+    }
+}
+@media (min-width: 2000px) {
+    .galeria img {
+        width: 400px;
+        height: 350px;
+    }
+}
+@media (min-width: 2400px) {
+    .galeria img {
+        width: 450px;
+        height: 400px;
+    }
+}
+
+.modal {
+    display: none;
+}
+.modal:target{
+    display: block;
+    position: fixed;
+    background-color: rgba(0,0,0,0.8);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal h3 {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin: 15px 0;
+}
+.imagen {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imagen a {
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.imagen a:nth-child(2){
+    margin: 0;
+    height: 100%;
+    flex-shrink: 2;
+}
+.imagen img {
+   width: 700px;
+   height: 100%; 
+   max-width: 100%;
+   border: 7px solid white;
+}
+.cerrar{
+   display: block; 
+   color: white;
+   width: 25px;
+   height: 25px;
+   margin: 15px auto;
+   text-align: center;
+   text-decoration: none;
+   font-size: 25px;
+   padding: 5px;
+   border-radius: 50%;
+   line-height: 25px;
+}
+
+/*Seccion Dos*/
+main .background-seccionDos{
+    background-color: #434953;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-dos {
+    color: #b8b6b4;
+    width: 80%;  
+}
+h3{
+    color: #fff;
+    font-size: 25px;
+    padding: 20px 0px;
+    margin-top: 20px;
+}
+.seccion-dos p{
+    line-height: 1.5;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+/*SECCION TRES*/
+.background-seccionTres {
+    background-color: #434953;
+}
+.seccion-tres{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 30px 0px 30px 0px;
+}
+.seccion-tres article{
+    width: 300px;
+    position: relative;
+    background-color: #b8b6b4;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 5%;
+}
+@media (max-width:1300px) {
+    .seccion-tres article {
+        margin: 30px;
+    }
+ }
+article .background{
+    padding: 10px;
+    width: 100%;
+    height: 194px;
+    border-radius: 16px 16px 0 0;
+    text-align: left;
+}
+article .background i{
+    color: red;
+    font-size: 24px; 
+}  
+article .promoAbsoluta{
+    background-image: url(../img/MinasTirith/minastirith1.jpg);
+    background-size: cover;
+}
+article .promoPorcentual{
+    background-image: url(../img/Moria/moriagate.jpg);
+    background-size: cover;
+}
+article .promoAXB{
+    background-image: url(../img/Mordor/ojosauronmontedeldestino.jpg);
+    background-size: cover;
+}
+article img{
+    border-radius: 50%;
+    position: absolute;
+    left: calc( 50% - (125px / 2));
+    top: calc( 194px - (125px / 2) );
+    width: 125px;
+}
+
+.imgProfileDos {
+    width: 145px;
+}
+
+article h3 {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-top: 55px;
+    color: #171a21;
+}
+article p{
+    font-size: 15px;
+    height: 80px;
+    text-align: center;
+    margin: 10px;
+}
+article h4{
+    text-transform: uppercase;
+}
+article ul {
+    margin: 10px 0px;
+    align-content: center;
+}
+article ul li{
+    list-style: none;
+}
+article button{
+    border: none;
+    background-color: #00669F;
+    font-size: 15px;
+    color: white;
+    padding: 10px 30px;
+    margin: 25px;
+    cursor: pointer;
+}
+
+
+/*InicioSesion*/
+.formulario-inicio-sesion{
+ 	color: white;
+	max-width: 300px;
+    padding: 8px 6px;
+    width: 100%;
+    transition: border ease-in-out .5s;
+    outline: none;
+    font-family: "Motiva Sans", Sans-serif;
+    display: inline-block;
+    cursor: text;
+    padding: 1px 2px;
+}
+
+.formulario-inicio-sesion p{
+	padding: 5px;
+}
+	
+.formulario-inicio-sesion button{		
+	border-radius: 2px;
+    display: block;
+    background: #75b022;
+    background: linear-gradient( to bottom, #75b022 5%, #588a1b 95%);
+    background: linear-gradient( to right, #47bfff 5%, #1a44c2 60%);
+    box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
+    background-position: 25%;
+    background-size: 330% 100%;
+    cursor: pointer;
+    color: #c3e1f8;
+    text-shadow: 1px 1px 0px rgb(0 0 0 / 30%);
+    font-size: 15px;
+    line-height: 30px;
+    padding: 3px 80px;
+   margin: 20px;
+}
+	
+.formulario-inicio-sesion p input{
+	max-width: 300px;
+    background: #32353C;
+    border-radius: 3px;
+    color: #E9E9E9;
+    padding: 8px 6px;
+    display: block;
+    box-shadow: none;
+    width: 100%;
+    transition: border ease-in-out .5s;
+    border: 1px solid #26282D;
+    outline: none;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: normal;
+}
+
+/*FOOTER*/
+
+footer{
+    background-color: #171a21;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 9%;
+}
+
+footer .enlaces-footer a{
+    color: #b8b6b4;
+    font-size: 30px;
+    margin-right: 20px;
+}
+footer .contenedor p{
+    color: #b8b6b4;
+}
+
+/*TU TIENDA*/
+main.tuTienda div section article img.imgProfileTienda{
+  width: 125px;  
+  height: 125px;
+  top: calc( 154px - (122px / 2) );
+}
+main.tuTienda div section article div.jarrones{
+    height: 154px;
+}
+main.tuTienda div section article h3{
+    font-size: 1rem;
+    margin-top: 65px;
+}
+main.tuTienda div section article button{
+    margin-bottom: 35px;
+}
+/*RESUMEN SUGERIBLES*/
+a.btn-open-popup{
+   position: absolute;
+   top: 50%;
+   left: 20%;
+   transform: translate(-50%, -50%); 
+   color: #171a21;
+   display: block;
+   background: white;
+   padding: 20px 50px;
+   border-radius: 50px;
+}
+.container-all{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    background: rgba(0,0,0,0.6);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 600ms;
+}
+.container-all:target{
+    background-color: rgb(0,0,0,0.8);
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup{
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    position: relative;
+    display: flex;
+    background: #164058;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+}
+div.img{
+    width: 40%;
+    background-image: url(../img/BosqueNegro/bosquenegro1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.container-text{
+    width: 60%;
+    padding: 50px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.container-text h2{
+    font-size: 30px;
+    color: #b1bbca;
+}
+.container-text p{
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 20px 60px 20px 0;
+}
+.container-text span{
+    padding-top: 15px;
+    font-weight: 700;
+}
+.container-text span i{
+    font-size: 20px;
+    color: #b1bbca;
+    padding: 5px 10px 0 0;
+}
+.btn-close-popup{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    line-height: 10px;
+}
+
+
