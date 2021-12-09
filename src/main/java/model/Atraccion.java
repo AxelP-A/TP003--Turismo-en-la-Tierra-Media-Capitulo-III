@@ -15,6 +15,7 @@ public class Atraccion implements Sugerible {
 	protected int cupoDePersonas;
 	private String tipo;
 	private int id;
+	private String habilitada;
 	private Map <String, String> errors;
 
 	public Atraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo)  { 
@@ -36,10 +37,29 @@ public class Atraccion implements Sugerible {
 		this.tipo = tipo;
 	}
 	
+	public Atraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo, String fechaBaja)  { 
+		
+		this.id = id;
+		this.nombre = nombre;;
+		this.costoDeVisita = costo;
+		this.tiempoNecesario = tiempo;
+		this.cupoDePersonas = cupo;
+		this.tipo = tipo;
+		this.habilitada = fechaBaja;
+	}
+	
+
+
 	public Atraccion(int id2, Object nombre2, Object object, Object object2, Object object3, Object tipo2) {
-		// TODO Solución temporal, pero no correcta para el delete service.
+		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+	
+	
+	
+	
 	@Override
 	public String getNombre() {
 		return this.nombre;
@@ -93,7 +113,10 @@ public class Atraccion implements Sugerible {
 		}
 		if(cupoDePersonas <=0) {
 			errors.put("cupoDePersonas", "Debe ser positivo");
-		}	
+		}
+		if (tipo == null) {
+			errors.put("tipo", "Debe ser un string válido");
+		}
 	}
 	
 	@Override 
@@ -136,6 +159,20 @@ public class Atraccion implements Sugerible {
 	
 	public void setCupo(int nuevoCupo) {
 		this.cupoDePersonas = nuevoCupo;
+	}
+	
+	public boolean estaHabilitada() {
+		return this.habilitada == null;
+	}
+	
+	
+	
+
+	@Override
+	public String toString() {
+		return "Atraccion [nombre=" + nombre + ", costoDeVisita=" + costoDeVisita + ", tiempoNecesario="
+				+ tiempoNecesario + ", cupoDePersonas=" + cupoDePersonas + ", tipo=" + tipo + ", id=" + id
+				+ ", habilitada=" + habilitada + "]";
 	}
 
 	@Override

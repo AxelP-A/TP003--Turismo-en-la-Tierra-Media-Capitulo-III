@@ -49,7 +49,6 @@ public class BuyAttractionService {
 			usuarioDAO.update(usuario);
 			itinerarioDAO.insertAtraccion(userId, atraccionId);
 			
-			
 		}
 		return errors;
 	}
