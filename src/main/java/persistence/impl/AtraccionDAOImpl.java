@@ -10,6 +10,7 @@ import java.util.List;
 import persistence.AtraccionDAO;
 import persistence.commons.ConnectionProvider;
 import persistence.commons.MissingDataException;
+import sugeribles.Sugerible;
 import model.Atraccion;
 
 public class AtraccionDAOImpl implements AtraccionDAO {
@@ -51,13 +52,13 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	public int delete(Atraccion atraccion) {
 		try {
-			String sql = "DELETE FROM ATRACCIONES WHERE ID_ATRACCION = ?";
+			String sql = "UPDATE ATRACCIONES SET ELIMINADA = datetime('now') WHERE ID_ATRACCION = ?";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setInt(1, atraccion.getId());
+			statement.setInt(1, atraccion.getId());	
 			int rows = statement.executeUpdate();
-
+			
 			return rows;
 		} catch (Exception e) {
 			throw new MissingDataException(e);
@@ -72,7 +73,6 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			statement.setInt(1, id);
 			ResultSet resultados = statement.executeQuery();
 
-			
 			Atraccion atraccion = null;
 
 			if (resultados.next()) {
@@ -119,8 +119,8 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 	}
 
 	private Atraccion convertirAtraccion(ResultSet resultados) throws SQLException {
-
-		return new Atraccion(resultados.getInt("id_atraccion"), resultados.getString(2), resultados.getInt(3), resultados.getDouble(4), resultados.getInt(5), resultados.getString(6));
+		
+		return new Atraccion(resultados.getInt("id_atraccion"), resultados.getString(2), resultados.getInt(3), resultados.getDouble(4), resultados.getInt(5), resultados.getString(6), resultados.getString(8));
 	}
 
 	@Override
@@ -128,4 +128,5 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

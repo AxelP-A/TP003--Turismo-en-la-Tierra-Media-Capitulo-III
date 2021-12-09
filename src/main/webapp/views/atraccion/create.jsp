@@ -11,13 +11,13 @@
 
 	<main class="container">
 
-		<c:if test="${attraction != null && !attraction.isValid()}">
+		<c:if test="${atraccion != null && !atraccion.isValid()}">
 			<div class="alert alert-danger">
 				<p>Se encontraron errores al crear la atracción.</p>
 			</div>
 		</c:if>
 
-		<form action="/Tp003-TurismoEnLaTierraMedia/attractions/create.do" method="post">
+		<form action="/Tp003-TurismoEnLaTierraMedia/atraccion/create.do" method="post">
 			<jsp:include page="/views/atraccion/form.jsp"></jsp:include>
 		</form>
 	</main>

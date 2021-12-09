@@ -6,10 +6,11 @@ import java.util.Objects;
 import sugeribles.Sugerible;
 
 public abstract class Promocion implements Sugerible {
-	
+
 	protected List<Atraccion> atraccionesIncluidas = new ArrayList<Atraccion>();
 	private String nombre;
 	private int id;
+	private String habilitada;
 
 	public Promocion(int id, String nombreDePromocion, List<Atraccion> listaAtracciones) {
 		this.id = id;
@@ -26,7 +27,7 @@ public abstract class Promocion implements Sugerible {
 	public void restarCupo() {
 
 		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
-				atraccionesIncluidas.get(i).restarCupo();
+			atraccionesIncluidas.get(i).restarCupo();
 		}
 	}
 
@@ -34,8 +35,8 @@ public abstract class Promocion implements Sugerible {
 	public boolean comprobarCupo() {
 
 		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
-				if (!atraccionesIncluidas.get(i).comprobarCupo()) {
-					return false;
+			if (!atraccionesIncluidas.get(i).comprobarCupo()) {
+				return false;
 			}
 		}
 		return true;
@@ -55,21 +56,37 @@ public abstract class Promocion implements Sugerible {
 		double tiempoTotal = 0;
 
 		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
-				tiempoTotal += atraccionesIncluidas.get(i).getTiempoNecesario();
+			tiempoTotal += atraccionesIncluidas.get(i).getTiempoNecesario();
 		}
 		return tiempoTotal;
 	}
 
 	@Override
 	public void agregarAtraccion(Sugerible sugerible, List<Atraccion> lista) {
-		for (int i = 0; i < atraccionesIncluidas.size(); i++) {	
-			lista.add(atraccionesIncluidas.get(i));		
+		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
+			lista.add(atraccionesIncluidas.get(i));
 		}
 	}
 
 	@Override
 	public boolean esPromocion() {
 		return true;
+	}
+
+	public boolean estanHabilitadas() {
+
+		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
+			if (!atraccionesIncluidas.get(i).estaHabilitada()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	 public boolean estaHabilitada() {
+
+	 return (this.habilitada==null && estanHabilitadas());
 	}
 
 	@Override
@@ -79,8 +96,9 @@ public abstract class Promocion implements Sugerible {
 		System.out.println("Esta promo incluye las siguientes atracciones:");
 
 		for (int i = 0; i < this.getArrayAtracciones().size(); i++) {
-				System.out.println((i + 1) + ". " + this.getNombreAtraccion(this.getArrayAtracciones().get(i)).toUpperCase());
-			}
+			System.out
+					.println((i + 1) + ". " + this.getNombreAtraccion(this.getArrayAtracciones().get(i)).toUpperCase());
+		}
 		System.out.println("El costo de la promocion es: " + this.getCostoDeVisita() + " monedas.");
 		System.out.println("La duracion aproximada del recorrido es de: " + this.getTiempoNecesario() + " horas.");
 		System.out.println("-----------------------------------------------------------------");
@@ -100,12 +118,13 @@ public abstract class Promocion implements Sugerible {
 
 	/**
 	 * Pasamos por par�metro las atracciones que estar�n inclu�das en la promoci�n.
+	 * 
 	 * @param atraccionesIncluidas
 	 */
-	public void setArrayAtracciones(List<Atraccion>atraccionesIncluidas) {
+	public void setArrayAtracciones(List<Atraccion> atraccionesIncluidas) {
 		this.atraccionesIncluidas = atraccionesIncluidas;
 	}
-	
+
 	public int getId() {
 		return id;
 	}

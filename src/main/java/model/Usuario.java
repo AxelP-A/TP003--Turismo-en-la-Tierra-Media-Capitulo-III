@@ -10,6 +10,7 @@ import persistence.AtraccionDAO;
 import persistence.ItinerarioDAO;
 import persistence.PromocionDAO;
 import persistence.commons.DAOFactory;
+import services.ItinerarioService;
 import sugeribles.Sugerible;
 import utils.Crypt;
 
@@ -23,6 +24,7 @@ public class Usuario {
 	private List<Sugerible> itinerario = new ArrayList<Sugerible>();
 	private String password;
 	private boolean isAdmin;
+	private ItinerarioService itinerarioService;
 
 	public Usuario(int id, String nombre, String atraccionPreferida, int presupuesto,
 			double tiempoDisponible) {
@@ -132,81 +134,11 @@ public class Usuario {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private List<Promocion> promocionesVigentes = new ArrayList<Promocion>();
-	private List<Atraccion> atracciones = new ArrayList<Atraccion>();
-	
-	
-	public void cargarAtracciones() {
-		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
-		this.atracciones = new ArrayList<>(atraccionDAO.findAll());
-	}
 
-	public void cargarPromociones() {
-		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
-		this.promocionesVigentes = new ArrayList<>(promocionDAO.findAll(this.atracciones));
-	}
 	
-	public void cargarItinerario() {
-
-		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
-		this.itinerario = itinerarioDAO.findByUserId(this.id, this.atracciones, this.promocionesVigentes);		
-	}
-	
-	public List<Atraccion> crearListaAtraccionesAceptadas() {
-
-		List<Atraccion> atraccionesAceptadas = new ArrayList<Atraccion>();
-		List<Sugerible> itinerario = new ArrayList<Sugerible>();
-	
-		cargarItinerario();
-		recibirItinerario(this.itinerario);
-
-		for (int i = 0; i < itinerario.size(); i++) {
-			if (itinerario.get(i).esPromocion()) {
-				atraccionesAceptadas.addAll(((Promocion) itinerario.get(i)).getArrayAtracciones());
-			} else {
-				atraccionesAceptadas.add((Atraccion) itinerario.get(i));
-			}
-		}
-		return atraccionesAceptadas;
-
-	}
-	
-	public boolean noCompro(Atraccion atraccion) {
+	/*public boolean noCompro(Atraccion atraccion) {
 		
-		List<Atraccion> listaAtraccion = crearListaAtraccionesAceptadas();
-		System.out.println(listaAtraccion);
+		List<Atraccion> listaAtraccion = itinerarioService.crearListaAtraccionesAceptadas();
 		if(listaAtraccion == null) {
 			return true;
 		}
@@ -216,7 +148,7 @@ public class Usuario {
 			}
 		}
 		return true;
-		}
+		}*/
 
 	
 	

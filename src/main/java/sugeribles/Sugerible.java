@@ -25,6 +25,8 @@ public interface Sugerible  {
 	
 	public void agregarAtraccion(Sugerible sugerible, List<Atraccion> atraccionesAceptadas);
 	
+	public boolean estaHabilitada();
+	
 	//public int getCupo();
 	
 	// public int getId();
