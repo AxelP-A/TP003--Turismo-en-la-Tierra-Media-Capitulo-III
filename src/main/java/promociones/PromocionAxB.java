@@ -21,4 +21,13 @@ public class PromocionAxB extends Promocion {
 		}
 		return costoTotal;
 	}
+
+	@Override
+	public void setCalculoDeCosto(double nuevoCalculo) {
+	}
+
+	@Override
+	public int getCalculoDeCosto() {
+		return 0;
+	}
 }

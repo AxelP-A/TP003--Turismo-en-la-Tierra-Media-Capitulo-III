@@ -25,7 +25,7 @@ public class AttractionService {
 		return atraccion;
 	}
 
-	public Atraccion update(int id, String nombre, int costo, double tiempo, int cupo, String tipo) {
+	public Atraccion updateAtraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo) {
 
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		Atraccion atraccion = atraccionDAO.find(id);
@@ -45,7 +45,7 @@ public class AttractionService {
 
 	// Revisar manera de implementar correctamente, ya que nos null no los toma bien.
 	public void delete(int id) {
-		Atraccion atraccion = new Atraccion(id, null, null, null, null, null);
+		Atraccion atraccion = new Atraccion(id);
 		
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		atraccionDAO.delete(atraccion);

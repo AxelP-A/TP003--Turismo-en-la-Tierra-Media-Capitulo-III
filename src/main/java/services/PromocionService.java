@@ -2,8 +2,8 @@ package services;
 
 import java.util.List;
 
+import model.Atraccion;
 import model.Promocion;
-import persistence.AtraccionDAO;
 import persistence.PromocionDAO;
 import persistence.commons.DAOFactory;
 import promociones.PromocionAbsoluta;
@@ -12,26 +12,25 @@ import promociones.PromocionPorcentual;
 
 public class PromocionService {
 
-	public List<Promocion> list() {
-		return DAOFactory.getPromocionDAO().findAll();
+	public List<Promocion> list(List<Atraccion> atracciones) {
+		return DAOFactory.getPromocionDAO().findAll(atracciones);
 	}
 
-	public Promocion create(int id, String nombre, int costo, double tiempo, int cupo, String tipo) {
+	public Promocion create(int id, String nombre, int costo, double tiempo, int cupo, String tipo, List<Atraccion> listaAtracciones) {
 
+		Promocion promocion = null;
+		
 		switch(tipo) {
 		case "PORCENTUAL":
-			PromocionPorcentual promocionPorcentual = new PromocionPorcentual(-1 ,tipo, nombre , costo);
+			 promocion = new PromocionPorcentual(-1 , nombre , listaAtracciones, costo);
 			break;
 		case "AXB":
-			PromocionAxB promocionAxB = new PromocionAxB(-1 ,tipo, nombre);
+			 promocion = new PromocionAxB(-1 , nombre, listaAtracciones);
 			break;
 		case "ABSOLUTA":
-			PromocionAbsoluta promocionAbsoluta = new PromocionAbsoluta(-1  ,tipo, nombre, costo);
+			 promocion = new PromocionAbsoluta(-1 , nombre, listaAtracciones, costo);
 			break;
 		}
-		
-		Promocion promocion = new Promocion(-1, nombre, costo, tiempo, cupo, tipo);	//acá va el tipo de promo, necesitamos los 3 constructores.
-		
 
 		if (promocion.isValid()) {
 			PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
@@ -41,17 +40,14 @@ public class PromocionService {
 		return promocion;
 	}
 
-	public Promocion update(int id, String nombre, int costo, double tiempo, int cupo, String tipo) {
+	public Promocion update(int id, String nombre, int costo) {
 
 		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
 		Promocion promocion = promocionDAO.find(id);
 
 		promocion.setNombre(nombre);
-		promocion.setCostoDeVisita(costo);
-		promocion.setTiempoNecesario(tiempo);
-		promocion.setCupo(cupo);
-		promocion.setTipo(tipo);
-
+		promocion.setCalculoDeCosto(costo);
+		
 		if (promocion.isValid()) {
 			promocionDAO.update(promocion);
 			// XXX: si no devuelve "1", es que hubo más errores
@@ -61,15 +57,17 @@ public class PromocionService {
 
 	// Revisar manera de implementar correctamente, ya que nos null no los toma bien.
 	public void delete(int id) {
-		Promocion atraccion = new Atraccion(id, null, null, null, null, null);
 		
-		AtraccionDAO atraccionDAO = DAOFactory.getPromocionDAO();
-		atraccionDAO.delete(atraccion);
+		
+		Promocion promocion = new PromocionAbsoluta(id);
+		
+		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
+		promocionDAO.delete(promocion);
 	}
 
-	public Promocion find(int id) {
+	/*public Promocion find(int id) {
 		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
 		return promocionDAO.findByPromocionId(id);
-	}
+	}*/
 
 }

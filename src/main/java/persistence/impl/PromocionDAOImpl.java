@@ -52,6 +52,16 @@ public class PromocionDAOImpl implements PromocionDAO {
 		}
 	}
 	
+	
+	@Override
+	public int update(Promocion promocion) {
+		
+		
+		
+		
+		return 0;
+	}
+	
 	@Override
 	public List<Promocion> findAll(List<Atraccion> listaAtracciones) {
 		try {
@@ -77,7 +87,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 				
 				switch(tipoPromocion) {
 				case "PORCENTUAL":
-					promocion = new PromocionPorcentual(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas , resultados.getDouble("costo_promocion"));
+					promocion = new PromocionPorcentual(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas, resultados.getDouble("costo_promocion"));
 					break;
 				case "AXB":
 					promocion = new PromocionAxB(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas);
@@ -110,14 +120,43 @@ public class PromocionDAOImpl implements PromocionDAO {
 		return atraccionesIncluidas;
 	}
 	
-	@Override
-	public int update(Promocion promocion) {
-		return 0;
+	public Promocion findByPromocionId(int id) {
+		
+		return null;
+		/*try {
+			String sql = "SELECT * FROM PROMOCIONES WHERE ID_PROMOCION = ?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet resultados = statement.executeQuery();
+
+			Atraccion atraccion = null;
+
+			if (resultados.next()) {
+				atraccion = convertirAtraccion(resultados);
+			}
+
+			return atraccion;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}*/
 	}
+	
 
 	@Override
 	public int delete(Promocion promocion) {
-		return 0;
+		try {
+			String sql = "UPDATE PROMOCIONES SET ELIMINADA = datetime('now') WHERE ID_PROMOCION = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, promocion.getId());	
+			int rows = statement.executeUpdate();
+			
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
 	}
 
 	@Override
