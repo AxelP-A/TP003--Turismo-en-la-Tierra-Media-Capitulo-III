@@ -27,7 +27,8 @@ public interface Sugerible  {
 	
 	public boolean estaHabilitada();
 	
-	//public int getCupo();
+	public int getCupo();
+
+	public int getId();
 	
-	// public int getId();
 }

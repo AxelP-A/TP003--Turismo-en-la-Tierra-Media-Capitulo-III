@@ -50,15 +50,14 @@ public class Atraccion implements Sugerible {
 	
 
 
-	public Atraccion(int id2, Object nombre2, Object object, Object object2, Object object3, Object tipo2) {
-		// TODO Auto-generated constructor stub
+	public Atraccion(int id) {
+		this.id = id;
+		this.nombre = null;
+		this.costoDeVisita = 0;
+		this.tiempoNecesario = 0;
+		this.cupoDePersonas = 0;
+		this.tipo = null;
 	}
-
-	
-	
-	
-	
-	
 	
 	@Override
 	public String getNombre() {

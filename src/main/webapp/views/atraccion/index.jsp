@@ -65,9 +65,9 @@
 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 										Cras pretium eros urna. Sed quis erat congue, bibendum tortor
 										malesuada, iaculis diam. Ut ut imperdiet sapien.</p></td>
-								<td><c:out value="${atraccion.costoDeVisita}"></c:out></td>
+								<td><c:out value="${atraccion.getCostoDeVisita()}"></c:out></td>
 								<td><c:out value="${atraccion.tiempoNecesario}"></c:out></td>
-								<td><c:out value="${atraccion.cupo}"></c:out></td>
+								<td><c:out value="${atraccion.getCupo()}"></c:out></td>
 
 								<td><a
 									href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}"
@@ -89,13 +89,13 @@
 										malesuada, iaculis diam. Ut ut imperdiet sapien.</p></td>
 								<td><c:out value="${atraccion.costoDeVisita}"></c:out></td>
 								<td><c:out value="${atraccion.tiempoNecesario}"></c:out></td>
-								<td><c:out value="${atraccion.cupo}"></c:out></td>
+								<td><c:out value="${atraccion.getCupo()}"></c:out></td>
 
 								<td><c:choose>
 										<c:when
 											test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && buscarEnLista.noCompro(atraccion, atraccionesAceptadas)}">
 											<a
-												href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}"
+												href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id} ep=${atraccion.esPromocion()}"
 												class="btn btn-success rounded" role="button">Comprar</a>
 										</c:when>
 										<c:otherwise>

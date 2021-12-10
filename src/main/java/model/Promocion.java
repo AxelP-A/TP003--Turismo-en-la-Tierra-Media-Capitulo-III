@@ -11,6 +11,7 @@ public abstract class Promocion implements Sugerible {
 	private String nombre;
 	private int id;
 	private String habilitada;
+	private int calculoDeCosto;
 
 	public Promocion(int id, String nombreDePromocion, List<Atraccion> listaAtracciones) {
 		this.id = id;
@@ -40,6 +41,19 @@ public abstract class Promocion implements Sugerible {
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public int getCupo() {
+		
+		int minimo = atraccionesIncluidas.get(0).getCupo();
+		
+		for (int i = 0; i < atraccionesIncluidas.size(); i++) {	
+			if (minimo > atraccionesIncluidas.get(i).getCupo()) {
+				minimo = atraccionesIncluidas.get(i).getCupo();
+			}
+		}
+		return minimo;
 	}
 
 	/**
@@ -84,9 +98,30 @@ public abstract class Promocion implements Sugerible {
 	}
 	
 	
-	 public boolean estaHabilitada() {
+	public List<Atraccion> getAtraccionesIncluidas() {
+		return atraccionesIncluidas;
+	}
 
-	 return (this.habilitada==null && estanHabilitadas());
+	public boolean isValid() {
+
+		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
+			if (!atraccionesIncluidas.get(i).isValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean estaHabilitada() {
+
+		return (this.habilitada == null && estanHabilitadas());
+	}
+
+	public int getCalculoDeCosto() {
+		return calculoDeCosto;
+	}
+
+	public void setCalculoDeCosto(double nuevoCalculo) {
 	}
 
 	@Override

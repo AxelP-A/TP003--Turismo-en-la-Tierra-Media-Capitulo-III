@@ -44,7 +44,7 @@ public class EditAttractionServlet extends HttpServlet {
 		
 		String tipo = "TEST"; // CREAR CAMPO PARA PARSEAR.
 
-		Atraccion attraction = attractionService.update(id, name, cost, duration, capacity, tipo);
+		Atraccion attraction = attractionService.updateAtraccion(id, name, cost, duration, capacity, tipo);
 
 		if (attraction.isValid()) {
 			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");

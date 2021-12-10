@@ -28,6 +28,13 @@ public class BuyAttractionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		Integer attractionId = Integer.parseInt(req.getParameter("id"));
+	
+		String esPromo = req.getParameter("ep");
+		System.out.println(esPromo);
+		System.out.println("-----------------------");
+		System.out.println(req.getParameter("ep"));
+		
+		
 		Usuario user = (Usuario) req.getSession().getAttribute("user");
 		Map<String, String> errors = buyAttractionService.buy(user.getId(), attractionId);
 		

@@ -7,11 +7,11 @@ import model.Promocion;
 
 public class PromocionPorcentual extends Promocion {
 
-	private final double PORCENTAJE_DESCUENTO;
+	private double porcentajeDescuento;
 
 	public PromocionPorcentual(int id, String nombre, List<Atraccion> listaAtracciones, double porcentaje) {
 		super(id, nombre, listaAtracciones);
-		this.PORCENTAJE_DESCUENTO = porcentaje;
+		this.porcentajeDescuento = porcentaje;
 	}
 
 	/**
@@ -26,6 +26,16 @@ public class PromocionPorcentual extends Promocion {
 		for (int i = 0; i < super.atraccionesIncluidas.size(); i++) {
 				costoTotal += atraccionesIncluidas.get(i).getCostoDeVisita();
 			}
-		return (int) Math.round(costoTotal * (1 - PORCENTAJE_DESCUENTO / 100));
+		return (int) Math.round(costoTotal * (1 - porcentajeDescuento / 100));
+	}
+	
+	@Override
+	public void setCalculoDeCosto(double nuevoCalculo) {
+		this.porcentajeDescuento = nuevoCalculo;
+	}
+	
+	@Override
+	public int getCalculoDeCosto() {
+		return (int) porcentajeDescuento;
 	}
 }

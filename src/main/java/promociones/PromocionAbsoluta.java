@@ -7,11 +7,15 @@ import model.Promocion;
 
 public class PromocionAbsoluta extends Promocion {
 
-	private final int MONEDAS;
+	private int monedas;
 
 	public PromocionAbsoluta(int id, String nombre, List<Atraccion> listaAtracciones, int monedas) {
 		super(id ,nombre, listaAtracciones);
-		this.MONEDAS = monedas;
+		this.monedas = monedas;
+	}
+	
+	public PromocionAbsoluta(int id) {
+		super(id, null, null);
 	}
 	
 	/** En este m�todo, tenemos 2 ideas distintas sobre como deber�a funcionar, por lo tanto, dejamos ambos escritos, uno funcionando actualmente, y el otro comentado.
@@ -27,7 +31,17 @@ public class PromocionAbsoluta extends Promocion {
 		for (int i = 0; i < super.atraccionesIncluidas.size(); i++) {
 			costoTotal += atraccionesIncluidas.get(i).getCostoDeVisita();
 		}
-		return costoTotal - MONEDAS;
+		return costoTotal - monedas;
 		// return MONEDAS;
+	}
+	
+	@Override
+	public void setCalculoDeCosto(double nuevoCalculo) {
+		this.monedas = (int) nuevoCalculo;
+	}
+	
+	@Override
+	public int getCalculoDeCosto() {
+		return monedas;
 	}
 }

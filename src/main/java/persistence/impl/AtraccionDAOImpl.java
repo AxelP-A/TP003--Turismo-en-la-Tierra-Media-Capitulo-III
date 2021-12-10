@@ -49,6 +49,27 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			throw new MissingDataException(e);
 		}
 	}
+	
+	public int updateAtraccion(Atraccion atraccion) {
+		try {
+			String sql = "UPDATE ATRACCIONES SET (NOMBRE_ATRACCION = ? , COSTO_ATRACCION = ?, TIEMPO_ATRACCION = ?, CUPO_ATRACCION = ?, TIPO_ATRACCION = ?)  WHERE ID_ATRACCION = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, atraccion.getNombre());
+			statement.setInt(2, atraccion.getCostoDeVisita());
+			statement.setDouble(3, atraccion.getTiempoNecesario());
+			statement.setInt(4, atraccion.getCupo());
+			statement.setString(5, atraccion.getTipo());
+			statement.setInt(6, atraccion.getId());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
 
 	public int delete(Atraccion atraccion) {
 		try {

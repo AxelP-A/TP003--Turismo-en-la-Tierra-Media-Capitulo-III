@@ -23,6 +23,7 @@ public class BuyAttractionService {
 		Usuario usuario = usuarioDAO.findByUserId(userId);
 		Atraccion atraccion = atraccionDAO.findByAtraccionId(atraccionId);
 		
+		
 		itinerarioService.crearListaAtraccionesAceptadas(usuario);
 		
 		/*if(!usuario.noCompro(atraccion)) {
@@ -47,7 +48,11 @@ public class BuyAttractionService {
 			// no grabamos para no afectar la base de pruebas
 			atraccionDAO.update(atraccion);
 			usuarioDAO.update(usuario);
+			
+			
 			itinerarioDAO.insertAtraccion(userId, atraccionId);
+			
+			itinerarioDAO.insertPromocion(userId, atraccionId);
 			
 		}
 		return errors;
