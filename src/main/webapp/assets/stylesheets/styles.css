@@ -428,17 +428,12 @@ main.tuTienda div section article button{
     margin-bottom: 35px;
 }
 /*RESUMEN SUGERIBLES*/
-a.btn-open-popup{
-   position: absolute;
-   top: 50%;
-   left: 20%;
-   transform: translate(-50%, -50%); 
-   color: #171a21;
-   display: block;
-   background: white;
-   padding: 20px 50px;
-   border-radius: 50px;
+table tbody tr td i{
+	color: #a40000;
+	font-size: 20px;
+	text-align: left;
 }
+
 .container-all{
     width: 100vw;
     height: 100vh;
@@ -468,9 +463,44 @@ a.btn-open-popup{
 }
 div.img{
     width: 40%;
-    background-image: url(../img/BosqueNegro/bosquenegro1.jpg);
     background-size: cover;
     background-position: center;
+}
+div.img.uno{
+	 background-image: url(../img/Moria/minaMoria.jpeg);
+}
+div.img.dos{
+	 background-image: url(../img/MinasTirith/minastirith3.jpg);
+}
+div.img.tres{
+	 background-image: url(../img/LaComarca/set.jpg);
+}
+div.img.cuatro{
+	 background-image: url(../img/Mordor/Mordor2.jpg);
+}
+div.img.cinco{
+	 background-image: url(../img/AbismoDeHelm/images.jpeg);
+}
+div.img.seis{
+	 background-image: url(../img/Lothlorien/lothlorien2.jpeg);
+}
+div.img.siete{
+	 background-image: url(../img/Erebor/erebor1.jpeg);
+}
+div.img.ocho{
+	 background-image: url(../img/BosqueNegro/bosquenegro.jpg);
+}
+div.img.nueve{
+	 background-image: url(../img/Moria/moriagate.jpg);
+}
+div.img.diez{
+	 background-image: url(../img/LaComarca/Hobbiton-New-Zealand.jpg.optimal.jpg);
+}
+div.img.once{
+	 background-image: url(../img/Erebor/LonelyMountain.jpg);
+}
+div.img.doce{
+	 background-image: url(../img/Mordor/ojosauronmontedeldestino.jpg);
 }
 .container-text{
     width: 60%;
@@ -487,6 +517,7 @@ div.img{
     margin-top: 20px;
     font-size: 16px;
     padding: 20px 60px 20px 0;
+    color: white;
 }
 .container-text span{
     padding-top: 15px;
@@ -508,6 +539,29 @@ div.img{
     color: white;
     border-radius: 50%;
     line-height: 10px;
+}
+table tbody tr td.open-promo a i{
+	color: #196b04;
+}
+.popup-promo{
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    position: relative;
+    display: flex;
+    background: #b8b6b4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+}
+.popup-promo .container-text span i{
+	font-size: 20px;
+    color: #164058;
+    padding: 5px 10px 0 0;
+}
+.popup-promo .container-text h2{
+	color: #164058;
+	padding-bottom: 35px;
 }
 
 
