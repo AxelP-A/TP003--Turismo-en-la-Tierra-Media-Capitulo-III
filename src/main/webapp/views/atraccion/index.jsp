@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,11 +168,11 @@
 
 										<c:choose>
 											<c:when test="${!atraccion.esPromocion()}">
-												<td><a href="#modal"+atraccion.getId()><i
+												<td><a href="#${atraccion.getId()}-atraccion"><i
 														class="fas fa-angle-double-right"></i></a></td>
 											</c:when>
 											<c:otherwise>
-												<td class="open-promo"><a href="#modal1"><i
+												<td class="open-promo"><a href="#${atraccion.getId()}-promocion"><i
 														class="fas fa-angle-double-right"></i></a></td>
 											</c:otherwise>
 										</c:choose>
@@ -183,7 +184,11 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="container-all" id="modal1">
+		
+
+		
+	 	
+		<div class="container-all" id="1-atraccion">
 			<div class="popup">
 				<div class="img uno"></div>
 				<div class="container-text">
@@ -199,7 +204,8 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal2">
+		
+		<div class="container-all" id="2-atraccion">
 			<div class="popup">
 				<div class="img dos"></div>
 				<div class="container-text">
@@ -216,7 +222,7 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal3">
+		<div class="container-all" id="3-atraccion">
 			<div class="popup">
 				<div class="img tres"></div>
 				<div class="container-text">
@@ -232,7 +238,7 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal4">
+		<div class="container-all" id="4-atraccion">
 			<div class="popup">
 				<div class="img cuatro"></div>
 				<div class="container-text">
@@ -251,7 +257,7 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal5">
+		<div class="container-all" id="5-atraccion">
 			<div class="popup">
 				<div class="img cinco"></div>
 				<div class="container-text">
@@ -267,7 +273,7 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal6">
+		<div class="container-all" id="6-atraccion">
 			<div class="popup">
 				<div class="img seis"></div>
 				<div class="container-text">
@@ -284,7 +290,7 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal7">
+		<div class="container-all" id="7-atraccion">
 			<div class="popup">
 				<div class="img siete"></div>
 				<div class="container-text">
@@ -302,7 +308,7 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal8">
+		<div class="container-all" id="8-atraccion">
 			<div class="popup">
 				<div class="img ocho"></div>
 				<div class="container-text">
@@ -320,7 +326,10 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal9">
+		
+		
+		
+		<div class="container-all" id="1-promocion">
 			<div class="popup-promo">
 				<div class="img nueve"></div>
 				<div class="container-text">
@@ -333,7 +342,7 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal10">
+		<div class="container-all" id="2-promocion">
 			<div class="popup-promo">
 				<div class="img once"></div>
 				<div class="container-text">
@@ -346,11 +355,11 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal11">
+		<div class="container-all" id="3-promocion">
 			<div class="popup-promo">
-				<div class="img once"></div>
+				<div class="img diez"></div>
 				<div class="container-text">
-					<h2>Promo Desgustación</h2>
+					<h2>Promo Paisaje</h2>
 					<span>Atraccion 1: </span> <span>Atraccion 2: </span> <span><i
 						class="fas fa-hourglass-start"></i> Tiempo:</span> <span><i
 						class="fas fa-users"></i> Cupo:</span> <span><i
@@ -359,7 +368,7 @@
 				<a href="#" class="btn-close-popup">X</a>
 			</div>
 		</div>
-		<div class="container-all" id="modal12">
+		<div class="container-all" id="4-promocion">
 			<div class="popup-promo">
 				<div class="img doce"></div>
 				<div class="container-text">
