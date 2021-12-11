@@ -39,7 +39,9 @@
                 <div class="barra">
                     <a href="views/giftshop.html">Giftshop</a>
                     <a href="views/galeria.html">Galeria de Fotos</a>
-                    <a href="views/atraccion/index.jsp">Tienda</a>
+                    
+                    <a href="atraccion/index.do">Tienda</a>
+                   <!--   <a href="views/atraccion/index.jsp">Tienda</a>-->
                     <a href="">Comentarios</a>
                     <a href="">Contacto</a>
                 </div>

@@ -31,10 +31,6 @@ public class BuyAttractionServlet extends HttpServlet {
 	
 		String esPromo = req.getParameter("ep");
 		
-		
-		
-		
-		
 			
 		Usuario user = (Usuario) req.getSession().getAttribute("user");
 		Map<String, String> errors = buyAttractionService.buy(user.getId(), attractionId);
@@ -44,12 +40,15 @@ public class BuyAttractionServlet extends HttpServlet {
 		
 		if (errors.isEmpty()) {
 			req.setAttribute("flash", "¡Gracias por comprar!");
+			//resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
 		} else {
 			req.setAttribute("errors", errors);
 			req.setAttribute("flash", "No ha podido realizarse la compra");
+			
 		}
+		
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/atraccion/index.do");
+				.getRequestDispatcher("/views/atraccion/index.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

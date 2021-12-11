@@ -62,7 +62,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>turismo</finalName>
+		<finalName>Tp003-TurismoEnLaTierraMedia</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>

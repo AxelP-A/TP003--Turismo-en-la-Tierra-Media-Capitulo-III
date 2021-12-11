@@ -28,7 +28,7 @@ public class CargadorDeSugeriblesService {
 		this.promocionesVigentes = new ArrayList<>(promocionDAO.findAll(this.atracciones));
 	}
 	
-	public void ordenar(String preferida, List<Sugerible> sugerenciasOrdenadas) {
+	private void ordenar(String preferida, List<Sugerible> sugerenciasOrdenadas) {
 		Collections.sort(sugerenciasOrdenadas, new ComparadorDeSugeribles(preferida));
 	}
 	
