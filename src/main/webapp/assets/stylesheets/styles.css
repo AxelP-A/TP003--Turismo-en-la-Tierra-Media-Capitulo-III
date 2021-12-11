@@ -79,7 +79,8 @@ main .background-seccionUno {
 
 @media (min-width: 1700px) {
     main .background-seccionUno {
-        height:1100px; 
+    	
+        height:100vh; 
     }
 }
 

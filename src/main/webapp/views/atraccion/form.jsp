@@ -3,15 +3,15 @@
 	<div class="mb-3">
 		<label for="name" class="col-form-label">Nombre:</label> <input
 			type="text" class="form-control" id="name" name="name"
-			required value="${atraccion.name}">
+			required value="${atraccion.nombre}">
 	</div>
 	<div class="mb-3">
 		<label for="cost"
-			class='col-form-label ${atraccion.errors.get("cost") != null ? "is-invalid" : "" }'>Costo:</label>
+			class='col-form-label ${atraccion.errors.get("costoDeVisita") != null ? "is-invalid" : "" }'>Costo:</label>
 		<input class="form-control" type="number" id="cost" name="cost"
-			required value="${atraccion.cost}"></input>
+			required value="${atraccion.CostoDeVisita}"></input>
 		<div class="invalid-feedback">
-			<c:out value='${atraccion.errors.get("cost")}'></c:out>
+			<c:out value='${atraccion.errors.get("costoDeVisita")}'></c:out>
 		</div>
 	</div>
 	<div class="mb-3">
