@@ -16,9 +16,10 @@ public class Atraccion implements Sugerible {
 	private String tipo;
 	private int id;
 	private String habilitada;
+	private String descripcion;
 	private Map <String, String> errors;
 
-	public Atraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo)  { 
+	public Atraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo, String descripcion)  { 
 					
 		this.id = id;
 		this.nombre = nombre;;
@@ -26,6 +27,7 @@ public class Atraccion implements Sugerible {
 		this.tiempoNecesario = tiempo;
 		this.cupoDePersonas = cupo;
 		this.tipo = tipo;
+		this.descripcion = descripcion;
 	}
 
 	public Atraccion(String nombre, int costo, double tiempo, int cupo, String tipo)  { 
@@ -37,7 +39,7 @@ public class Atraccion implements Sugerible {
 		this.tipo = tipo;
 	}
 	
-	public Atraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo, String fechaBaja)  { 
+	public Atraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo, String descripcion, String fechaBaja)  { 
 		
 		this.id = id;
 		this.nombre = nombre;;
@@ -45,6 +47,7 @@ public class Atraccion implements Sugerible {
 		this.tiempoNecesario = tiempo;
 		this.cupoDePersonas = cupo;
 		this.tipo = tipo;
+		this.descripcion = descripcion;
 		this.habilitada = fechaBaja;
 	}
 	
@@ -94,6 +97,10 @@ public class Atraccion implements Sugerible {
 	@Override
 	public boolean esPromocion() {
 		return false;
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
 	}
 	
 	public boolean isValid() {

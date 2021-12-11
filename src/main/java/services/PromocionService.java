@@ -16,19 +16,19 @@ public class PromocionService {
 		return DAOFactory.getPromocionDAO().findAll(atracciones);
 	}
 
-	public Promocion create(int id, String nombre, int costo, double tiempo, int cupo, String tipo, List<Atraccion> listaAtracciones) {
+	public Promocion create(int id, String nombre, int costo, double tiempo, int cupo, String tipo, List<Atraccion> listaAtracciones, String descripcion) {
 
 		Promocion promocion = null;
 		
 		switch(tipo) {
 		case "PORCENTUAL":
-			 promocion = new PromocionPorcentual(-1 , nombre , listaAtracciones, costo);
+			 promocion = new PromocionPorcentual(-1 , nombre , listaAtracciones, costo, descripcion);
 			break;
 		case "AXB":
-			 promocion = new PromocionAxB(-1 , nombre, listaAtracciones);
+			 promocion = new PromocionAxB(-1 , nombre, listaAtracciones, descripcion);
 			break;
 		case "ABSOLUTA":
-			 promocion = new PromocionAbsoluta(-1 , nombre, listaAtracciones, costo);
+			 promocion = new PromocionAbsoluta(-1 , nombre, listaAtracciones, costo, descripcion);
 			break;
 		}
 

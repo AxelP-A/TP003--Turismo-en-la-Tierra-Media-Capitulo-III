@@ -31,4 +31,6 @@ public interface Sugerible  {
 
 	public int getId();
 	
+	public String getDescripcion();
+	
 }

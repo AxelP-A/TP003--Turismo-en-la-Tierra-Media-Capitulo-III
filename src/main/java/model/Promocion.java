@@ -12,11 +12,13 @@ public abstract class Promocion implements Sugerible {
 	private int id;
 	private String habilitada;
 	private int calculoDeCosto;
+	private String descripcion;
 
-	public Promocion(int id, String nombreDePromocion, List<Atraccion> listaAtracciones) {
+	public Promocion(int id, String nombreDePromocion, List<Atraccion> listaAtracciones, String descripcion) {
 		this.id = id;
 		this.setNombre(nombreDePromocion);
 		this.setArrayAtracciones(listaAtracciones);
+		this.descripcion = descripcion;
 	}
 
 	@Override
@@ -86,6 +88,12 @@ public abstract class Promocion implements Sugerible {
 	public boolean esPromocion() {
 		return true;
 	}
+	
+	@Override
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+	
 
 	public boolean estanHabilitadas() {
 

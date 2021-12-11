@@ -17,7 +17,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	public int insert(Atraccion atraccion) {
 		try {
-			String sql = "INSERT INTO ATRACCIONES (NOMBRE_ATRACCION, COSTO_ATRACCION, TIEMPO_ATRACCION, CUPO_ATRACCION, TIPO_ATRACCION) VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO ATRACCIONES (NOMBRE_ATRACCION, COSTO_ATRACCION, TIEMPO_ATRACCION, CUPO_ATRACCION, TIPO_ATRACCION, DESCRIPCION) VALUES (?, ?, ?, ?, ?, ?)";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -26,6 +26,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			statement.setDouble(3, atraccion.getTiempoNecesario());
 			statement.setInt(4, atraccion.getCupo());
 			statement.setString(5, atraccion.getTipo().toString());
+			statement.setString(5, atraccion.getDescripcion());
 			int rows = statement.executeUpdate();
 
 			return rows;
@@ -52,7 +53,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 	
 	public int updateAtraccion(Atraccion atraccion) {
 		try {
-			String sql = "UPDATE ATRACCIONES SET (NOMBRE_ATRACCION = ? , COSTO_ATRACCION = ?, TIEMPO_ATRACCION = ?, CUPO_ATRACCION = ?, TIPO_ATRACCION = ?)  WHERE ID_ATRACCION = ?";
+			String sql = "UPDATE ATRACCIONES SET (NOMBRE_ATRACCION = ? , COSTO_ATRACCION = ?, TIEMPO_ATRACCION = ?, CUPO_ATRACCION = ?, TIPO_ATRACCION = ?, DESCRIPCION = ?)  WHERE ID_ATRACCION = ?";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -62,6 +63,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			statement.setInt(4, atraccion.getCupo());
 			statement.setString(5, atraccion.getTipo());
 			statement.setInt(6, atraccion.getId());
+			statement.setString(7, atraccion.getDescripcion());
 			int rows = statement.executeUpdate();
 
 			return rows;
@@ -132,6 +134,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			List<Atraccion> atracciones = new LinkedList<Atraccion>();
 			while (resultados.next()) {
 				atracciones.add(convertirAtraccion(resultados));
+				
 			}
 			return atracciones;
 		} catch (Exception e) {
@@ -141,7 +144,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	private Atraccion convertirAtraccion(ResultSet resultados) throws SQLException {
 		
-		return new Atraccion(resultados.getInt("id_atraccion"), resultados.getString(2), resultados.getInt(3), resultados.getDouble(4), resultados.getInt(5), resultados.getString(6), resultados.getString(8));
+		return new Atraccion(resultados.getInt("id_atraccion"), resultados.getString("nombre_atraccion"), resultados.getInt("costo_atraccion"), resultados.getDouble("tiempo_atraccion"), resultados.getInt("cupo_atraccion"), resultados.getString("tipo_atraccion"), resultados.getString("descripcion"));
 	}
 
 	@Override

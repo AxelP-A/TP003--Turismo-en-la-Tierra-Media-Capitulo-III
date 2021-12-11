@@ -78,6 +78,7 @@
 			<div class="bg-light p-4 mb-3 rounded">
 				<h1>Estas son las atracciones de la Tierra Media</h1>
 			</div>
+			<p></p>
 
 			<c:if test="${user.isAdmin()}">
 				<div class="mb-3">
@@ -113,6 +114,8 @@
 									<td><c:out value="${atraccion.getCostoDeVisita()}"></c:out></td>
 									<td><c:out value="${atraccion.tiempoNecesario}"></c:out></td>
 									<td><c:out value="${atraccion.getCupo()}"></c:out></td>
+									<td><c:out value="${atraccion.getTipo()}"></c:out></td>
+									<td><c:out value="${atraccion.getDescripcion()}"></c:out></td>
 
 									<c:choose>
 										<c:when test="${!atraccion.esPromocion()}">
@@ -126,13 +129,13 @@
 									</c:choose>
 
 									<td><a
-										href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}"
-										class="btn btn-light rounded-0" role="button"><i
-											class="bi bi-pencil-fill"></i></a> <a
-										href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"
-										class="btn btn-danger rounded" role="button"><i
-											class="bi bi-x-circle-fill"></i></a></td>
+										href="/Tp003-TurismoEnLaTierraMedia/views/atraccion/edit.do?id=${atraccion.id}">
+											<i class="fas fa-pen-square"></i>
+									</a> <a
+										href="/Tp003-TurismoEnLaTierraMedia/views/atraccion/delete.do?id=${atraccion.id}"><i
+											class="fas fa-trash-alt"></i></a></td>
 							</c:forEach>
+
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${atraccion}" var="atraccion">
@@ -146,7 +149,8 @@
 										<td><c:out value="${atraccion.costoDeVisita}"></c:out></td>
 										<td><c:out value="${atraccion.tiempoNecesario}"></c:out></td>
 										<td><c:out value="${atraccion.getCupo()}"></c:out></td>
-
+										<td><c:out value="${atraccion.getTipo()}"></c:out></td>
+										<td><c:out value="${atraccion.getDescripcion()}"></c:out></td>
 
 										<td><c:choose>
 												<c:when
@@ -160,17 +164,17 @@
 														role="button">No se puede comprar</a>
 												</c:otherwise>
 											</c:choose></td>
-											
-											<c:choose>
-										<c:when test="${!atraccion.esPromocion()}">
-											<td><a href="#modal1"><i
-													class="fas fa-angle-double-right"></i></a></td>
-										</c:when>
-										<c:otherwise>
-											<td class="open-promo"><a href="#modal1"><i
-													class="fas fa-angle-double-right"></i></a></td>
-										</c:otherwise>
-									</c:choose>
+
+										<c:choose>
+											<c:when test="${!atraccion.esPromocion()}">
+												<td><a href="#modal"+atraccion.getId()><i
+														class="fas fa-angle-double-right"></i></a></td>
+											</c:when>
+											<c:otherwise>
+												<td class="open-promo"><a href="#modal1"><i
+														class="fas fa-angle-double-right"></i></a></td>
+											</c:otherwise>
+										</c:choose>
 									</tr>
 								</c:if>
 							</c:forEach>

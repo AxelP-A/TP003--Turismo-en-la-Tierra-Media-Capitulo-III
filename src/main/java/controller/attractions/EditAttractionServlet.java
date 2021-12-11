@@ -31,7 +31,7 @@ public class EditAttractionServlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/atraccion/edit.jsp");
 		dispatcher.forward(req, resp);
-	}
+	}        
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,10 +47,10 @@ public class EditAttractionServlet extends HttpServlet {
 		Atraccion attraction = attractionService.updateAtraccion(id, name, cost, duration, capacity, tipo);
 
 		if (attraction.isValid()) {
-			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
+			resp.sendRedirect("Tp003-TurismoEnLaTierraMedia/views/atraccion/index.do");
 		} else {
 			req.setAttribute("atraccion", attraction);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/atraccion/edit.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("views/atraccion/edit.jsp");
 			dispatcher.forward(req, resp);
 		}
 	}

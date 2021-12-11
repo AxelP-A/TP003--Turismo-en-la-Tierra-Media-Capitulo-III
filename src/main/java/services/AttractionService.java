@@ -13,9 +13,9 @@ public class AttractionService {
 		return DAOFactory.getAtraccionDAO().findAll();
 	}
 
-	public Atraccion create(int id, String nombre, int costo, double tiempo, int cupo, String tipo) {
+	public Atraccion create(int id, String nombre, int costo, double tiempo, int cupo, String tipo, String descripcion) {
 
-		Atraccion atraccion = new Atraccion(-1, nombre, costo, tiempo, cupo, tipo);
+		Atraccion atraccion = new Atraccion(-1, nombre, costo, tiempo, cupo, tipo, descripcion);
 
 		if (atraccion.isValid()) {
 			AtraccionDAO attractionDAO = DAOFactory.getAtraccionDAO();

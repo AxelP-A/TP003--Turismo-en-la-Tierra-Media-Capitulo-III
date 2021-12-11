@@ -65,7 +65,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 	@Override
 	public List<Promocion> findAll(List<Atraccion> listaAtracciones) {
 		try {
-			String sql = "SELECT promociones.id_promocion, promociones.tipo_promocion, promociones.nombre_promocion, promociones.costo_promocion,"
+			String sql = "SELECT promociones.id_promocion, promociones.tipo_promocion, promociones.nombre_promocion, promociones.costo_promocion, promociones.descripcion,"
                     + " group_concat(atracciones_en_promo.id_atraccion, ';') AS 'atracciones_en_promocion'\n"
                     + "FROM promociones JOIN atracciones_en_promo ON atracciones_en_promo.id_promocion = promociones.id_promocion\n"
                     + "group by promociones.id_promocion";
@@ -87,13 +87,13 @@ public class PromocionDAOImpl implements PromocionDAO {
 				
 				switch(tipoPromocion) {
 				case "PORCENTUAL":
-					promocion = new PromocionPorcentual(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas, resultados.getDouble("costo_promocion"));
+					promocion = new PromocionPorcentual(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas, resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
 					break;
 				case "AXB":
-					promocion = new PromocionAxB(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas);
+					promocion = new PromocionAxB(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas, resultados.getString("descripcion"));
 					break;
 				case "ABSOLUTA":
-					promocion = new PromocionAbsoluta(resultados.getInt("id_promocion")  ,resultados.getString("nombre_promocion"), atraccionesIncluidas,(int) resultados.getDouble("costo_promocion"));
+					promocion = new PromocionAbsoluta(resultados.getInt("id_promocion")  ,resultados.getString("nombre_promocion"), atraccionesIncluidas,(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
 					break;
 				}
 				promociones.add(promocion);
