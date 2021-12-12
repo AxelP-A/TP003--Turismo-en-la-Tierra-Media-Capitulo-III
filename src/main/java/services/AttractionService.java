@@ -26,10 +26,10 @@ public class AttractionService {
 	}
 
 	public Atraccion updateAtraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo) {
-
+		
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
-		Atraccion atraccion = atraccionDAO.find(id);
-
+		Atraccion atraccion = atraccionDAO.findByAtraccionId(id);
+		
 		atraccion.setNombre(nombre);
 		atraccion.setCostoDeVisita(costo);
 		atraccion.setTiempoNecesario(tiempo);

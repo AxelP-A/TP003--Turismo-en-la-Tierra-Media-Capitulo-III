@@ -123,6 +123,9 @@ public class Atraccion implements Sugerible {
 		if (tipo == null) {
 			errors.put("tipo", "Debe ser un string válido");
 		}
+		if (descripcion == null) {
+			errors.put("descripcion", "Debe ser un string válido");
+		}
 	}
 	
 	@Override 
@@ -173,6 +176,9 @@ public class Atraccion implements Sugerible {
 	
 	
 	
+	public Map<String, String> getErrors() {
+		return errors;
+	}
 
 	@Override
 	public String toString() {

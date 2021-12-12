@@ -48,7 +48,7 @@
 					src="../assets/img/tolkien-plano.jpg" alt="logo"></a>
 			</p>
 			<div class="enlaces-contenedor">
-				<a href="index.jsp">Inicio</a> <a href="">Comunidad</a> <a href="">Acerca
+				<a href="../index.jsp">Inicio</a> <a href="">Comunidad</a> <a href="">Acerca
 					de</a> <a href="">Soporte</a>
 			</div>
 			<c:out value="${user.nombre}" />
@@ -97,7 +97,6 @@
 						<th>Duracion</th>
 						<th>Cupo</th>
 						<th>Tipo</th>
-						<th>Descripción</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -109,31 +108,29 @@
 							<c:forEach items="${atraccion}" var="atraccion">
 								<tr>
 									<td><strong><c:out value="${atraccion.nombre}"></c:out></strong>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit. Cras pretium eros urna. Sed quis erat congue, bibendum
-											tortor malesuada, iaculis diam. Ut ut imperdiet sapien.</p></td>
+										<p><c:out value="${atraccion.getDescripcion()}"></c:out></p></td>
 									<td><c:out value="${atraccion.getCostoDeVisita()}"></c:out></td>
 									<td><c:out value="${atraccion.tiempoNecesario}"></c:out></td>
 									<td><c:out value="${atraccion.getCupo()}"></c:out></td>
 									<td><c:out value="${atraccion.getTipo()}"></c:out></td>
-									<td><c:out value="${atraccion.getDescripcion()}"></c:out></td>
+									
 
 									<c:choose>
 										<c:when test="${!atraccion.esPromocion()}">
-											<td><a href="#modal1"><i
+											<td><a href="#${atraccion.getId()}-atraccion"><i
 													class="fas fa-angle-double-right"></i></a></td>
 										</c:when>
 										<c:otherwise>
-											<td class="open-promo"><a href="#modal1"><i
+											<td class="open-promo"><a href="#${atraccion.getId()}-promocion"><i
 													class="fas fa-angle-double-right"></i></a></td>
 										</c:otherwise>
 									</c:choose>
 
 									<td><a
-										href="/Tp003-TurismoEnLaTierraMedia/views/atraccion/edit.do?id=${atraccion.id}">
+										href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}">
 											<i class="fas fa-pen-square"></i>
 									</a> <a
-										href="/Tp003-TurismoEnLaTierraMedia/views/atraccion/delete.do?id=${atraccion.id}"><i
+										href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"><i
 											class="fas fa-trash-alt"></i></a></td>
 							</c:forEach>
 
@@ -144,14 +141,12 @@
 								<c:if test="${atraccion.estaHabilitada()}">
 									<tr>
 										<td><strong><c:out value="${atraccion.nombre}"></c:out></strong>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-												elit. Cras pretium eros urna. Sed quis erat congue, bibendum
-												tortor malesuada, iaculis diam. Ut ut imperdiet sapien.</p></td>
+											<p><c:out value="${atraccion.getDescripcion()}"></c:out></p></td>
 										<td><c:out value="${atraccion.costoDeVisita}"></c:out></td>
 										<td><c:out value="${atraccion.tiempoNecesario}"></c:out></td>
 										<td><c:out value="${atraccion.getCupo()}"></c:out></td>
 										<td><c:out value="${atraccion.getTipo()}"></c:out></td>
-										<td><c:out value="${atraccion.getDescripcion()}"></c:out></td>
+										
 
 										<td><c:choose>
 												<c:when

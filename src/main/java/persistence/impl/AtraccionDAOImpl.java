@@ -26,7 +26,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			statement.setDouble(3, atraccion.getTiempoNecesario());
 			statement.setInt(4, atraccion.getCupo());
 			statement.setString(5, atraccion.getTipo().toString());
-			statement.setString(5, atraccion.getDescripcion());
+			statement.setString(6, atraccion.getDescripcion());
 			int rows = statement.executeUpdate();
 
 			return rows;
@@ -144,7 +144,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	private Atraccion convertirAtraccion(ResultSet resultados) throws SQLException {
 		
-		return new Atraccion(resultados.getInt("id_atraccion"), resultados.getString("nombre_atraccion"), resultados.getInt("costo_atraccion"), resultados.getDouble("tiempo_atraccion"), resultados.getInt("cupo_atraccion"), resultados.getString("tipo_atraccion"), resultados.getString("descripcion"));
+		return new Atraccion(resultados.getInt("id_atraccion"), resultados.getString("nombre_atraccion"), resultados.getInt("costo_atraccion"), resultados.getDouble("tiempo_atraccion"), resultados.getInt("cupo_atraccion"), resultados.getString("tipo_atraccion"), resultados.getString("descripcion"), resultados.getString("eliminada"));
 	}
 
 	@Override
