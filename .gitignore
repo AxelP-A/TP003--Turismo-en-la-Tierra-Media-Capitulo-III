@@ -1,0 +1,4 @@
+/target/
+.settings
+/src/main/resources/env.properties
+.bin
