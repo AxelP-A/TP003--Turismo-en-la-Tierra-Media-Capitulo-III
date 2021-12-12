@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/stylesheets/styles.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Turismo en la tierra media - Grupo 404</title>
 </head>
@@ -21,7 +21,14 @@
                 <a href="">Acerca de</a>
                 <a href="">Soporte</a>
             </div>
-           <c:out value="${user.nombre}"></c:out>             
+            <div class="dropdown">
+            	<c:out value="${user.nombre}"></c:out>
+            	<span><i class="fas fa-caret-down"></i></span>
+            	<ul class="dropdown-content">
+	           		<li><i class="fas fa-donate"></i><c:out value="${user.getPresupuesto()}"></c:out></li>
+	           		<li><i class="fas fa-hourglass-half"></i><c:out value="${user.getTiempoDisponible()}"></c:out></li>
+	           	</ul>
+            </div>                  
         </div>
        <!-- 
         <a href="https://google.com.ar/">Ir a google</a>

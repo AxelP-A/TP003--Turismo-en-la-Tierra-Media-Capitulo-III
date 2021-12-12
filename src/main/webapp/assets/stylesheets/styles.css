@@ -51,6 +51,33 @@ header{
     color: #b8b6b4;
     justify-content: space-between;
 }
+.dropdown {
+  color: #b8b6b4;
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #54a5d4;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.dropdown-content {
+	list-style-type: none;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  border-radius: 10px;
+  color: black;
+}
+.dropdown-content li i{
+	margin-right:15px;
+}
 
 /*MAIN*/
 /*Seccion Uno*/
