@@ -12,14 +12,16 @@ import sugeribles.Sugerible;
 public class ItinerarioService {
 
 	CargadorDeSugeriblesService cargadorDeSugeribles = new CargadorDeSugeriblesService(); 
+	
 	private List<Sugerible> itinerario = new ArrayList<Sugerible>();
 
 	
 	public void cargarItinerario(Usuario usuario) {	
 		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
+		cargadorDeSugeribles.cargarAtracciones();
+		cargadorDeSugeribles.cargarPromociones();
 		this.itinerario = itinerarioDAO.findByUserId(usuario.getId(), cargadorDeSugeribles.getAtracciones(), cargadorDeSugeribles.getPromocionesVigentes());		
 	}
-	
 	
 	public List<Atraccion> crearListaAtraccionesAceptadas(Usuario usuario) {
 		
@@ -39,6 +41,9 @@ public class ItinerarioService {
 		return atraccionesAceptadas;
 	}
 	
+	public List<Sugerible> getItinerario() {
+		return itinerario;
+	}
 	
 	
 	/*public static void main(String[] args) throws InvalidNumberException, IOException {

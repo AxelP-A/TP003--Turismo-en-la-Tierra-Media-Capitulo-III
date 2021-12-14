@@ -81,7 +81,7 @@
                     </a>
                 </div>
             </c:if>
-            <table class="dataTable table-promocion" style="width: 70%">
+            <table class="dataTable table-promocion" style="width: 99%">
                 <thead>
                     <tr>
                         <th>Atraccion</th>

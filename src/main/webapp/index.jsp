@@ -46,14 +46,14 @@
                 <div class="barra">
                     <a href="views/giftshop.html">Giftshop</a>
                     <a href="views/galeria.html">Galeria de Fotos</a>
-                    
+     
                     <a href="atraccion/index.do">Tienda</a>
                    <!--   <a href="views/atraccion/index.jsp">Tienda</a>-->
                     <a href="">Comentarios</a>
                     <a href="">Contacto</a>
+                    <a href="itinerario/index.do">Itinerario</a>
                 </div>
                 <h2>Atracciones en la Tierra Media</h2>
-                
                 <ul class="galeria">
                     <li><a href="#img1"><img src="assets/img/AbismoDeHelm/abismodehelm.jpg"></a></li>
                     <li><a href="#img2"><img src="assets/img/BosqueNegro/bosquenegro.jpg"></a></li>

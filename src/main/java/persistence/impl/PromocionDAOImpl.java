@@ -54,11 +54,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 	
 	
 	@Override
-	public int update(Promocion promocion) {
-		
-		
-		
-		
+	public int update(Promocion promocion) {	
 		return 0;
 	}
 	
