@@ -304,7 +304,7 @@ table.dataTable td {
   clear: both;
 }
 .dataTables_wrapper .dataTables_length {
-  float: left;
+ float: left;
 }
 .dataTables_wrapper .dataTables_length select {
   border: 1px solid #aaa;

@@ -30,11 +30,6 @@
 	           	</ul>
             </div>                  
         </div>
-       <!-- 
-        <a href="https://google.com.ar/">Ir a google</a>
-		<a href="#principal">Ir a principal</a>
-		<a href="Turismo2.html">Ir a Turismo 2</a>
-         --> 
     </header>
     
    <!--   <jsp:include page="partials/nav.jsp"></jsp:include> -->
@@ -51,7 +46,13 @@
                    <!--   <a href="views/atraccion/index.jsp">Tienda</a>-->
                     <a href="">Comentarios</a>
                     <a href="">Contacto</a>
+                     <c:if test="${!user.isAdmin()}">
                     <a href="itinerario/index.do">Itinerario</a>
+                    </c:if>
+                    <c:if test="${user.isAdmin()}">
+                    <a href="usuario/index.do">Usuarios</a>
+                    </c:if>
+                    
                 </div>
                 <h2>Atracciones en la Tierra Media</h2>
                 <ul class="galeria">

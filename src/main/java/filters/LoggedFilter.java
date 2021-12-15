@@ -26,24 +26,22 @@ public class LoggedFilter  implements Filter  {
             chain.doFilter(request, response);
         } else {
             request.setAttribute("flash", "Por favor, ingresa al sistema");
+            //response.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
 
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
             dispatcher.forward(request, response);
         }
     }
 	
-	
 	/*
 	@Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain); {
 
         HttpServletRequest req = (HttpServletRequest) request;
-
         HttpSession s = req.getSession();
 
         Usuario user = (Usuario) s.getAttribute("user");
@@ -60,7 +58,6 @@ public class LoggedFilter  implements Filter  {
 
     @Override
     public void destroy() {
-
     }
     */
 

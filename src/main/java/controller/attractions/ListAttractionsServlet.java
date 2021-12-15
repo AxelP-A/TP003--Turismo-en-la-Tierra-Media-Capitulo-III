@@ -41,8 +41,8 @@ public class ListAttractionsServlet extends HttpServlet implements Servlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Atraccion> atraccion = attractionService.list();
 		List<Promocion> promocion = promocionService.list(atraccion);
-	
-		List<Atraccion> elegidas = itinerarioService.crearListaAtraccionesAceptadas((Usuario) req.getSession().getAttribute("user"));
+		
+		List<Atraccion> elegidas = itinerarioService.crearListaAtraccionesAceptadas((Usuario) req.getSession().getAttribute("user"));	
 		
 		List<Sugerible> sugeribles = new ArrayList<Sugerible>(atraccion);
 		List<Sugerible> convertirPromos = new ArrayList<Sugerible>(promocion);

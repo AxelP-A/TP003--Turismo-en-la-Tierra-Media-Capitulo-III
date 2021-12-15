@@ -28,8 +28,8 @@
                         $('.dataTable')
                                 .DataTable(
                                         {
-                                            "order" : [ [ 2, "asc" ],
-                                                    [ 5, "desc" ] ],
+                                        	"order" : [],
+          
                                             language : {
                                                 url : "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
                                             }
@@ -76,7 +76,7 @@
             <c:if test="${user.isAdmin()}">
                 <div class="mb-3">
                     <a href="/Tp003-TurismoEnLaTierraMedia/atraccion/create.do"
-                        class="btn btn-primary" role="button"> <i
+                        class="btn btn-primary" type="button" role="button"> <i
                         class="bi bi-plus-lg"></i> Nueva Atracción
                     </a>
                 </div>
@@ -89,7 +89,9 @@
                         <th>Duracion</th>
                         <th>Cupo</th>
                         <th>Tipo</th>
+                        <c:if test="${!user.isAdmin()}">
                         <th>Comprar</th>
+                        </c:if>
                         <th>Ver</th>
                         <c:if test="${user.isAdmin()}">
                             <th>Acciones</th>
@@ -108,18 +110,20 @@
                                 <td><c:out value="${atraccion.tiempoNecesario}"></c:out></td>
                                 <td><c:out value="${atraccion.getCupo()}"></c:out></td>
                                 <td><c:out value="${atraccion.getTipo()}"></c:out></td>
+                                <c:if test="${!user.isAdmin()}">
                                 <td><c:choose>
                                         <c:when
                                             test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && buscarEnLista.noCompro(atraccion, atraccionesAceptadas)}">
-                                            <a
+                                             <a
                                                 href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}&ep=${atraccion.esPromocion()}"
-                                                class="btn btn-success rounded" role="button">Comprar</a>
+                                                class="btn btn-success rounded" type="button" role="button">Comprar</a> 
                                         </c:when>
                                         <c:otherwise>
-                                            <a href="#" class="btn btn-secondary rounded disabled"
-                                                role="button">No se puede comprar</a>
+                                         <a href="#" class="btn btn-secondary rounded disabled"
+                                               type="button" role="button">No se puede comprar</a>
                                         </c:otherwise>
                                     </c:choose></td>
+                                    </c:if>
                                 <c:choose>
                                     <c:when test="${!atraccion.esPromocion()}">
                                         <td><a href="#${atraccion.getId()}-promocion"><i

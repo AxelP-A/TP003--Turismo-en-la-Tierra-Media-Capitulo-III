@@ -1,16 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-
 import javax.swing.*; // Necesario para la creaci�n del panel
-
-import persistence.AtraccionDAO;
-import persistence.ItinerarioDAO;
-import persistence.PromocionDAO;
-import persistence.commons.DAOFactory;
-import services.ItinerarioService;
 import sugeribles.Sugerible;
 import utils.Crypt;
 
@@ -24,19 +19,19 @@ public class Usuario {
 	private List<Sugerible> itinerario = new ArrayList<Sugerible>();
 	private String password;
 	private boolean isAdmin;
-	private ItinerarioService itinerarioService;
+	private String habilitado;
+	private Map<String, String> errors;
 
-	public Usuario(int id, String nombre, String atraccionPreferida, int presupuesto,
-			double tiempoDisponible) {
+	public Usuario(int id, String nombre, String atraccionPreferida, int presupuesto, double tiempoDisponible) {
 		this.id = id;
 		this.nombre = nombre;
 		this.tipoAtraccionPreferida = atraccionPreferida;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 	}
-	
-	public Usuario(Integer id, String nombre, String atraccionPreferida, int presupuesto,
-			double tiempoDisponible, String password, boolean isAdmin) {
+
+	public Usuario(Integer id, String nombre, String atraccionPreferida, int presupuesto, double tiempoDisponible,
+			String password, boolean isAdmin, String fechaBaja) {
 		this.id = id;
 		this.nombre = nombre;
 		this.password = password;
@@ -44,6 +39,17 @@ public class Usuario {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.isAdmin = isAdmin;
+		this.habilitado = fechaBaja;
+	}
+
+	public Usuario(int id) {
+		this.id = id;
+		this.nombre = null;
+		this.password = null;
+		this.tipoAtraccionPreferida = null;
+		this.presupuesto = 0;
+		this.tiempoDisponible = 0;
+		this.isAdmin = false;
 	}
 
 	public int getId() {
@@ -53,11 +59,11 @@ public class Usuario {
 	public String getNombre() {
 		return this.nombre;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public boolean checkPassword(String password) {
 		// this.passwpord es el hash de la pw.
 		return Crypt.match(password, this.password);
@@ -74,11 +80,11 @@ public class Usuario {
 	public double getTiempoDisponible() {
 		return this.tiempoDisponible;
 	}
-	
+
 	public boolean isAdmin() {
 		return isAdmin;
 	}
-	
+
 	public boolean isNull() {
 		return false;
 	}
@@ -90,96 +96,89 @@ public class Usuario {
 	public void setNombre(String nuevoNombre) {
 		this.nombre = nuevoNombre;
 	}
-	
+
 	public void setPassword(String newPassword) {
 		this.password = Crypt.hash(newPassword);
 	}
-	
-	public void setTiempoDisponible(int nuevoTiempoDisponible) {
+
+	public void setTiempoDisponible(double nuevoTiempoDisponible) {
 		this.tiempoDisponible = nuevoTiempoDisponible;
 	}
 
 	public void setPresupuesto(int nuevoPresupuesto) {
 		this.presupuesto = nuevoPresupuesto;
 	}
-	
+
 	public void setAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 	
+	public void setAtraccionPreferida(String tipoAtraccionPreferida) {
+		this.tipoAtraccionPreferida = tipoAtraccionPreferida;
+	}
+
 	public boolean tieneDinero(Sugerible sugerible) {
 		return sugerible.getCostoDeVisita() <= this.presupuesto;
 	}
-	
+
 	public boolean tieneTiempo(Sugerible sugerible) {
 		return sugerible.getTiempoNecesario() <= this.tiempoDisponible;
 	}
-	
+
 	public void recibirItinerario(List<Sugerible> itinerario) {
 		this.itinerario = itinerario;
 	}
 
 	public void agregarAlItinerario(Sugerible sugerible) {
-		this.itinerario.add(sugerible);		// Esto actualmente se realiza en el método aceptaOferta de la App.
+		this.itinerario.add(sugerible); // Esto actualmente se realiza en el método aceptaOferta de la App.
 		aceptoOfertaSugeridaYseDescontoTiempoYpresupuesto(sugerible);
-		
+
 	}
-	
+
 	public void aceptoOfertaSugeridaYseDescontoTiempoYpresupuesto(Sugerible sugerencia) {
 
 		this.tiempoDisponible -= sugerencia.getTiempoNecesario();
 		this.presupuesto -= sugerencia.getCostoDeVisita();
 	}
-	
-	
-	
-	
 
-	
-	/*public boolean noCompro(Atraccion atraccion) {
+	public boolean estaActivo() {
+		return this.habilitado == null;
+	}
+
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
+	}
+
+	public void validate() {
+		errors = new HashMap<String, String>();
 		
-		List<Atraccion> listaAtraccion = itinerarioService.crearListaAtraccionesAceptadas();
-		if(listaAtraccion == null) {
-			return true;
+		if (nombre == null) {
+			errors.put("nombre", "Debe ser un string válido");
 		}
-		for (Atraccion Atr : listaAtraccion) {
-			if (Atr.equals(atraccion)) {
-				return false;
-			}
+		if (password == null || password.length() <= 4) {
+			errors.put("password", "Debe tener más de 4 caracteres");	
 		}
-		return true;
-		}*/
+		if (presupuesto <= 0) {
+			errors.put("presupuesto", "Debe ser positivo");
+		}
+		if(tiempoDisponible <= 0) {
+			errors.put("tiempo", "Debe ser positivo");
+		}
+		if (tipoAtraccionPreferida == null) {
+			errors.put("preferencia", "Debe ser un string válido");
+		}
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/*
+	 * public boolean noCompro(Atraccion atraccion) {
+	 * 
+	 * List<Atraccion> listaAtraccion =
+	 * itinerarioService.crearListaAtraccionesAceptadas(); if(listaAtraccion ==
+	 * null) { return true; } for (Atraccion Atr : listaAtraccion) { if
+	 * (Atr.equals(atraccion)) { return false; } } return true; }
+	 */
+
 	/*
 	 * Mostramos la promo o atracci�n para que la misma pueda ser visualizada por
 	 * consola por el usuario. Inicializamos un String respuesta en null, el cual va
@@ -244,10 +243,10 @@ public class Usuario {
 	 * 
 	 */
 	public String crearPanelSiOno() {
-		
+
 		JFrame jframe = new JFrame();
 		jframe.setAlwaysOnTop(true);
-		
+
 		// las 2 líneas de arriba no existían, y el jframe era null en el parámetro.
 
 		int seleccion = JOptionPane.showOptionDialog(jframe, "¿Acepta la compra?", "Seleccione opcion",
@@ -263,19 +262,19 @@ public class Usuario {
 	}
 
 	public void avisoCompraAceptada() {
-		
+
 		JFrame jframe = new JFrame();
 		jframe.setAlwaysOnTop(true);
-		
+
 		JOptionPane.showMessageDialog(jframe, "Usted ha aceptado la oferta");
 		System.out.println("Usted ha aceptado la oferta");
 	}
 
 	public void avisoCompraNoAceptada() {
-		
+
 		JFrame jframe = new JFrame();
 		jframe.setAlwaysOnTop(true);
-		
+
 		JOptionPane.showMessageDialog(jframe, "Usted no ha aceptado la oferta");
 		System.out.println("Usted no ha aceptado la oferta");
 	}
@@ -307,4 +306,6 @@ public class Usuario {
 				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible)
 				&& Objects.equals(tipoAtraccionPreferida, other.tipoAtraccionPreferida);
 	}
+
+
 }

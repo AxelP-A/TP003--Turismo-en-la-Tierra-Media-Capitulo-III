@@ -26,7 +26,6 @@
 				<a href="">Acerca de</a> 
 				<a href="">Soporte</a>
 			</div>
-			<a href="inicioSesion.html">Iniciar sesión</a>
 		</div>
 	</header>
 
