@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import sugeribles.Sugerible;
 
@@ -13,11 +15,19 @@ public abstract class Promocion implements Sugerible {
 	private String habilitada;
 	private int calculoDeCosto;
 	private String descripcion;
+	private Map <String, String> errors;
 
 	public Promocion(int id, String nombreDePromocion, List<Atraccion> listaAtracciones, String descripcion) {
 		this.id = id;
 		this.setNombre(nombreDePromocion);
 		this.setArrayAtracciones(listaAtracciones);
+		this.descripcion = descripcion;
+	}
+	
+	public Promocion(int id, String nombreDePromocion, String descripcion) {
+		this.id = id;
+		this.setNombre(nombreDePromocion);
+		this.atraccionesIncluidas = null;
 		this.descripcion = descripcion;
 	}
 
@@ -94,6 +104,9 @@ public abstract class Promocion implements Sugerible {
 		return this.descripcion;
 	}
 	
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
 	public boolean estanHabilitadas() {
 
@@ -109,17 +122,14 @@ public abstract class Promocion implements Sugerible {
 	public List<Atraccion> getAtraccionesIncluidas() {
 		return atraccionesIncluidas;
 	}
-
+	
 	public boolean isValid() {
-
-		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
-			if (!atraccionesIncluidas.get(i).isValid()) {
-				return false;
-			}
-		}
-		return true;
+		validate();
+		return errors.isEmpty();
 	}
-
+	
+	
+	
 	public boolean estaHabilitada() {
 
 		return (this.habilitada == null && estanHabilitadas());
@@ -171,7 +181,48 @@ public abstract class Promocion implements Sugerible {
 	public int getId() {
 		return id;
 	}
+	
+		
+	public Map<String, String> getErrors() {
+		return errors;
+	}
 
+	public void validate() {
+		errors = new HashMap<String, String>();
+		
+		if (this.getCostoDeVisita() <= 0) {
+			errors.put("costoDeVisita", "Debe ser positivo");
+		}
+		if(this.getTiempoNecesario() <= 0) {
+			errors.put("tiempoNecesario", "Debe ser positivo");
+		}
+		if(this.getCupo() <=0) {
+			errors.put("cupoDePersonas", "Debe ser positivo");
+		}
+		if (this.getTipo() == null) {
+			errors.put("tipo", "Debe ser un string válido");
+		}
+		if (this.getDescripcion() == null) {
+			errors.put("descripcion", "Debe ser un string válido");
+		}
+		if (!this.validarAtracciones()) {
+			errors.put("atracciones", "Error en atracciones incluidas");
+		}
+	}
+	
+	
+	private boolean validarAtracciones() {
+
+		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
+			if (!atraccionesIncluidas.get(i).isValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(atraccionesIncluidas, id, nombre);
