@@ -74,6 +74,12 @@ table.dataTable tbody th.dt-body-nowrap,
 table.dataTable tbody td.dt-body-nowrap {
   white-space: nowrap;
 }
+table.dataTable thead tr{
+	font-size: 20px;
+    background-color: #4cff94;
+    color: black;
+    
+}
 table.dataTable td.dt-control {
   text-align: center;
   cursor: pointer;
@@ -323,6 +329,7 @@ table.dataTable td {
   padding: 5px;
   background-color: transparent;
   margin-left: 3px;
+  margin-bottom:30px
 }
 .dataTables_wrapper .dataTables_info {
   clear: both;
@@ -349,7 +356,7 @@ table.dataTable td {
   border-radius: 2px;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  color: #ffffff !important;
+  color: black !important;
   border: 1px solid #00c14e;
   background-color: #dbffe9;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dbffe9), color-stop(100%, #4cff94));
