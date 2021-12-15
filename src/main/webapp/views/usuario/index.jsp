@@ -115,7 +115,11 @@
 									Eliminado
 								</c:otherwise>
 								</c:choose></td>
-							<td><c:out value="${usuario.getItinerario()}"></c:out></td>
+							
+							<td class="open-promo"><a href="#${usuario.getId()}">
+								<i class="fas fa-angle-double-right"></i></a>
+							</td>
+							
 							<td><c:choose>
 									<c:when
 										test="${user.isAdmin() && (!usuario.isAdmin() || usuario.getId() == user.getId())}">
@@ -138,6 +142,39 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<c:forEach items="${listaUsuarios}" var="usuario">
+		 <div class="container-all" id="${usuario.id}">
+           <div class="popup">
+               <div class="img uno"></div>
+               <div class="container-text">
+                   <h2>Itinerario: </h2>          
+                   <br><br>
+                   
+                   <table>
+	                 	<thead>
+							<tr>
+								<th>Listado</th>
+								<th>Precio</th>
+								<th>Duracion</th>
+							</tr>
+						</thead>
+						<tbody>
+		
+						<tr>
+							<td> hola </td>
+							<td>2</td>
+							<td>1</td>
+						</tr>	
+						
+						</tbody>
+                   </table>
+
+               </div>
+               <a href="#" class="btn-close-popup">X</a>
+           </div>
+       </div>
+     </c:forEach>
 	</main>
 
 </body>
