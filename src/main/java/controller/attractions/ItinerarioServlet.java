@@ -32,6 +32,10 @@ package controller.attractions;
 			
 			List<Sugerible> itinerario = itinerarioService.getItinerario();
 			
+			//Necesitamos una segunda carga del itinerario con el id del usuario que estemos seleccionando).
+			
+			
+			
 			req.setAttribute("itinerario", itinerario);
 			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/itinerario/index.jsp");

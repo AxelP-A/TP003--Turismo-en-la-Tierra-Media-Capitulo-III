@@ -75,9 +75,8 @@
             <p></p>
             <c:if test="${user.isAdmin()}">
                 <div class="mb-3">
-                    <a href="/Tp003-TurismoEnLaTierraMedia/atraccion/create.do"
-                        class="btn btn-primary" type="button" role="button"> <i
-                        class="bi bi-plus-lg"></i> Nueva Atracción
+                    <a href="/Tp003-TurismoEnLaTierraMedia/atraccion/create.do">
+                        <i class="fas fa-plus-square"></i>
                     </a>
                 </div>
             </c:if>
@@ -115,12 +114,12 @@
                                         <c:when
                                             test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && buscarEnLista.noCompro(atraccion, atraccionesAceptadas)}">
                                              <a
-                                                href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}&ep=${atraccion.esPromocion()}"
-                                                class="btn btn-success rounded" type="button" role="button">Comprar</a> 
+                                                href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}&ep=${atraccion.esPromocion()}">
+                                                <i class="fas fa-shopping-cart"></i></a> 
                                         </c:when>
                                         <c:otherwise>
-                                         <a href="#" class="btn btn-secondary rounded disabled"
-                                               type="button" role="button">No se puede comprar</a>
+                                         <a href="#" class="btn btn-secondary rounded disabled">
+                                              <i class="fas fa-ban"></i></a>  
                                         </c:otherwise>
                                     </c:choose></td>
                                     </c:if>

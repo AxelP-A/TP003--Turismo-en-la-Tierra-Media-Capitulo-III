@@ -1,4 +1,4 @@
-package controller.attractions;
+package controller.usuario;
 
 import java.io.IOException;
 import java.util.List;
