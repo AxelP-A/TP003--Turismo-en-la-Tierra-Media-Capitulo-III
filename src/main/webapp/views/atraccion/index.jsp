@@ -76,7 +76,7 @@
             <c:if test="${user.isAdmin()}">
                 <div class="mb-3">
                     <a href="/Tp003-TurismoEnLaTierraMedia/atraccion/create.do">
-                        <i class="fas fa-plus-square"></i>
+                        <i class="fas fa-plus-square fa-5x"></i>
                     </a>
                 </div>
             </c:if>
@@ -113,13 +113,12 @@
                                 <td><c:choose>
                                         <c:when
                                             test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && buscarEnLista.noCompro(atraccion, atraccionesAceptadas)}">
-                                             <a
+                                             <a 
                                                 href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}&ep=${atraccion.esPromocion()}">
-                                                <i class="fas fa-shopping-cart"></i></a> 
+                                                <i  class="fas fa-shopping-cart" Style="color: green;"></i></a> 
                                         </c:when>
                                         <c:otherwise>
-                                         <a href="#" class="btn btn-secondary rounded disabled">
-                                              <i class="fas fa-ban"></i></a>  
+                                              <i Style="color:gray;" class="fas fa-ban"></i> 
                                         </c:otherwise>
                                     </c:choose></td>
                                     </c:if>
@@ -161,12 +160,12 @@
                                 <p>
                                     <c:out value="${atraccion.getDescripcion()}"></c:out>
                                 </p>
-                                <span><i class="fas fa-hourglass-start"></i> Tiempo:<c:out
-                                        value="${atraccion.tiempoNecesario}"></c:out></span> <span><i
-                                    class="fas fa-users"></i> Cupo:<c:out
-                                        value="${atraccion.getCupo()}"></c:out></span> <span><i
-                                    class="fas fa-dollar-sign"></i> Precio: <c:out
-                                        value="${atraccion.costoDeVisita}"></c:out></span>
+                                <span Style="color: white;"><i class="fas fa-hourglass-start"></i>Tiempo: <c:out
+                                        value=" ${atraccion.tiempoNecesario}"></c:out></span> <span Style="color: white;"><i
+                                    class="fas fa-users"></i>Cupo: <c:out
+                                        value=" ${atraccion.getCupo()}"></c:out></span> <span Style="color: white;"><i
+                                    class="fas fa-dollar-sign"></i>Precio: <c:out
+                                        value=" ${atraccion.costoDeVisita}"></c:out></span>
                             </div>
                             <a href="#" class="btn-close-popup">X</a>
                         </div>
