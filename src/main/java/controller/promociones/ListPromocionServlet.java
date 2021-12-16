@@ -1,7 +1,6 @@
 package controller.promociones;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;

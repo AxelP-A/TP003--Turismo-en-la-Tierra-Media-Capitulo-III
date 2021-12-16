@@ -44,14 +44,24 @@
 			</p>
 		</div>
 		<div class="enlaces-contenedor">
-			<a href="../index.jsp">Inicio</a> <a href="">Comunidad</a> <a href="">Acerca
+			<a href="../index.jsp">Inicio</a>    <a href="">Acerca
 				de</a> <a href="">Soporte</a>
+					<div class="dropdown">
+				<c:out value="${user.nombre}"></c:out>
+				<span><i class="fas fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><i class="fas fa-donate"></i>
+					<c:out value="${user.getPresupuesto()}"></c:out></li>
+					<li><i class="fas fa-hourglass-half"></i>
+					<c:out value="${user.getTiempoDisponible()}"></c:out></li>
+					<li><a href="/Tp003-TurismoEnLaTierraMedia/logout"> <i
+							class="fas fa-sign-out-alt">Logout</i></a>
+				</ul>
+			</div>
 		</div>
 	</header>
-
 	<main class="mainSugeribles">
 		<div class="background-seccionUno">
-
 			<c:if test="${flash != null}">
 				<div class="alert alert-danger">
 					<p>
@@ -66,7 +76,6 @@
 					</p>
 				</div>
 			</c:if>
-
 			<div class="bg-light p-4 mb-3 rounded">
 				<h1>Usuarios</h1>
 			</div>
@@ -75,7 +84,7 @@
 				<div class="mb-3">
 					<a href="/Tp003-TurismoEnLaTierraMedia/usuario/create.do"
 						class="btn btn-primary" role="button"> <i
-						class="bi bi-plus-lg"></i> Nuevo Usuario
+						class="fas fa-plus-square fa-5x" Style="color: green;"></i>
 					</a>
 				</div>
 			</c:if>
@@ -104,7 +113,7 @@
 									Admin
 								</c:when>
 									<c:otherwise>
-									Normal
+									Usuario
 								</c:otherwise>
 								</c:choose></td>
 							<td><c:choose>
@@ -127,10 +136,13 @@
 											href="/Tp003-TurismoEnLaTierraMedia/usuario/edit.do?id=${usuario.getId()}">
 											<i class="fas fa-pen-square"> </i>
 										</a>
+										
+										<c:if test="${usuario.estaActivo()}">
 										<a
 											href="/Tp003-TurismoEnLaTierraMedia/usuario/delete.do?id=${usuario.getId()}">
 											<i class="fas fa-trash-alt"></i>
-										</a>
+										</a></c:if>
+										
 									</c:when>
 									<c:otherwise>
 											 <i Style="color:gray;" class="fas fa-ban"></i> 

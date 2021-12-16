@@ -5,7 +5,6 @@ import java.util.List;
 import model.Atraccion;
 import persistence.AtraccionDAO;
 import persistence.commons.DAOFactory;
-import sugeribles.Sugerible;
 
 public class AttractionService {
 

@@ -19,16 +19,9 @@
 <body>
 	<header>
 		<div class="contenedor">
-			<p><a href="index.html"> <img src="assets/img/tolkien-plano.jpg" alt="logo"></a></p>
-			<div class="enlaces-contenedor">
-				<a href="giftshop.html">Tienda</a>
-				<a href="">Comunidad</a> 
-				<a href="">Acerca de</a> 
-				<a href="">Soporte</a>
-			</div>
+			<p><img src="assets/img/tolkien-plano.jpg" alt="logo"></p>
 		</div>
 	</header>
-
 	<main>
 		<div class="background-seccionUno">
 

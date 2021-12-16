@@ -8,9 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Atraccion;
 import model.Usuario;
-import services.AttractionService;
 import services.UsuarioService;
 
 @WebServlet("/usuario/create.do")

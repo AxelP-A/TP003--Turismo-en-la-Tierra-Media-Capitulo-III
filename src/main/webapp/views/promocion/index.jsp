@@ -48,7 +48,18 @@
 				<a href="../index.jsp">Inicio</a> <a href="">Comunidad</a> <a
 					href="">Acerca de</a> <a href="">Soporte</a>
 			</div>
-			<c:out value="${user.nombre}" />
+				<div class="dropdown">
+				<c:out value="${user.nombre}"></c:out>
+				<span><i class="fas fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><i class="fas fa-donate"></i>
+					<c:out value="${user.getPresupuesto()}"></c:out></li>
+					<li><i class="fas fa-hourglass-half"></i>
+					<c:out value="${user.getTiempoDisponible()}"></c:out></li>
+					<li><a href="/Tp003-TurismoEnLaTierraMedia/logout"> <i
+							class="fas fa-sign-out-alt">Logout</i></a>
+				</ul>
+			</div>
 		</div>
 	</header>
 	<jsp:useBean id="buscarEnLista" class="services.BuscarEnListaService" />

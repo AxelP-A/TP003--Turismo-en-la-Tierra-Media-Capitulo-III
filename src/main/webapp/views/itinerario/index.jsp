@@ -14,26 +14,26 @@
 	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
 	integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
 	crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css"
-    href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-print-2.0.1/fh-3.2.0/kt-2.6.4/r-2.2.9/sb-1.3.0/sp-1.4.0/sl-1.3.3/datatables.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-print-2.0.1/fh-3.2.0/kt-2.6.4/r-2.2.9/sb-1.3.0/sp-1.4.0/sl-1.3.3/datatables.min.css" />
 <link rel="stylesheet" href="../assets/stylesheets/dataTables.css">
 <link rel="stylesheet" href="../assets/stylesheets/styles.css">
 <script defer type="text/javascript"
-    src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-print-2.0.1/fh-3.2.0/kt-2.6.4/r-2.2.9/sb-1.3.0/sp-1.4.0/sl-1.3.3/datatables.min.js"></script>
+	src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-print-2.0.1/fh-3.2.0/kt-2.6.4/r-2.2.9/sb-1.3.0/sp-1.4.0/sl-1.3.3/datatables.min.js"></script>
 <script type="text/javascript">
-    window
-            .addEventListener(
-                    'DOMContentLoaded',
-                    function() {
-                        $('.dataTable')
-                                .DataTable(
-                                        {
-                                        	"order" : [],
-                                            language : {
-                                                url : "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
-                                            }
-                                        });
-                    });
+	window
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						$('.dataTable')
+								.DataTable(
+										{
+											"order" : [],
+											language : {
+												url : "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+											}
+										});
+					});
 </script>
 </head>
 <body>
@@ -44,17 +44,28 @@
 					src="../assets/img/tolkien-plano.jpg" alt="logo"></a>
 			</p>
 			<div class="enlaces-contenedor">
-				<a href="../index.jsp">Inicio</a> <a href="">Comunidad</a> <a
-					href="">Acerca de</a> <a href="">Soporte</a>
+				<a href="../index.jsp">Inicio</a>   <a href="">Acerca de</a> <a
+					href="">Soporte</a>
 			</div>
-			<c:out value="${user.nombre}" />
+			<div class="dropdown">
+				<c:out value="${user.nombre}"></c:out>
+				<span><i class="fas fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><i class="fas fa-donate"></i> <c:out
+							value="${user.getPresupuesto()}"></c:out></li>
+					<li><i class="fas fa-hourglass-half"></i> <c:out
+							value="${user.getTiempoDisponible()}"></c:out></li>
+					<li><a href="/Tp003-TurismoEnLaTierraMedia/logout"> <i
+							class="fas fa-sign-out-alt">Logout</i></a>
+				</ul>
+			</div>
 		</div>
 	</header>
-	
-	
+
+
 	<main class="mainSugeribles">
 		<div class="background-seccionUno">
-			
+
 			<div class="bg-light p-4 mb-3 rounded">
 				<h1>Este es su itinerario</h1>
 			</div>

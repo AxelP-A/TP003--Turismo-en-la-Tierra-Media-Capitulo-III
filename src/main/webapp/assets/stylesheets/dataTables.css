@@ -310,6 +310,7 @@ table.dataTable td {
   clear: both;
 }
 .dataTables_wrapper .dataTables_length {
+ color: white;
  float: left;
 }
 .dataTables_wrapper .dataTables_length select {
