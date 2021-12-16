@@ -16,9 +16,9 @@ import promociones.PromocionAxB;
 import promociones.PromocionPorcentual;
 
 public class PromocionDAOImpl implements PromocionDAO {
-	
+
 	public Promocion findByPromocion(String nombre) {
-		
+
 		try {
 			String sql = "SELECT * FROM USUARIOS WHERE NOMBRE_USUARIO = ?";
 			Connection conn = ConnectionProvider.getConnection();
@@ -30,7 +30,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 
 			if (resultados.next()) {
 			}
-			return promocion ;
+			return promocion;
 		} catch (Exception e) {
 			throw new MissingDataException(e);
 		}
@@ -51,45 +51,50 @@ public class PromocionDAOImpl implements PromocionDAO {
 			throw new MissingDataException(e);
 		}
 	}
-	
-	
+
 	@Override
-	public int update(Promocion promocion) {	
+	public int update(Promocion promocion) {
 		return 0;
 	}
-	
+
 	@Override
 	public List<Promocion> findAll(List<Atraccion> listaAtracciones) {
 		try {
 			String sql = "SELECT promociones.id_promocion, promociones.tipo_promocion, promociones.nombre_promocion, promociones.costo_promocion, promociones.descripcion,"
-                    + " group_concat(atracciones_en_promo.id_atraccion, ';') AS 'atracciones_en_promocion'\n"
-                    + "FROM promociones JOIN atracciones_en_promo ON atracciones_en_promo.id_promocion = promociones.id_promocion\n"
-                    + "group by promociones.id_promocion";
-			
+					+ " group_concat(atracciones_en_promo.id_atraccion, ';') AS 'atracciones_en_promocion'\n"
+					+ "FROM promociones JOIN atracciones_en_promo ON atracciones_en_promo.id_promocion = promociones.id_promocion\n"
+					+ "group by promociones.id_promocion";
+
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet resultados = statement.executeQuery();
 
 			Promocion promocion = null;
-			
+
 			List<Promocion> promociones = new LinkedList<Promocion>();
-			
+
 			while (resultados.next()) {
 				List<Atraccion> atraccionesIncluidas = new ArrayList<Atraccion>();
-				
+
 				String tipoPromocion = resultados.getString("tipo_promocion");
 				String atracciones = resultados.getString("atracciones_en_promocion");
 				atraccionesIncluidas = listarAtraccionesIncluidas(atracciones, listaAtracciones);
-				
-				switch(tipoPromocion) {
+
+				switch (tipoPromocion) {
 				case "PORCENTUAL":
-					promocion = new PromocionPorcentual(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas, resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
+					promocion = new PromocionPorcentual(resultados.getInt("id_promocion"),
+							resultados.getString("nombre_promocion"), atraccionesIncluidas,
+							resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
 					break;
 				case "AXB":
-					promocion = new PromocionAxB(resultados.getInt("id_promocion") ,resultados.getString("nombre_promocion"), atraccionesIncluidas, resultados.getString("descripcion"));
+					promocion = new PromocionAxB(resultados.getInt("id_promocion"),
+							resultados.getString("nombre_promocion"), atraccionesIncluidas,
+							resultados.getString("descripcion"));
 					break;
 				case "ABSOLUTA":
-					promocion = new PromocionAbsoluta(resultados.getInt("id_promocion")  ,resultados.getString("nombre_promocion"), atraccionesIncluidas,(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
+					promocion = new PromocionAbsoluta(resultados.getInt("id_promocion"),
+							resultados.getString("nombre_promocion"), atraccionesIncluidas,
+							(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
 					break;
 				}
 				promociones.add(promocion);
@@ -101,43 +106,65 @@ public class PromocionDAOImpl implements PromocionDAO {
 	}
 
 	private List<Atraccion> listarAtraccionesIncluidas(String atracciones, List<Atraccion> listaAtracciones) {
-		
+
 		String[] idAtraccionesIncluidas = atracciones.split(";");
-		List <Atraccion> atraccionesIncluidas = new ArrayList<Atraccion>();
-		
-		for(String atraccion : idAtraccionesIncluidas) {
-			int idAtraccion = Integer.parseInt(atraccion);	
-				for (int k = 0; k < listaAtracciones.size(); k++) {
-					if (idAtraccion == (listaAtracciones.get(k).getId())) {
-						atraccionesIncluidas.add(listaAtracciones.get(k));
-					}
+		List<Atraccion> atraccionesIncluidas = new ArrayList<Atraccion>();
+
+		for (String atraccion : idAtraccionesIncluidas) {
+			int idAtraccion = Integer.parseInt(atraccion);
+			for (int k = 0; k < listaAtracciones.size(); k++) {
+				if (idAtraccion == (listaAtracciones.get(k).getId())) {
+					atraccionesIncluidas.add(listaAtracciones.get(k));
 				}
 			}
+		}
 		return atraccionesIncluidas;
 	}
-	
-	public Promocion findByPromocionId(int id) {
-		
-		return null;
-		/*try {
-			String sql = "SELECT * FROM PROMOCIONES WHERE ID_PROMOCION = ?";
+
+	public Promocion findByPromocionId(int id, List<Atraccion> listaAtracciones) {
+
+		try {
+			String sql = "SELECT promociones.id_promocion, promociones.tipo_promocion, promociones.nombre_promocion, promociones.costo_promocion, promociones.descripcion,"
+					+ " group_concat(atracciones_en_promo.id_atraccion, ';') AS 'atracciones_en_promocion'\n"
+					+ "FROM promociones JOIN atracciones_en_promo ON atracciones_en_promo.id_promocion = promociones.id_promocion\n"
+					+ "WHERE promociones.id_promocion = ?" + "group by promociones.id_promocion";
+
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, id);
 			ResultSet resultados = statement.executeQuery();
 
-			Atraccion atraccion = null;
+			Promocion promocion = null;
 
-			if (resultados.next()) {
-				atraccion = convertirAtraccion(resultados);
+			List<Atraccion> atraccionesIncluidas = new ArrayList<Atraccion>();
+
+			String tipoPromocion = resultados.getString("tipo_promocion");
+			String atracciones = resultados.getString("atracciones_en_promocion");
+			atraccionesIncluidas = listarAtraccionesIncluidas(atracciones, listaAtracciones);
+
+			switch (tipoPromocion) {
+			case "PORCENTUAL":
+				promocion = new PromocionPorcentual(resultados.getInt("id_promocion"),
+						resultados.getString("nombre_promocion"), atraccionesIncluidas,
+						resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
+				break;
+			case "AXB":
+				promocion = new PromocionAxB(resultados.getInt("id_promocion"),
+						resultados.getString("nombre_promocion"), atraccionesIncluidas,
+						resultados.getString("descripcion"));
+				break;
+			case "ABSOLUTA":
+				promocion = new PromocionAbsoluta(resultados.getInt("id_promocion"),
+						resultados.getString("nombre_promocion"), atraccionesIncluidas,
+						(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
+				break;
 			}
 
-			return atraccion;
+			return promocion;
 		} catch (Exception e) {
 			throw new MissingDataException(e);
-		}*/
+		}
 	}
-	
 
 	@Override
 	public int delete(Promocion promocion) {
@@ -146,13 +173,31 @@ public class PromocionDAOImpl implements PromocionDAO {
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setInt(1, promocion.getId());	
+			statement.setInt(1, promocion.getId());
 			int rows = statement.executeUpdate();
-			
+
 			return rows;
 		} catch (Exception e) {
 			throw new MissingDataException(e);
 		}
+	}
+
+	@Override
+	public int eliminarAtraccion(int idPromocion, int idAtraccion) {
+		try {
+			String sql = "DELETE FROM atracciones_en_promo where id_promocion = ? and id_atraccion = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, idPromocion);
+			statement.setInt(2, idAtraccion);
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+
 	}
 
 	@Override

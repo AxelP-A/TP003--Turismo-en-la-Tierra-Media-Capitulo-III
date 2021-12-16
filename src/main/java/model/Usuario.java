@@ -163,11 +163,15 @@ public class Usuario {
 			errors.put("presupuesto", "Debe ser positivo");
 		}
 		if(tiempoDisponible <= 0) {
-			errors.put("tiempo", "Debe ser positivo");
+			errors.put("tiempoDisponible", "Debe ser positivo");
 		}
 		if (tipoAtraccionPreferida == null) {
-			errors.put("preferencia", "Debe ser un string válido");
+			errors.put("preferida", "Debe ser un string válido");
 		}
+		if (tipoAtraccionPreferida == null) {
+			errors.put("admin", "Debe ser un string válido");
+		}
+		
 	}
 
 	/*

@@ -26,12 +26,14 @@ public class LoggedFilter  implements Filter  {
             chain.doFilter(request, response);
         } else {
             request.setAttribute("flash", "Por favor, ingresa al sistema");
-            //response.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
+            //((HttpServletRequest) response).sendRedirect("/Tp003-TurismoEnLaTierraMedia/"); 
 
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
             dispatcher.forward(request, response);
         }
     }
+	
+	
 	
 	/*
 	@Override

@@ -11,14 +11,15 @@
 
 	<main class="container">
 
-		<c:if test="${atraccion != null && !atraccion.isValid()}">
+		<c:if test="${usuario != null && !usuario.isValid()}">
 			<div class="alert alert-danger">
-				<p>Se encontraron errores al crear la atracción.</p>
+				<p>Se encontraron errores al actualizar el usuario.</p>
 			</div>
 		</c:if>
 
-		<form action="/Tp003-TurismoEnLaTierraMedia/atraccion/create.do" method="post">
-			<jsp:include page="/views/atraccion/form.jsp"></jsp:include>
+		<form action="/Tp003-TurismoEnLaTierraMedia/usuario/edit.do" method="post">
+			<input type="hidden" name="id" value="${usuario.id}">
+			<jsp:include page="/views/usuario/form.jsp"></jsp:include>
 		</form>
 	</main>
 </body>

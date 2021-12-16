@@ -42,11 +42,11 @@
 				<a href="../index.jsp"> <img
 					src="../assets/img/tolkien-plano.jpg" alt="logo"></a>
 			</p>
-			</div>
-			<div class="enlaces-contenedor">
-				<a href="../index.jsp">Inicio</a> <a href="">Comunidad</a> <a
-					href="">Acerca de</a> <a href="">Soporte</a>
-			</div>
+		</div>
+		<div class="enlaces-contenedor">
+			<a href="../index.jsp">Inicio</a> <a href="">Comunidad</a> <a href="">Acerca
+				de</a> <a href="">Soporte</a>
+		</div>
 	</header>
 
 	<main class="mainSugeribles">
@@ -73,8 +73,9 @@
 			<p></p>
 			<c:if test="${user.isAdmin()}">
 				<div class="mb-3">
-					<a href="/Tp003-TurismoEnLaTierraMedia/usuarios/create.do" class="btn btn-primary"
-						role="button"> <i class="bi bi-plus-lg"></i> Nuevo Usuario
+					<a href="/Tp003-TurismoEnLaTierraMedia/usuario/create.do"
+						class="btn btn-primary" role="button"> <i
+						class="bi bi-plus-lg"></i> Nuevo Usuario
 					</a>
 				</div>
 			</c:if>
@@ -122,10 +123,14 @@
 							<td><c:choose>
 									<c:when
 										test="${user.isAdmin() && (!usuario.isAdmin() || usuario.getId() == user.getId())}">
-										<a href="/Tp003-TurismoEnLaTierraMedia/usuarios/edit.do?id=${usuario.getId()}">
-											<i class="fas fa-pen-square"> </i></a>
-										<a href="/Tp003-TurismoEnLaTierraMedia/usuarios/delete.do?id=${usuario.getId()}">
-											<i class="fas fa-trash-alt"></i></a>
+										<a
+											href="/Tp003-TurismoEnLaTierraMedia/usuario/edit.do?id=${usuario.getId()}">
+											<i class="fas fa-pen-square"> </i>
+										</a>
+										<a
+											href="/Tp003-TurismoEnLaTierraMedia/usuario/delete.do?id=${usuario.getId()}">
+											<i class="fas fa-trash-alt"></i>
+										</a>
 									</c:when>
 									<c:otherwise>
 										<a href="#" class="btn btn-secondary rounded disabled"

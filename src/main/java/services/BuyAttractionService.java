@@ -26,10 +26,6 @@ public class BuyAttractionService {
 		
 		itinerarioService.crearListaAtraccionesAceptadas(usuario);
 		
-		/*if(!usuario.noCompro(atraccion)) {
-			errors.put("attraction", "Ya se compró esta atracción");
-		}*/
-		
 		if (!atraccion.comprobarCupo()) {	
 			errors.put("attraction", "No hay cupo disponible");
 		}
@@ -45,7 +41,6 @@ public class BuyAttractionService {
 			usuario.agregarAlItinerario(atraccion);
 			atraccion.restarCupo(); // Considerar poder poner un número entero y restar ese cupo, luego de comprobar si hay para tanta gente, para así poder comprar un pack familiar.
 
-			// no grabamos para no afectar la base de pruebas
 			atraccionDAO.update(atraccion);
 			usuarioDAO.update(usuario);
 			
@@ -58,15 +53,5 @@ public class BuyAttractionService {
 		return errors;
 	}
 	
-	/*private boolean noCompro(Atraccion atraccion, Usuario usuario) {
-		
-	for (Atraccion Atr : itinerarioService.crearListaAtraccionesAceptadas(usuario)) {
-		
-		if (Atr.equals(atraccion)) {
-			return true;
-		}
-	}
-	return false;
-	}*/
 	
 }
