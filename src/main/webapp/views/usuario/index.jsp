@@ -127,8 +127,15 @@
 								</c:otherwise>
 								</c:choose></td>
 
-							<td class="open-promo"><a href="#${usuario.getId()}"> <i
+
+
+
+
+							<td class="open-promo"><a href="/Tp003-TurismoEnLaTierraMedia/usuario/listItinerario.do?id=${usuario.getId()}"> <i
 									class="fas fa-angle-double-right"></i></a></td>
+
+
+
 
 							<td><c:choose>
 									<c:when
@@ -161,6 +168,8 @@
 				</tbody>
 			</table>
 		</div>
+
+
 
 		<c:forEach items="${listaUsuarios}" var="usuario">
 			<div class="container-all" id="${usuario.id}">
