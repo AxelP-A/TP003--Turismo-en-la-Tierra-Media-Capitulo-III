@@ -30,7 +30,12 @@ package controller.attractions;
 			
 			itinerarioService.cargarItinerario((Usuario) req.getSession().getAttribute("user"));
 			
+			//itinerarioService.cargarItinerario(usuario del id que seleccionamos);
+			
 			List<Sugerible> itinerario = itinerarioService.getItinerario();
+			
+			
+			
 			
 			//Necesitamos una segunda carga del itinerario con el id del usuario que estemos seleccionando).
 			

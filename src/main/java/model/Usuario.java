@@ -171,18 +171,15 @@ public class Usuario {
 		if (tipoAtraccionPreferida == null) {
 			errors.put("admin", "Debe ser un string válido");
 		}
-		
+	}
+	
+
+	public Map<String, String> getErrors() {
+		return errors;
 	}
 
-	/*
-	 * public boolean noCompro(Atraccion atraccion) {
-	 * 
-	 * List<Atraccion> listaAtraccion =
-	 * itinerarioService.crearListaAtraccionesAceptadas(); if(listaAtraccion ==
-	 * null) { return true; } for (Atraccion Atr : listaAtraccion) { if
-	 * (Atr.equals(atraccion)) { return false; } } return true; }
-	 */
-
+	
+	
 	/*
 	 * Mostramos la promo o atracci�n para que la misma pueda ser visualizada por
 	 * consola por el usuario. Inicializamos un String respuesta en null, el cual va

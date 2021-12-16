@@ -162,7 +162,7 @@
                    <h2>Itinerario: </h2>          
                    <br><br>
                    
-                   <table>
+                   <table class="dataTable table-promocion" style="width: 80%">
 	                 	<thead>
 							<tr>
 								<th>Listado</th>
@@ -171,22 +171,32 @@
 							</tr>
 						</thead>
 						<tbody>
-		
+						<c:forEach items="${itinerario}" var="itinerarioVar">
 						<tr>
-							<td> hola </td>
-							<td>2</td>
-							<td>1</td>
+							<td>
+								<strong><c:out
+									value="${itinerarioVar.getNombre()}">
+								</c:out></strong> 
+								<c:if test="${itinerarioVar.esPromocion()}">
+									<p> Que está compuesta de las atracciones: <br>
+										<c:forEach items="${itinerarioVar.getAtraccionesIncluidas()}" var="atraccion">
+											<c:out value="${atraccion.getNombre()}"></c:out><br>
+										</c:forEach>
+									</p>
+								</c:if>
+							</td>
+							<td><c:out value="${itinerarioVar.getCostoDeVisita()}"></c:out></td>
+							<td><c:out value="${itinerarioVar.getTiempoNecesario()}"></c:out></td>
 						</tr>	
-						
+						</c:forEach>
 						</tbody>
                    </table>
-
                </div>
                <a href="#" class="btn-close-popup">X</a>
            </div>
        </div>
      </c:forEach>
-	</main>
+</main>
 
 </body>
 </html>

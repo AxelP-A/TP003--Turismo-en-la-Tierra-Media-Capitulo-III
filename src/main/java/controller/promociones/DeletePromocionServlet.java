@@ -26,6 +26,6 @@ public class DeletePromocionServlet extends HttpServlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 
 		promocionService.delete(id);
-		resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/promocion/index.do");
+		resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
 	}
 }

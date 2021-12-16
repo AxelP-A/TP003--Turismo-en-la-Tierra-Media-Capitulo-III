@@ -48,7 +48,7 @@ public class BuyPromocionServlet extends HttpServlet {
 		}
 		
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/atraccion/index.jsp");
+				.getRequestDispatcher("/atraccion/index.do");
 		dispatcher.forward(req, resp);
 	}
 }

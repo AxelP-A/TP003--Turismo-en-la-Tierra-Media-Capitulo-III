@@ -39,7 +39,7 @@ public class EditUsuarioServlet extends HttpServlet {
 		
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nombre = req.getParameter("nombre");
-		String preferida = req.getParameter("preferencia");
+		String preferida = req.getParameter("preferida");
 		int presupuesto = Integer.parseInt(req.getParameter("presupuesto"));
 		double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
 		String password = req.getParameter("password");

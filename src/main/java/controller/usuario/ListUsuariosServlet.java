@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
+import services.ItinerarioService;
 import services.UsuarioService;
 
 @WebServlet("/usuario/index.do")
@@ -17,6 +18,7 @@ public class ListUsuariosServlet extends HttpServlet implements Servlet{
 
 	private static final long serialVersionUID = -6193051202425224206L;
 	private UsuarioService usuarioService;
+	private ItinerarioService itinerarioService;
 
 	@Override
 	public void init() throws ServletException {
@@ -28,6 +30,8 @@ public class ListUsuariosServlet extends HttpServlet implements Servlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		List<Usuario> usuario = usuarioService.list();
+		
+		
 		req.setAttribute("listaUsuarios", usuario);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/usuario/index.jsp");

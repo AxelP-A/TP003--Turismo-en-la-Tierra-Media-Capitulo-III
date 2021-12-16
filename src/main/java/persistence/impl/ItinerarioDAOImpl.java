@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import persistence.commons.ConnectionProvider;
@@ -113,9 +114,11 @@ public class ItinerarioDAOImpl implements ItinerarioDAO {
 
 	@Override
 	public List<Sugerible> findAll() {
-		// TODO Auto-generated method stub
 		return null;
+		
 	}
+
+
 
 	@Override
 	public int countAll() {

@@ -59,9 +59,6 @@
 					<c:if test="${user.isAdmin()}">
 						<a href="usuario/index.do">Usuarios</a>
 					</c:if>
-					<c:if test="${user.isAdmin()}">
-						<a href="promocion/index.do">Promociones</a>
-					</c:if>
 				</div>
 				<h2>Atracciones en la Tierra Media</h2>
 				<ul class="galeria">

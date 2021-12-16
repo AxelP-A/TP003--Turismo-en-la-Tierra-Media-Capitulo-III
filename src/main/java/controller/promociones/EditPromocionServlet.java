@@ -50,7 +50,7 @@ public class EditPromocionServlet extends HttpServlet {
 				atraccionesIncluidas);
 
 		if (promocion.isValid()) {
-			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/promocion/index.do");
+			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
 		} else {
 			req.setAttribute("promocion", promocion);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/promocion/edit.jsp");
