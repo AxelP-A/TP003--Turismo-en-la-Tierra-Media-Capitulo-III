@@ -317,10 +317,20 @@
 									<td><c:choose>
 											<c:when
 												test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && buscarEnLista.noCompro(atraccion, atraccionesAceptadas)}">
-												<a
-													href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}&ep=${atraccion.esPromocion()}">
-													<i class="fas fa-shopping-cart" Style="color: green;"></i>
-												</a>
+												<c:choose>
+													<c:when test="${!atraccion.esPromocion()}">
+														<a
+															href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}">
+															<i class="fas fa-shopping-cart" Style="color: green;"></i>
+														</a>
+													</c:when>
+													<c:otherwise>
+														<a
+															href="/Tp003-TurismoEnLaTierraMedia/promocion/buy.do?id=${atraccion.id}">
+															<i class="fas fa-shopping-cart" Style="color: green;"></i>
+														</a>
+													</c:otherwise>
+												</c:choose>
 											</c:when>
 											<c:otherwise>
 												<i Style="color: gray;" class="fas fa-ban"></i>
@@ -339,14 +349,28 @@
 									</c:otherwise>
 								</c:choose>
 								<c:if test="${user.isAdmin()}">
-									<td><a
-										href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}">
-											<i class="fas fa-pen-square" Style="color: blue;"></i>
-									</a> <c:if test="${atraccion.estaHabilitada()}">
-											<a
-												href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"><i
-												class="fas fa-trash-alt"></i></a>
-										</c:if></td>
+									<c:choose>
+										<c:when test="${!atraccion.esPromocion()}">
+											<td><a
+												href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}">
+													<i class="fas fa-pen-square" Style="color: blue;"></i>
+											</a> <c:if test="${atraccion.estaHabilitada()}">
+													<a
+														href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"><i
+														class="fas fa-trash-alt"></i></a>
+												</c:if></td>
+										</c:when>
+										<c:otherwise>
+											<td><a
+												href="/Tp003-TurismoEnLaTierraMedia/promocion/edit.do?id=${atraccion.id}">
+													<i class="fas fa-pen-square" Style="color: blue;"></i>
+											</a> <c:if test="${atraccion.estaHabilitada()}">
+													<a
+														href="/Tp003-TurismoEnLaTierraMedia/promocion/delete.do?id=${atraccion.id}"><i
+														class="fas fa-trash-alt"></i></a>
+												</c:if></td>
+										</c:otherwise>
+									</c:choose>
 								</c:if>
 							</tr>
 						</c:if>
@@ -381,10 +405,21 @@
 										<td><c:choose>
 												<c:when
 													test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && buscarEnLista.noCompro(atraccion, atraccionesAceptadas)}">
-													<a
-														href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}&ep=${atraccion.esPromocion()}">
-														<i class="fas fa-shopping-cart" Style="color: green;"></i>
-													</a>
+													<c:choose>
+														<c:when test="${!atraccion.esPromocion()}">
+															<a
+																href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}">
+																<i class="fas fa-shopping-cart" Style="color: green;"></i>
+															</a>
+														</c:when>
+														<c:otherwise>
+															<a
+																href="/Tp003-TurismoEnLaTierraMedia/promocion/buy.do?id=${atraccion.id}">
+																<i class="fas fa-shopping-cart" Style="color: green;"></i>
+															</a>
+														</c:otherwise>
+													</c:choose>
+
 												</c:when>
 												<c:otherwise>
 													<i Style="color: gray;" class="fas fa-ban"></i>
@@ -403,12 +438,24 @@
 										</c:otherwise>
 									</c:choose>
 									<c:if test="${user.isAdmin()}">
-										<td><a
-											href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}">
-												<i class="fas fa-pen-square"></i>
-										</a> <a
-											href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"><i
-												class="fas fa-trash-alt"></i></a></td>
+										<c:choose>
+											<c:when test="${!atraccion.esPromocion()}">
+												<td><a
+													href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}">
+														<i class="fas fa-pen-square"></i>
+												</a> <a
+													href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"><i
+														class="fas fa-trash-alt"></i></a></td>
+											</c:when>
+											<c:otherwise>
+												<td><a
+													href="/Tp003-TurismoEnLaTierraMedia/promocion/edit.do?id=${atraccion.id}">
+														<i class="fas fa-pen-square"></i>
+												</a> <a
+													href="/Tp003-TurismoEnLaTierraMedia/promocion/delete.do?id=${atraccion.id}"><i
+														class="fas fa-trash-alt"></i></a></td>
+											</c:otherwise>
+										</c:choose>
 									</c:if>
 								</tr>
 							</c:if>
