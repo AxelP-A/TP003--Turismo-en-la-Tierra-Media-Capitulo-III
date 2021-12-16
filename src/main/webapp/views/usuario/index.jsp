@@ -133,8 +133,7 @@
 										</a>
 									</c:when>
 									<c:otherwise>
-										<a href="#" class="btn btn-secondary rounded disabled"
-											type="button" role="button">No puede modificar</a>
+											 <i Style="color:gray;" class="fas fa-ban"></i> 
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
