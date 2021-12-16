@@ -76,7 +76,7 @@
             <c:if test="${user.isAdmin()}">
                 <div class="mb-3">
                     <a href="/Tp003-TurismoEnLaTierraMedia/atraccion/create.do">
-                        <i class="fas fa-plus-square fa-5x"></i>
+                        <i class="fas fa-plus-square fa-5x" Style="color: green;"></i>
                     </a>
                 </div>
             </c:if>

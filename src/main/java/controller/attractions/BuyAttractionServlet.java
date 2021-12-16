@@ -40,7 +40,7 @@ public class BuyAttractionServlet extends HttpServlet {
 		
 		if (errors.isEmpty()) {
 			req.setAttribute("flash", "¡Gracias por comprar!");
-			//resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
+			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
 		} else {
 			req.setAttribute("errors", errors);
 			req.setAttribute("flash", "No ha podido realizarse la compra");
