@@ -178,21 +178,49 @@
 											<td><a
 												href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}">
 													<i class="fas fa-pen-square" Style="color: blue;"></i>
-											</a> <c:if test="${atraccion.estaHabilitada()}">
-													<a
-														href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"><i
-														class="fas fa-trash-alt"></i></a>
-												</c:if></td>
+											</a> 
+											
+											
+											<c:choose>
+													<c:when test="${atraccion.estaHabilitada()}">
+														<a
+															href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.getId()}">
+															<i class="fas fa-trash-alt"></i>
+														</a>
+													</c:when>
+													<c:otherwise>
+														<a
+															href="/Tp003-TurismoEnLaTierraMedia/atraccion/habilitar.do?id=${atraccion.getId()}">
+															<i class="fas fa-trash-restore-alt"></i>
+														</a>
+													</c:otherwise>
+												</c:choose></td>
+
+
 										</c:when>
 										<c:otherwise>
 											<td><a
 												href="/Tp003-TurismoEnLaTierraMedia/promocion/edit.do?id=${atraccion.id}">
 													<i class="fas fa-pen-square" Style="color: blue;"></i>
-											</a> <c:if test="${atraccion.estaHabilitada()}">
-													<a
-														href="/Tp003-TurismoEnLaTierraMedia/promocion/delete.do?id=${atraccion.id}"><i
-														class="fas fa-trash-alt"></i></a>
-												</c:if></td>
+											</a> 
+																	
+												<c:choose>
+													<c:when test="${atraccion.estaHabilitada()}">
+														<a
+															href="/Tp003-TurismoEnLaTierraMedia/promocion/delete.do?id=${atraccion.getId()}">
+															<i class="fas fa-trash-alt"></i>
+														</a>
+													</c:when>
+													<c:otherwise>
+														<a
+															href="/Tp003-TurismoEnLaTierraMedia/promocion/habilitar.do?id=${atraccion.getId()}">
+															<i class="fas fa-trash-restore-alt"></i>
+														</a>
+													</c:otherwise>
+												</c:choose>
+												
+												
+												</td>
 										</c:otherwise>
 									</c:choose>
 								</c:if>
