@@ -44,16 +44,15 @@
 			</p>
 		</div>
 		<div class="enlaces-contenedor">
-			<a href="../index.jsp">Inicio</a>    <a href="">Acerca
-				de</a> <a href="">Soporte</a>
-					<div class="dropdown">
+			<a href="../index.jsp">Inicio</a> <a href="">Acerca de</a> <a href="">Soporte</a>
+			<div class="dropdown">
 				<c:out value="${user.nombre}"></c:out>
 				<span><i class="fas fa-caret-down"></i></span>
 				<ul class="dropdown-content">
-					<li><i class="fas fa-donate"></i>
-					<c:out value="${user.getPresupuesto()}"></c:out></li>
-					<li><i class="fas fa-hourglass-half"></i>
-					<c:out value="${user.getTiempoDisponible()}"></c:out></li>
+					<li><i class="fas fa-donate"></i> <c:out
+							value="${user.getPresupuesto()}"></c:out></li>
+					<li><i class="fas fa-hourglass-half"></i> <c:out
+							value="${user.getTiempoDisponible()}"></c:out></li>
 					<li><a href="/Tp003-TurismoEnLaTierraMedia/logout"> <i
 							class="fas fa-sign-out-alt">Logout</i></a>
 				</ul>
@@ -124,11 +123,10 @@
 									Eliminado
 								</c:otherwise>
 								</c:choose></td>
-							
-							<td class="open-promo"><a href="#${usuario.getId()}">
-								<i class="fas fa-angle-double-right"></i></a>
-							</td>
-							
+
+							<td class="open-promo"><a href="#${usuario.getId()}"> <i
+									class="fas fa-angle-double-right"></i></a></td>
+
 							<td><c:choose>
 									<c:when
 										test="${user.isAdmin() && (!usuario.isAdmin() || usuario.getId() == user.getId())}">
@@ -137,21 +135,22 @@
 											<i class="fas fa-pen-square"> </i>
 										</a>
 										<c:choose>
-										<c:when
-										test="${usuario.estaActivo()}">
-										<a
-											href="/Tp003-TurismoEnLaTierraMedia/usuario/delete.do?id=${usuario.getId()}">
-											<i class="fas fa-trash-alt"></i>
-										</a>
-										</c:when>
-										<c:otherwise>
-										<a href="/Tp003-TurismoEnLaTierraMedia/usuario/habilitar.do?id=${usuario.getId()}">
-										<i class="fas fa-trash-restore-alt"></i></a>
-										</c:otherwise>
+											<c:when test="${usuario.estaActivo()}">
+												<a
+													href="/Tp003-TurismoEnLaTierraMedia/usuario/delete.do?id=${usuario.getId()}">
+													<i class="fas fa-trash-alt"></i>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a
+													href="/Tp003-TurismoEnLaTierraMedia/usuario/habilitar.do?id=${usuario.getId()}">
+													<i class="fas fa-trash-restore-alt"></i>
+												</a>
+											</c:otherwise>
 										</c:choose>
 									</c:when>
 									<c:otherwise>
-											 <i Style="color:gray;" class="fas fa-ban"></i> 
+										<i Style="color: gray;" class="fas fa-ban"></i>
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
@@ -159,50 +158,52 @@
 				</tbody>
 			</table>
 		</div>
-		
+
 		<c:forEach items="${listaUsuarios}" var="usuario">
-		 <div class="container-all" id="${usuario.id}">
-           <div class="popup">
-               <div class="img uno"></div>
-               <div class="container-text">
-                   <h2>Itinerario: </h2>          
-                   <br><br>
-                   
-                   <table class="dataTable table-promocion" style="width: 80%">
-	                 	<thead>
-							<tr>
-								<th>Listado</th>
-								<th>Precio</th>
-								<th>Duracion</th>
-							</tr>
-						</thead>
-						<tbody>
-						<c:forEach items="${itinerario}" var="itinerarioVar">
-						<tr>
-							<td>
-								<strong><c:out
-									value="${itinerarioVar.getNombre()}">
-								</c:out></strong> 
-								<c:if test="${itinerarioVar.esPromocion()}">
-									<p> Que está compuesta de las atracciones: <br>
-										<c:forEach items="${itinerarioVar.getAtraccionesIncluidas()}" var="atraccion">
-											<c:out value="${atraccion.getNombre()}"></c:out><br>
-										</c:forEach>
-									</p>
-								</c:if>
-							</td>
-							<td><c:out value="${itinerarioVar.getCostoDeVisita()}"></c:out></td>
-							<td><c:out value="${itinerarioVar.getTiempoNecesario()}"></c:out></td>
-						</tr>	
-						</c:forEach>
-						</tbody>
-                   </table>
-               </div>
-               <a href="#" class="btn-close-popup">X</a>
-           </div>
-       </div>
-     </c:forEach>
-</main>
+			<div class="container-all" id="${usuario.id}">
+				<div class="popup">
+					<div class="img uno"></div>
+					<div class="container-text">
+						<h2>Itinerario:</h2>
+						<br>
+						<br>
+
+						<table class="dataTable table-promocion" style="width: 80%">
+							<thead>
+								<tr>
+									<th>Listado</th>
+									<th>Precio</th>
+									<th>Duracion</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${itinerario}" var="itinerarioVar">
+									<tr>
+										<td><strong><c:out
+													value="${itinerarioVar.getNombre()}">
+												</c:out></strong> <c:if test="${itinerarioVar.esPromocion()}">
+												<p>
+													Que está compuesta de las atracciones: <br>
+													<c:forEach
+														items="${itinerarioVar.getAtraccionesIncluidas()}"
+														var="atraccion">
+														<c:out value="${atraccion.getNombre()}"></c:out>
+														<br>
+													</c:forEach>
+												</p>
+											</c:if></td>
+										<td><c:out value="${itinerarioVar.getCostoDeVisita()}"></c:out></td>
+										<td><c:out value="${itinerarioVar.getTiempoNecesario()}"></c:out></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<a href="#" class="btn-close-popup">X</a>
+				</div>
+			</div>
+		</c:forEach>
+	</main>
 
 </body>
 </html>
