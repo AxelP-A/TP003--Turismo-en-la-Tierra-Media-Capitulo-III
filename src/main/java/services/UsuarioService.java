@@ -49,6 +49,14 @@ public class UsuarioService {
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
 		usuarioDAO.delete(usuario);
 	}
+	
+	public void habilitar(int id) {
+		Usuario usuario = new Usuario(id);
+		
+		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
+		usuarioDAO.habilitar(usuario);
+	}
+	
 
 	public Usuario find(int id) {
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();

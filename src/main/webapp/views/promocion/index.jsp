@@ -122,12 +122,26 @@
 							<td class="open-promo"><a
 								href="#${promocion.getId()}-promocion"><i
 									class="fas fa-angle-double-right"></i></a></td>
-							<td><a
+							<td>
+							<a
 								href="/Tp003-TurismoEnLaTierraMedia/promocion/edit.do?id=${promocion.id}">
 									<i class="fas fa-pen-square"></i>
-							</a> <a
-								href="/Tp003-TurismoEnLaTierraMedia/promocion/delete.do?id=${promocion.id}"><i
-									class="fas fa-trash-alt"></i></a></td>
+							</a> 
+										<c:choose>
+										<c:when
+										test="${promocion.estaHabilitada()}">
+										<a
+											href="/Tp003-TurismoEnLaTierraMedia/promocion/delete.do?id=${promocion.getId()}">
+											<i class="fas fa-trash-alt"></i>
+										</a>
+										</c:when>
+										<c:otherwise>
+										<a href="/Tp003-TurismoEnLaTierraMedia/promocion/habilitar.do?id=${promocion.getId()}">
+										<i class="fas fa-trash-restore-alt"></i></a>
+										</c:otherwise>
+										</c:choose>
+									</td>
+									
 						</tr>
 
 					</c:forEach>

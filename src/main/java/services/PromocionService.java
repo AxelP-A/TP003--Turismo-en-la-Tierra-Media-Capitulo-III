@@ -101,6 +101,14 @@ public class PromocionService {
 		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
 		promocionDAO.delete(promocion);
 	}
+	
+	public void habilitar(int id) {
+
+		Promocion promocion = new PromocionAbsoluta(id);
+
+		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
+		promocionDAO.habilitar(promocion);
+	}
 
 	public Promocion find(int id, List<Atraccion> listaAtracciones) {
 		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();

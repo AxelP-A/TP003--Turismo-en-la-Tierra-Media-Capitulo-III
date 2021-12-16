@@ -67,8 +67,6 @@
 				<c:forEach items="${promocion.getAtraccionesIncluidas()}"
 					var="atraccion">
 					<tr>
-					
-
 						<td><c:out value="${atraccion.getNombre()}"></c:out></td>
 						<td><a
 							href="/Tp003-TurismoEnLaTierraMedia/promocion/edit.do?id=${attraction.id}"

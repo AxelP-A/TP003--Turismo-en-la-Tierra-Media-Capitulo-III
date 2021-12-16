@@ -29,7 +29,14 @@ public class LoginServlet extends HttpServlet {
     	
     	Usuario usuario = loginService.login(username, password);
     	
-    	if (!usuario.isNull()) {
+    	if (!usuario.estaActivo()) {
+    		req.setAttribute("flash", "El usuario al que está intentando acceder se encuentra eliminado, por favor, contáctese con un administrador");
+    		RequestDispatcher dispatcher = getServletContext()
+        		      .getRequestDispatcher("/login.jsp");
+        		    dispatcher.forward(req, resp);
+    	}
+    	
+    if (!usuario.isNull()) {
     		req.getSession().setAttribute("user", usuario);
     		resp.sendRedirect("index.jsp");    		
        	} else {

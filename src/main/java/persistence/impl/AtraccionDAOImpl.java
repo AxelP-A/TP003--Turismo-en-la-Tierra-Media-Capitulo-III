@@ -87,6 +87,21 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 	
+	public int habilitar(Atraccion atraccion) {
+		try {
+			String sql = "UPDATE ATRACCIONES SET ELIMINADA = NULL WHERE ID_ATRACCION = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, atraccion.getId());	
+			int rows = statement.executeUpdate();
+			
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
 	public Atraccion findByAtraccionId(int id) {
 		try {
 			String sql = "SELECT * FROM ATRACCIONES WHERE ID_ATRACCION = ?";

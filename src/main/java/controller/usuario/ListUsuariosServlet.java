@@ -31,7 +31,6 @@ public class ListUsuariosServlet extends HttpServlet implements Servlet{
 		
 		List<Usuario> usuario = usuarioService.list();
 		
-		
 		req.setAttribute("listaUsuarios", usuario);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/usuario/index.jsp");

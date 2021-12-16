@@ -136,13 +136,19 @@
 											href="/Tp003-TurismoEnLaTierraMedia/usuario/edit.do?id=${usuario.getId()}">
 											<i class="fas fa-pen-square"> </i>
 										</a>
-										
-										<c:if test="${usuario.estaActivo()}">
+										<c:choose>
+										<c:when
+										test="${usuario.estaActivo()}">
 										<a
 											href="/Tp003-TurismoEnLaTierraMedia/usuario/delete.do?id=${usuario.getId()}">
 											<i class="fas fa-trash-alt"></i>
-										</a></c:if>
-										
+										</a>
+										</c:when>
+										<c:otherwise>
+										<a href="/Tp003-TurismoEnLaTierraMedia/usuario/habilitar.do?id=${usuario.getId()}">
+										<i class="fas fa-trash-restore-alt"></i></a>
+										</c:otherwise>
+										</c:choose>
 									</c:when>
 									<c:otherwise>
 											 <i Style="color:gray;" class="fas fa-ban"></i> 

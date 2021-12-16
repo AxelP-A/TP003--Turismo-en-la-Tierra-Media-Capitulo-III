@@ -181,6 +181,22 @@ public class PromocionDAOImpl implements PromocionDAO {
 			throw new MissingDataException(e);
 		}
 	}
+	
+	@Override
+	public int habilitar(Promocion promocion) {
+		try {
+			String sql = "UPDATE PROMOCIONES SET ELIMINADA = NULL WHERE ID_PROMOCION = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, promocion.getId());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
 
 	@Override
 	public int eliminarAtraccion(int idPromocion, int idAtraccion) {

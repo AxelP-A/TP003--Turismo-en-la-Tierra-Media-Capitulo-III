@@ -66,6 +66,21 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 	
+	public int habilitar(Usuario user) {
+		try {
+			String sql = "UPDATE USUARIOS SET ELIMINADO = NULL WHERE ID_USUARIO = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, user.getId());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
 	
 	public Usuario findByUserId(Integer id) {	//deber�amos buscar por id?
 		try {
