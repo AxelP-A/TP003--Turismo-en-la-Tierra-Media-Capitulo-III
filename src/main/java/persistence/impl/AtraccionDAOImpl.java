@@ -10,7 +10,6 @@ import java.util.List;
 import persistence.AtraccionDAO;
 import persistence.commons.ConnectionProvider;
 import persistence.commons.MissingDataException;
-import sugeribles.Sugerible;
 import model.Atraccion;
 
 public class AtraccionDAOImpl implements AtraccionDAO {

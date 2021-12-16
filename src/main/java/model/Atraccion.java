@@ -176,6 +176,7 @@ public class Atraccion implements Sugerible {
 	
 	
 	
+	
 	public Map<String, String> getErrors() {
 		return errors;
 	}

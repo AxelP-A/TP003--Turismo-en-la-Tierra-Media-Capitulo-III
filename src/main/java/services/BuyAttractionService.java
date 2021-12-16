@@ -27,7 +27,7 @@ public class BuyAttractionService {
 		itinerarioService.crearListaAtraccionesAceptadas(usuario);
 		
 		if (!atraccion.comprobarCupo()) {	
-			errors.put("attraction", "No hay cupo disponible");
+			errors.put("atraccion", "No hay cupo disponible");
 		}
 		if (!usuario.tieneDinero(atraccion)) {
 			errors.put("user", "No tienes dinero suficiente");

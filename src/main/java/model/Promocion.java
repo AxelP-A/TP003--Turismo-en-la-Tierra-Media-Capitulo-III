@@ -118,7 +118,6 @@ public abstract class Promocion implements Sugerible {
 		return true;
 	}
 	
-	
 	public List<Atraccion> getAtraccionesIncluidas() {
 		return atraccionesIncluidas;
 	}
@@ -128,10 +127,7 @@ public abstract class Promocion implements Sugerible {
 		return errors.isEmpty();
 	}
 	
-	
-	
 	public boolean estaHabilitada() {
-
 		return (this.habilitada == null && estanHabilitadas());
 	}
 
@@ -182,7 +178,6 @@ public abstract class Promocion implements Sugerible {
 		return id;
 	}
 	
-		
 	public Map<String, String> getErrors() {
 		return errors;
 	}
@@ -210,7 +205,6 @@ public abstract class Promocion implements Sugerible {
 		}
 	}
 	
-	
 	private boolean validarAtracciones() {
 
 		for (int i = 0; i < atraccionesIncluidas.size(); i++) {
@@ -221,8 +215,6 @@ public abstract class Promocion implements Sugerible {
 		return true;
 	}
 
-	
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(atraccionesIncluidas, id, nombre);
