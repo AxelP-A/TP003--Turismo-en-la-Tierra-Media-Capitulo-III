@@ -9,13 +9,13 @@ public class PromocionAbsoluta extends Promocion {
 
 	private int monedas;
 
-	public PromocionAbsoluta(int id, String nombre, List<Atraccion> listaAtracciones, int monedas, String descripcion) {
-		super(id ,nombre, listaAtracciones, descripcion);
+	public PromocionAbsoluta(int id, String nombre, List<Atraccion> listaAtracciones, int monedas, String descripcion, String fechaBaja) {
+		super(id ,nombre, listaAtracciones, descripcion, fechaBaja);
 		this.monedas = monedas;
 	}
 	
 	public PromocionAbsoluta(int id) {
-		super(id, null, null, null);
+		super(id, null, null, null, null);
 	}
 	
 	/** En este m�todo, tenemos 2 ideas distintas sobre como deber�a funcionar, por lo tanto, dejamos ambos escritos, uno funcionando actualmente, y el otro comentado.

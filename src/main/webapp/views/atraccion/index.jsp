@@ -116,6 +116,10 @@
 					<c:forEach items="${atraccion}" var="atraccion">
 
 
+
+
+
+
 						<c:if test="${user.isAdmin()}">
 							<tr>
 								<td><strong><c:out value="${atraccion.nombre}"></c:out></strong>
@@ -137,30 +141,6 @@
 								</c:otherwise>
 										</c:choose></td>
 								</c:if>
-								<c:if test="${!user.isAdmin()}">
-									<td><c:choose>
-											<c:when
-												test="${user.tieneDinero(atraccion) && user.tieneTiempo(atraccion) && atraccion.comprobarCupo() && buscarEnLista.noCompro(atraccion, atraccionesAceptadas)}">
-												<c:choose>
-													<c:when test="${!atraccion.esPromocion()}">
-														<a
-															href="/Tp003-TurismoEnLaTierraMedia/atraccion/buy.do?id=${atraccion.id}">
-															<i class="fas fa-shopping-cart" Style="color: green;"></i>
-														</a>
-													</c:when>
-													<c:otherwise>
-														<a
-															href="/Tp003-TurismoEnLaTierraMedia/promocion/buy.do?id=${atraccion.id}">
-															<i class="fas fa-shopping-cart" Style="color: green;"></i>
-														</a>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-											<c:otherwise>
-												<i Style="color: gray;" class="fas fa-ban"></i>
-											</c:otherwise>
-										</c:choose></td>
-								</c:if>
 								<c:choose>
 									<c:when test="${!atraccion.esPromocion()}">
 										<td><a href="#${atraccion.getId()}-promocion"><i
@@ -171,17 +151,14 @@
 											href="#${atraccion.getId()}-atraccion"><i
 												class="fas fa-angle-double-right"></i></a></td>
 									</c:otherwise>
-								</c:choose>
+								</c:choose>						
 								<c:if test="${user.isAdmin()}">
 									<c:choose>
 										<c:when test="${!atraccion.esPromocion()}">
 											<td><a
 												href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}">
 													<i class="fas fa-pen-square" Style="color: blue;"></i>
-											</a> 
-											
-											
-											<c:choose>
+											</a> <c:choose>
 													<c:when test="${atraccion.estaHabilitada()}">
 														<a
 															href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.getId()}">
@@ -195,16 +172,12 @@
 														</a>
 													</c:otherwise>
 												</c:choose></td>
-
-
 										</c:when>
 										<c:otherwise>
 											<td><a
 												href="/Tp003-TurismoEnLaTierraMedia/promocion/edit.do?id=${atraccion.id}">
 													<i class="fas fa-pen-square" Style="color: blue;"></i>
-											</a> 
-																	
-												<c:choose>
+											</a> <c:choose>
 													<c:when test="${atraccion.estaHabilitada()}">
 														<a
 															href="/Tp003-TurismoEnLaTierraMedia/promocion/delete.do?id=${atraccion.getId()}">
@@ -217,15 +190,26 @@
 															<i class="fas fa-trash-restore-alt"></i>
 														</a>
 													</c:otherwise>
-												</c:choose>
-												
-												
-												</td>
+												</c:choose></td>
 										</c:otherwise>
 									</c:choose>
 								</c:if>
 							</tr>
 						</c:if>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -241,17 +225,6 @@
 									<td><c:out value="${atraccion.tiempoNecesario}"></c:out></td>
 									<td><c:out value="${atraccion.getCupo()}"></c:out></td>
 									<td><c:out value="${atraccion.getTipo()}"></c:out></td>
-
-									<c:if test="${user.isAdmin()}">
-										<td><c:choose>
-												<c:when test="${atraccion.estaHabilitada()}">
-									Habilitado
-								</c:when>
-												<c:otherwise>
-									Eliminado
-								</c:otherwise>
-											</c:choose></td>
-									</c:if>
 
 									<c:if test="${!user.isAdmin()}">
 										<td><c:choose>
@@ -289,26 +262,6 @@
 													class="fas fa-angle-double-right"></i></a></td>
 										</c:otherwise>
 									</c:choose>
-									<c:if test="${user.isAdmin()}">
-										<c:choose>
-											<c:when test="${!atraccion.esPromocion()}">
-												<td><a
-													href="/Tp003-TurismoEnLaTierraMedia/atraccion/edit.do?id=${atraccion.id}">
-														<i class="fas fa-pen-square"></i>
-												</a> <a
-													href="/Tp003-TurismoEnLaTierraMedia/atraccion/delete.do?id=${atraccion.id}"><i
-														class="fas fa-trash-alt"></i></a></td>
-											</c:when>
-											<c:otherwise>
-												<td><a
-													href="/Tp003-TurismoEnLaTierraMedia/promocion/edit.do?id=${atraccion.id}">
-														<i class="fas fa-pen-square"></i>
-												</a> <a
-													href="/Tp003-TurismoEnLaTierraMedia/promocion/delete.do?id=${atraccion.id}"><i
-														class="fas fa-trash-alt"></i></a></td>
-											</c:otherwise>
-										</c:choose>
-									</c:if>
 								</tr>
 							</c:if>
 						</c:if>
@@ -386,6 +339,6 @@
 			</div>
 		</footer>
 	</main>
-	>>>>>>> c1984b4ce04e942559e6f077e95c717e915ec80b
+
 </body>
 </html>

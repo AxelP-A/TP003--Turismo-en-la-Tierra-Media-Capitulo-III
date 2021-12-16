@@ -15,13 +15,15 @@ public abstract class Promocion implements Sugerible {
 	private String habilitada;
 	private int calculoDeCosto;
 	private String descripcion;
+	private String fechaBaja;
 	private Map <String, String> errors;
 
-	public Promocion(int id, String nombreDePromocion, List<Atraccion> listaAtracciones, String descripcion) {
+	public Promocion(int id, String nombreDePromocion, List<Atraccion> listaAtracciones, String descripcion, String fechaBaja) {
 		this.id = id;
 		this.setNombre(nombreDePromocion);
 		this.setArrayAtracciones(listaAtracciones);
 		this.descripcion = descripcion;
+		this.fechaBaja = fechaBaja;
 	}
 	
 	public Promocion(int id, String nombreDePromocion, String descripcion) {

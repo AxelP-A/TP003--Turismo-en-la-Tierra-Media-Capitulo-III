@@ -49,6 +49,13 @@ public class AttractionService {
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		atraccionDAO.delete(atraccion);
 	}
+	
+	public void habilitar(int id) {
+		Atraccion atraccion = new Atraccion(id);
+		
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		atraccionDAO.habilitar(atraccion);
+	}
 
 	public Atraccion find(int id) {
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();

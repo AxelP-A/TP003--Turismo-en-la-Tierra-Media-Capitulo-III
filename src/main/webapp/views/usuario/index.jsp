@@ -42,9 +42,11 @@
 				<a href="../index.jsp"> <img
 					src="../assets/img/tolkien-plano.jpg" alt="logo"></a>
 			</p>
-		</div>
-		<div class="enlaces-contenedor">
-			<a href="../index.jsp">Inicio</a> <a href="">Acerca de</a> <a href="">Soporte</a>
+
+			<div class="enlaces-contenedor">
+				<a href="../index.jsp">Inicio</a> <a href="">Acerca de</a> <a
+					href="">Soporte</a>
+			</div>
 			<div class="dropdown">
 				<c:out value="${user.nombre}"></c:out>
 				<span><i class="fas fa-caret-down"></i></span>
@@ -57,6 +59,7 @@
 							class="fas fa-sign-out-alt">Logout</i></a>
 				</ul>
 			</div>
+
 		</div>
 	</header>
 	<main class="mainSugeribles">
@@ -165,8 +168,7 @@
 					<div class="img uno"></div>
 					<div class="container-text">
 						<h2>Itinerario:</h2>
-						<br>
-						<br>
+						<br> <br>
 
 						<table class="dataTable table-promocion" style="width: 80%">
 							<thead>
@@ -203,7 +205,29 @@
 				</div>
 			</div>
 		</c:forEach>
+
+		<footer>
+			<div class="contenedor">
+				<img src="../assets/img/tolkien-plano.jpg" alt="logo">
+				<div class="enlaces-footer">
+					<a href=""><i class="fas fa-wifi"></i></a> <a href=""><i
+						class="fab fa-twitter"></i></a> <a href=""><i
+						class="fab fa-instagram"></i></a> <a href=""><i
+						class="fab fa-facebook"></i></a> <a href=""><i
+						class="fab fa-linkedin"></i></a>
+				</div>
+				<p>
+					<i class="far fa-copyright"></i> 2021 - Todos los derechos
+					reservados
+				</p>
+			</div>
+		</footer>
+
+
+
 	</main>
+
+
 
 </body>
 </html>

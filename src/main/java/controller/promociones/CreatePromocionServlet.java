@@ -40,8 +40,9 @@ public class CreatePromocionServlet extends HttpServlet {
 		String tipo = req.getParameter("tipo");
 		String descripcion = req.getParameter("descripcion");
 		String atraccionesIncluidas = req.getParameter("atracciones");
+		String fechaBaja = null;
 
-		Promocion promocion = promocionService.create(id, nombre, costo, tipo, atraccionesIncluidas, descripcion);
+		Promocion promocion = promocionService.create(id, nombre, costo, tipo, atraccionesIncluidas, descripcion, fechaBaja);
 		if (promocion.isValid()) {
 			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
 		} else {

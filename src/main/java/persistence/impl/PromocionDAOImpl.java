@@ -60,7 +60,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 	@Override
 	public List<Promocion> findAll(List<Atraccion> listaAtracciones) {
 		try {
-			String sql = "SELECT promociones.id_promocion, promociones.tipo_promocion, promociones.nombre_promocion, promociones.costo_promocion, promociones.descripcion,"
+			String sql = "SELECT promociones.id_promocion, promociones.tipo_promocion, promociones.nombre_promocion, promociones.costo_promocion, promociones.descripcion,promociones.eliminada ,"
 					+ " group_concat(atracciones_en_promo.id_atraccion, ';') AS 'atracciones_en_promocion'\n"
 					+ "FROM promociones JOIN atracciones_en_promo ON atracciones_en_promo.id_promocion = promociones.id_promocion\n"
 					+ "group by promociones.id_promocion";
@@ -84,17 +84,20 @@ public class PromocionDAOImpl implements PromocionDAO {
 				case "PORCENTUAL":
 					promocion = new PromocionPorcentual(resultados.getInt("id_promocion"),
 							resultados.getString("nombre_promocion"), atraccionesIncluidas,
-							resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
+							resultados.getDouble("costo_promocion"), resultados.getString("descripcion"), 
+							resultados.getString("eliminada"));
 					break;
 				case "AXB":
 					promocion = new PromocionAxB(resultados.getInt("id_promocion"),
 							resultados.getString("nombre_promocion"), atraccionesIncluidas,
-							resultados.getString("descripcion"));
+							resultados.getString("descripcion"), 
+							resultados.getString("eliminada"));
 					break;
 				case "ABSOLUTA":
 					promocion = new PromocionAbsoluta(resultados.getInt("id_promocion"),
 							resultados.getString("nombre_promocion"), atraccionesIncluidas,
-							(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
+							(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"), 
+							resultados.getString("eliminada"));
 					break;
 				}
 				promociones.add(promocion);
@@ -124,7 +127,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 	public Promocion findByPromocionId(int id, List<Atraccion> listaAtracciones) {
 
 		try {
-			String sql = "SELECT promociones.id_promocion, promociones.tipo_promocion, promociones.nombre_promocion, promociones.costo_promocion, promociones.descripcion,"
+			String sql = "SELECT promociones.id_promocion, promociones.tipo_promocion, promociones.nombre_promocion, promociones.costo_promocion, promociones.descripcion, promociones.eliminada,"
 					+ " group_concat(atracciones_en_promo.id_atraccion, ';') AS 'atracciones_en_promocion'\n"
 					+ "FROM promociones JOIN atracciones_en_promo ON atracciones_en_promo.id_promocion = promociones.id_promocion\n"
 					+ "WHERE promociones.id_promocion = ?" + "group by promociones.id_promocion";
@@ -146,17 +149,20 @@ public class PromocionDAOImpl implements PromocionDAO {
 			case "PORCENTUAL":
 				promocion = new PromocionPorcentual(resultados.getInt("id_promocion"),
 						resultados.getString("nombre_promocion"), atraccionesIncluidas,
-						resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
+						resultados.getDouble("costo_promocion"), resultados.getString("descripcion"), 
+						resultados.getString("eliminada"));
 				break;
 			case "AXB":
 				promocion = new PromocionAxB(resultados.getInt("id_promocion"),
 						resultados.getString("nombre_promocion"), atraccionesIncluidas,
-						resultados.getString("descripcion"));
+						resultados.getString("descripcion"), 
+						resultados.getString("eliminada"));
 				break;
 			case "ABSOLUTA":
 				promocion = new PromocionAbsoluta(resultados.getInt("id_promocion"),
 						resultados.getString("nombre_promocion"), atraccionesIncluidas,
-						(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"));
+						(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"), 
+						resultados.getString("eliminada"));
 				break;
 			}
 

@@ -19,7 +19,7 @@ public class PromocionService {
 	}
 
 	public Promocion create(int id, String nombre, int costo, String tipo, String listaAtracciones,
-			String descripcion) {
+			String descripcion, String fechaBaja) {
 
 		List<Atraccion> atraccionesIncluidas = obtenerAtraccionesIncluidas(listaAtracciones);
 
@@ -27,13 +27,13 @@ public class PromocionService {
 
 		switch (tipo) {
 		case "PORCENTUAL":
-			promocion = new PromocionPorcentual(-1, nombre, atraccionesIncluidas, costo, descripcion);
+			promocion = new PromocionPorcentual(-1, nombre, atraccionesIncluidas, costo, descripcion, fechaBaja);
 			break;
 		case "AXB":
-			promocion = new PromocionAxB(-1, nombre, atraccionesIncluidas, descripcion);
+			promocion = new PromocionAxB(-1, nombre, atraccionesIncluidas, descripcion, fechaBaja);
 			break;
 		case "ABSOLUTA":
-			promocion = new PromocionAbsoluta(-1, nombre, atraccionesIncluidas, costo, descripcion);
+			promocion = new PromocionAbsoluta(-1, nombre, atraccionesIncluidas, costo, descripcion, fechaBaja);
 			break;
 		}
 

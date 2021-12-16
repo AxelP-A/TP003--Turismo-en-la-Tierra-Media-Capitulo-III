@@ -7,8 +7,8 @@ import model.Promocion;
 
 public class PromocionAxB extends Promocion {
 
-	public PromocionAxB(int id, String nombre, List<Atraccion> arrayAtracciones, String descripcion) {
-		super(id, nombre, arrayAtracciones, descripcion);
+	public PromocionAxB(int id, String nombre, List<Atraccion> arrayAtracciones, String descripcion, String fechaBaja) {
+		super(id, nombre, arrayAtracciones, descripcion, fechaBaja);
 	}
 
 	@Override
