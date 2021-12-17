@@ -38,4 +38,10 @@ public class PromocionPorcentual extends Promocion {
 	public int getCalculoDeCosto() {
 		return (int) porcentajeDescuento;
 	}
+	
+	@Override
+	public String getTipoProm() {
+		return "PORCENTUAL";
+	}
+	
 }

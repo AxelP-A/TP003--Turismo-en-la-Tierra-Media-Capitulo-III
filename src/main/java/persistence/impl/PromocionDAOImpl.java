@@ -3,6 +3,7 @@ package persistence.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -54,7 +55,23 @@ public class PromocionDAOImpl implements PromocionDAO {
 
 	@Override
 	public int update(Promocion promocion) {
-		return 0;
+		try {
+			String sql = "UPDATE promociones SET costo_promocion = ?, nombre_promocion = ?, "
+					+ "descripcion = ? WHERE id_promocion = ?";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, promocion.getCalculoDeCosto());
+			statement.setString(2, promocion.getNombre());
+			statement.setString(3, promocion.getDescripcion());
+			statement.setInt(4, promocion.getId());
+
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
 	}
 
 	@Override
@@ -75,7 +92,6 @@ public class PromocionDAOImpl implements PromocionDAO {
 
 			while (resultados.next()) {
 				List<Atraccion> atraccionesIncluidas = new ArrayList<Atraccion>();
-
 				String tipoPromocion = resultados.getString("tipo_promocion");
 				String atracciones = resultados.getString("atracciones_en_promocion");
 				atraccionesIncluidas = listarAtraccionesIncluidas(atracciones, listaAtracciones);
@@ -84,19 +100,18 @@ public class PromocionDAOImpl implements PromocionDAO {
 				case "PORCENTUAL":
 					promocion = new PromocionPorcentual(resultados.getInt("id_promocion"),
 							resultados.getString("nombre_promocion"), atraccionesIncluidas,
-							resultados.getDouble("costo_promocion"), resultados.getString("descripcion"), 
+							resultados.getDouble("costo_promocion"), resultados.getString("descripcion"),
 							resultados.getString("eliminada"));
 					break;
 				case "AXB":
 					promocion = new PromocionAxB(resultados.getInt("id_promocion"),
 							resultados.getString("nombre_promocion"), atraccionesIncluidas,
-							resultados.getString("descripcion"), 
-							resultados.getString("eliminada"));
+							resultados.getString("descripcion"), resultados.getString("eliminada"));
 					break;
 				case "ABSOLUTA":
 					promocion = new PromocionAbsoluta(resultados.getInt("id_promocion"),
 							resultados.getString("nombre_promocion"), atraccionesIncluidas,
-							(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"), 
+							(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"),
 							resultados.getString("eliminada"));
 					break;
 				}
@@ -149,19 +164,18 @@ public class PromocionDAOImpl implements PromocionDAO {
 			case "PORCENTUAL":
 				promocion = new PromocionPorcentual(resultados.getInt("id_promocion"),
 						resultados.getString("nombre_promocion"), atraccionesIncluidas,
-						resultados.getDouble("costo_promocion"), resultados.getString("descripcion"), 
+						resultados.getDouble("costo_promocion"), resultados.getString("descripcion"),
 						resultados.getString("eliminada"));
 				break;
 			case "AXB":
 				promocion = new PromocionAxB(resultados.getInt("id_promocion"),
 						resultados.getString("nombre_promocion"), atraccionesIncluidas,
-						resultados.getString("descripcion"), 
-						resultados.getString("eliminada"));
+						resultados.getString("descripcion"), resultados.getString("eliminada"));
 				break;
 			case "ABSOLUTA":
 				promocion = new PromocionAbsoluta(resultados.getInt("id_promocion"),
 						resultados.getString("nombre_promocion"), atraccionesIncluidas,
-						(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"), 
+						(int) resultados.getDouble("costo_promocion"), resultados.getString("descripcion"),
 						resultados.getString("eliminada"));
 				break;
 			}
@@ -187,7 +201,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 			throw new MissingDataException(e);
 		}
 	}
-	
+
 	@Override
 	public int habilitar(Promocion promocion) {
 		try {
@@ -223,13 +237,54 @@ public class PromocionDAOImpl implements PromocionDAO {
 	}
 
 	@Override
+	public int insertarAtraccion(int idPromocion, int idAtraccion) {
+		try {
+			String sql = "INSERT INTO atracciones_en_promo (id_promocion, id_atraccion)" + "VALUES ( ?, ?)";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, idPromocion);
+			statement.setInt(2, idAtraccion);
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+
+	}
+
+	@Override
 	public List<Promocion> findAll() {
 		return null;
 	}
 
 	@Override
-	public int insert(Promocion t) {
-		return 0;
+	public int insert (Promocion promocion) {
+		try {
+			String sql = "INSERT INTO promociones (tipo_promocion, costo_promocion, nombre_promocion, descripcion)" 
+		               + "VALUES ( ?, ?, ?, ?)";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			statement.setString(1, promocion.getTipoProm());
+			statement.setInt(2, promocion.getCalculoDeCosto());
+			statement.setString(3, promocion.getNombre());
+			statement.setString(4, promocion.getDescripcion());
+			int rows = statement.executeUpdate();
+			
+			ResultSet generatedKeys = statement.getGeneratedKeys();
+			int idGenerado = rows;
+
+			if (generatedKeys.next()) {
+				idGenerado = generatedKeys.getInt(1);
+			}
+			return idGenerado;
+				
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+
 	}
 
 	@Override

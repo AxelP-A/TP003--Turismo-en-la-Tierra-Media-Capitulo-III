@@ -190,6 +190,9 @@ public abstract class Promocion implements Sugerible {
 		if (this.getCostoDeVisita() <= 0) {
 			errors.put("costoDeVisita", "Debe ser positivo");
 		}
+		if (this.getCalculoDeCosto() < 0) {
+			errors.put("calculoDeCosto", "Debe ser mayor a cero");
+		}
 		if(this.getTiempoNecesario() <= 0) {
 			errors.put("tiempoNecesario", "Debe ser positivo");
 		}
@@ -234,4 +237,19 @@ public abstract class Promocion implements Sugerible {
 		return Objects.equals(atraccionesIncluidas, other.atraccionesIncluidas) && id == other.id
 				&& Objects.equals(nombre, other.nombre);
 	}
+
+	@Override
+	public String toString() {
+		return "Promocion [atraccionesIncluidas=" + atraccionesIncluidas + ", nombre=" + nombre + ", id=" + id
+				+ ", habilitada=" + habilitada + ", calculoDeCosto=" + calculoDeCosto + ", descripcion=" + descripcion
+				+ ", fechaBaja=" + fechaBaja + ", errors=" + errors + "]";
+	}
+
+	public abstract String getTipoProm();
+	
+	
+	
+	
+	
+	
 }

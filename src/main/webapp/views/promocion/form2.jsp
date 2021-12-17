@@ -8,14 +8,14 @@
 	</div>
 	<div class="mb-3">
 		<label for="cost"
-			class='col-form-label ${promocion.errors.get("calculoDeCosto") != null ? "is-invalid" : "" }'>Coeficiente promocion:</label>
-		<input class="form-control" type="number" id="cost" name="cost"
-			required value="${promocion.getCalculoDeCosto()}"></input>
+			class='col-form-label ${promocion.errors.get("calculoDeCosto") != null ? "is-invalid" : "" }'>Coeficiente
+			promocion:</label> <input class="form-control" type="number" id="cost"
+			name="cost" required value="${promocion.getCalculoDeCosto()}"></input>
 		<div class="invalid-feedback">
 			<c:out value='${promocion.errors.get("calculoDeCosto")}'></c:out>
 		</div>
 	</div>
-	<div class="mb-3">
+	<!--  <div class="mb-3">
 		<label for="duration"
 			class='col-form-label ${promocion.getErrors().get("tiempoNecesario") != null ? "is-invalid" : "" }'>Tiempo
 			Necesario:</label> <input class="form-control" type="number" id="duration"
@@ -23,8 +23,8 @@
 		<div class="invalid-feedback">
 			<c:out value='${promocion.errors.get("tiempoNecesario")}'></c:out>
 		</div>
-	</div>
-	<div class="mb-3">
+	</div>-->
+	<!--  <div class="mb-3">
 		<label for="capacity"
 			class='col-form-label ${promocion.errors.get("cupoDePersonas") != null ? "is-invalid" : "" }'>Cupo:</label>
 		<input class="form-control" type="number" id="capacity"
@@ -42,6 +42,15 @@
 			<c:out value='${promocion.errors.get("tipo")}'></c:out>
 		</div>
 	</div>-->
+	<div class="mb-3">
+		<label for="sel1" class="form-label">Select list (select one):</label> 
+		<select	class="form-select" id="sel1" name="sellist1">
+			<option selected value="AXB">AxB</option>
+			<option value="ABSOLUTA">ABSOLUTA</option>
+			<option value="PORCENTUAL">PORCENTUAL</option>
+		</select>
+	</div>
+
 	<div class="mb-3">
 		<label for="descripcion"
 			class='col-form-label ${promocion.errors.get("descripcion") != null ? "is-invalid" : "" }'>Descripcion</label>
@@ -62,15 +71,17 @@
 					<c:when
 						test="${!buscarEnLista.noCompro(atraccion, promocion.getAtraccionesIncluidas())}">
 						<option <c:out value="selected"></c:out>
-							value="${atraccion.getId()}"><c:out value="${atraccion.getNombre()}"></c:out>
-							(<c:out value="${atraccion.getTipo()}"></c:out>)
+							value="${atraccion.getId()}"><c:out
+								value="${atraccion.getNombre()}"></c:out> (
+							<c:out value="${atraccion.getTipo()}"></c:out>)
 						</option>
 					</c:when>
 					<c:otherwise>
-						<option value="${atraccion.getId()}"><c:out value="${atraccion.getNombre()}"></c:out> 
-						(<c:out value="${atraccion.getTipo()}"></c:out>)
-						
-						
+						<option value="${atraccion.getId()}"><c:out
+								value="${atraccion.getNombre()}"></c:out> (
+							<c:out value="${atraccion.getTipo()}"></c:out>)
+
+
 						</option>
 					</c:otherwise>
 				</c:choose>
