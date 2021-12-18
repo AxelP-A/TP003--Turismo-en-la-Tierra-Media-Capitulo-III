@@ -38,7 +38,6 @@
 			</div>
 		</div>
 	</header>
-	<!--   <jsp:include page="partials/nav.jsp"></jsp:include> -->
 	<main>
 		<div class="background-seccionUno">
 			<section class="seccion-uno">
@@ -51,7 +50,6 @@
 					<a href="views/giftshop.html">Giftshop</a> <a
 						href="views/galeria.html">Galeria de Fotos</a> <a
 						href="atraccion/index.do">Tienda</a>
-					<!--   <a href="views/atraccion/index.jsp">Tienda</a>-->
 					<a href="">Comentarios</a> <a href="">Contacto</a>
 					<c:if test="${!user.isAdmin()}">
 						<a href="itinerario/index.do">Itinerario</a>

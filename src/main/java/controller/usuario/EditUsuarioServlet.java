@@ -44,7 +44,10 @@ public class EditUsuarioServlet extends HttpServlet {
 		double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
 		String password = req.getParameter("password");
 		
-		Usuario usuario = usuarioService.updateUsuario(id, nombre, preferida, presupuesto, tiempoDisponible, password);
+		String admin = req.getParameter("admin");
+		Boolean isAdmin = convertToBoolean(admin);
+		
+		Usuario usuario = usuarioService.updateUsuario(id, nombre, preferida, presupuesto, tiempoDisponible, password, isAdmin);
 		
 		if (usuario.isValid()) {
 			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/usuario/index.do");
@@ -54,4 +57,13 @@ public class EditUsuarioServlet extends HttpServlet {
 			dispatcher.forward(req, resp);
 		}
 	}
+	
+	private boolean convertToBoolean(String value) {
+		boolean returnValue = false;
+		if ("on".equalsIgnoreCase(value)) {
+			returnValue = true;
+		}
+		return returnValue;
+	}
+	
 }

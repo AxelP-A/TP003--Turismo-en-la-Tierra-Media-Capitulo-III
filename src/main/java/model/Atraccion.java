@@ -50,8 +50,6 @@ public class Atraccion implements Sugerible {
 		this.descripcion = descripcion;
 		this.habilitada = fechaBaja;
 	}
-	
-
 
 	public Atraccion(int id) {
 		this.id = id;
@@ -73,7 +71,6 @@ public class Atraccion implements Sugerible {
 	}
 
 	@Override
-	// Considerar pooner un int en el cupo, para poder comprar por ejemplo, un pack familiar.
 	public boolean comprobarCupo() {
 		return this.cupoDePersonas > 0;
 	}
@@ -89,7 +86,7 @@ public class Atraccion implements Sugerible {
 	}
 
 	@Override
-	// Considerar pooner un int en el cupo, para poder comprar por ejemplo, un pack familiar.
+	// Mejora a considerar: poner un int en el cupo, para poder comprar por ejemplo, un pack familiar.
 	public void restarCupo() {
 		this.cupoDePersonas--;
 	}
@@ -133,15 +130,6 @@ public class Atraccion implements Sugerible {
 		lista.add((Atraccion) sugerible);
 	}
 	
-	@Override
-	public void imprimirOferta() {
-		
-		System.out.println("Usted esta accediendo a la atraccion: " + this.getNombre().toUpperCase() + ".");
-		System.out.println("El costo de la atraccion es: " + this.getCostoDeVisita() + " monedas.");
-		System.out.println("La duracion aproximada del recorrido es de: " + this.getTiempoNecesario() + " horas.");
-		System.out.println("-----------------------------------------------------------------");
-	}
-	
 	public void setNombre(String nuevoNombre) {
 		this.nombre = nuevoNombre;
 	}
@@ -173,8 +161,6 @@ public class Atraccion implements Sugerible {
 	public boolean estaHabilitada() {
 		return this.habilitada == null;
 	}
-	
-	
 	
 	
 	public Map<String, String> getErrors() {

@@ -7,8 +7,6 @@
 <jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
 <body>
-	<!--<jsp:include page="/partials/nav.jsp"></jsp:include>-->
-
 	<main class="container">
 
 		<c:if test="${promocion != null && !promocion.isValid()}">

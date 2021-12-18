@@ -92,8 +92,6 @@ public class PromocionService {
 		return promocion;
 	}
 
-	// Revisar manera de implementar correctamente, ya que nos null no los toma
-	// bien.
 	public void delete(int id) {
 
 		Promocion promocion = new PromocionAbsoluta(id);

@@ -14,11 +14,11 @@ public class ComparadorDeSugeribles implements Comparator<Sugerible> {
 	}
 	
 	/**
-	 * Comparamos si los tipos son iguales o diferentes, lo que nos interesa, es que la comprobaci�n nos devuelva
+	 * Comparamos si los tipos son iguales o diferentes, lo que nos interesa, es que la comprobacion nos devuelva
 	 * un true o false, si la igualdad se cumple, comprobamos si los 2 sugeribles comprobados tienen la misma clase (ya 
-	 * sea atracci�n o promoci�n)si es el caso, comprobamos si los costos de visita son iguales, si son iguales, 
+	 * sea atraccion o promocion)si es el caso, comprobamos si los costos de visita son iguales, si son iguales, 
 	 * ordenamos en base al tiempo necesario, sino, ordenamos por el costo de visita. 
-	 *  En caso de que los tipos o las clases no sean iguales, las ordenamos en base al tipo o clase, seg�n corresponda.
+	 *  En caso de que los tipos o las clases no sean iguales, las ordenamos en base al tipo o clase, segun corresponda.
 	 *  
 	 */
 	@Override

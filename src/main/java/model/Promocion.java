@@ -71,7 +71,7 @@ public abstract class Promocion implements Sugerible {
 	}
 
 	/**
-	 * Obtenemos el tipo de la atracci�n de la posici�n 0, ya que todas las
+	 * Obtenemos el tipo de la atraccion de la posicion 0, ya que todas las
 	 * atracciones van a tener el mismo tipo.
 	 */
 	@Override
@@ -140,20 +140,6 @@ public abstract class Promocion implements Sugerible {
 	public void setCalculoDeCosto(double nuevoCalculo) {
 	}
 
-	@Override
-	public void imprimirOferta() {
-
-		System.out.println("Usted esta accediendo a la promocion: " + this.getNombre().toUpperCase() + ".");
-		System.out.println("Esta promo incluye las siguientes atracciones:");
-
-		for (int i = 0; i < this.getArrayAtracciones().size(); i++) {
-			System.out
-					.println((i + 1) + ". " + this.getNombreAtraccion(this.getArrayAtracciones().get(i)).toUpperCase());
-		}
-		System.out.println("El costo de la promocion es: " + this.getCostoDeVisita() + " monedas.");
-		System.out.println("La duracion aproximada del recorrido es de: " + this.getTiempoNecesario() + " horas.");
-		System.out.println("-----------------------------------------------------------------");
-	}
 
 	public String getNombreAtraccion(Atraccion atraccion) {
 		return atraccion.getNombre();
@@ -167,11 +153,6 @@ public abstract class Promocion implements Sugerible {
 		return this.atraccionesIncluidas;
 	}
 
-	/**
-	 * Pasamos por par�metro las atracciones que estar�n inclu�das en la promoci�n.
-	 * 
-	 * @param atraccionesIncluidas
-	 */
 	public void setArrayAtracciones(List<Atraccion> atraccionesIncluidas) {
 		this.atraccionesIncluidas = atraccionesIncluidas;
 	}

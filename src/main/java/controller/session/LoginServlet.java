@@ -15,6 +15,7 @@ import services.LoginService;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 8308079314140233763L;
 	private LoginService loginService;
+	
 
 	@Override
 	public void init() throws ServletException {
@@ -28,6 +29,7 @@ public class LoginServlet extends HttpServlet {
     	String password = req.getParameter("password");
     	
     	Usuario usuario = loginService.login(username, password);
+    	
     	
     	if (!usuario.estaActivo()) {
     		req.setAttribute("flash", "El usuario al que está intentando acceder se encuentra eliminado, por favor, contáctese con un administrador");

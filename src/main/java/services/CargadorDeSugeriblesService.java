@@ -33,10 +33,6 @@ public class CargadorDeSugeriblesService {
 	}
 	
 	public void listaSugeribles(Usuario usuario, List<Sugerible> sugerenciasOrdenadas) {
-		//cargarPromociones();
-		//cargarAtracciones();
-		//sugerenciasOrdenadas.addAll(this.promocionesVigentes);
-		//sugerenciasOrdenadas.addAll(this.atracciones);
 		this.ordenar(usuario.getAtraccionPreferida(),sugerenciasOrdenadas);
 	}
 		

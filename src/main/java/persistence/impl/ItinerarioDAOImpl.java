@@ -15,13 +15,13 @@ import sugeribles.Sugerible;
 import persistence.commons.MissingDataException;
 
 public class ItinerarioDAOImpl implements ItinerarioDAO {
-
+	
+	@Override
 	public int insertAtraccion(int id_usuario, int id_atraccion) {
 
 		try {
 			String sql = "INSERT OR IGNORE INTO Itinerario (id_usuario, id_atraccion) VALUES (?, ?)";
 			Connection conn = ConnectionProvider.getConnection();
-
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, id_usuario);
@@ -34,15 +34,15 @@ public class ItinerarioDAOImpl implements ItinerarioDAO {
 			throw new MissingDataException(e);
 		}
 	}
-
+	
+	@Override
 	public int insertPromocion(int id_usuario, int id_promocion) {
 
 		try {
 			String sql = "INSERT OR IGNORE INTO Itinerario (id_usuario, id_promocion) VALUES (?, ?)";
 			Connection conn = ConnectionProvider.getConnection();
-
 			PreparedStatement statement = conn.prepareStatement(sql);
-
+			
 			statement.setInt(1, id_usuario);
 			statement.setInt(2, id_promocion);
 
@@ -53,15 +53,15 @@ public class ItinerarioDAOImpl implements ItinerarioDAO {
 			throw new MissingDataException(e);
 		}
 	}
-
+	
+	@Override
 	public List<Sugerible> findByUserId(int id_usuario, List<Atraccion> listaAtracciones,
 			List<Promocion> listaPromociones) {
 
 		List<Sugerible> itinerario = new ArrayList<Sugerible>();
-
 		try {
 			String sql = "SELECT group_concat(id_atraccion,';') AS atracciones ,group_concat(id_promocion,';') AS promociones FROM itinerario WHERE id_usuario = ?\r\n"
-					+ "    GROUP BY id_usuario"; // devuelve una linea por cada usuario.
+					+ "    GROUP BY id_usuario";
 
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -79,14 +79,11 @@ public class ItinerarioDAOImpl implements ItinerarioDAO {
 			throw new MissingDataException(e);
 		}
 	}
-
+	
 	private List<Sugerible> seleccionarAtraccionesYpromociones(String atracciones, String promociones,
 			List<Atraccion> listaAtracciones, List<Promocion> listaPromociones) {
 
 		List<Sugerible> itinerario = new ArrayList<Sugerible>();
-
-		// método split (como en promo)x2, lo hacemos para las promos y para las
-		// atracciones, buscando por ID. Y las agregamos al itinerario.
 		if (atracciones != null) {
 			String[] idAtraccionesIncluidas = atracciones.split(";");
 			for (String atraccion : idAtraccionesIncluidas) {
@@ -111,63 +108,40 @@ public class ItinerarioDAOImpl implements ItinerarioDAO {
 		}
 		return itinerario;
 	}
-
+	
 	@Override
 	public List<Sugerible> findAll() {
 		return null;
 		
 	}
-
-
-
+	
 	@Override
 	public int countAll() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public int insert(Sugerible t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public int update(Sugerible t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public int delete(Sugerible t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public Sugerible find(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	// Creaci�n de itinerario para cada usuario (revisando por id de usuario, los id
-	// de las atracciones o promociones).
-	// Cada una de las
-	//
-
-	/*
-	 * private List<Sugerible> listarAtraccionesIncluidas() {
-	 * 
-	 * // List <Atraccion> listaAtracciones = new ArrayList<Atraccion>(); //
-	 * listaAtracciones = App.getAtracciones();
-	 * 
-	 * String[] idAtraccionesIncluidas = atracciones.split("|"); List<Atraccion>
-	 * atraccionesIncluidas = new ArrayList<Atraccion>();
-	 * 
-	 * for (String atraccion : idAtraccionesIncluidas) { int idAtraccion =
-	 * Integer.parseInt(atraccion); for (int k = 0; k < listaAtracciones.size();
-	 * k++) { if (idAtraccion == (listaAtracciones.get(k).getId())) {
-	 * atraccionesIncluidas.add(listaAtracciones.get(k)); } } } return
-	 * atraccionesIncluidas; }
-	 */
 }

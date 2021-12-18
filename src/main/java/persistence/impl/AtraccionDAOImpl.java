@@ -71,7 +71,6 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 	
-
 	public int delete(Atraccion atraccion) {
 		try {
 			String sql = "UPDATE ATRACCIONES SET ELIMINADA = datetime('now') WHERE ID_ATRACCION = ?";

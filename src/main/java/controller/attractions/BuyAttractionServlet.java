@@ -28,8 +28,6 @@ public class BuyAttractionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		Integer attractionId = Integer.parseInt(req.getParameter("id"));
-	
-		//String esPromo = req.getParameter("ep");
 
 		Usuario user = (Usuario) req.getSession().getAttribute("user");
 		Map<String, String> errors = buyAttractionService.buy(user.getId(), attractionId);
@@ -38,7 +36,7 @@ public class BuyAttractionServlet extends HttpServlet {
 		req.getSession().setAttribute("user", usuario);
 		
 		if (errors.isEmpty()) {
-			req.setAttribute("flash", "¡Gracias por comprar!");
+			req.setAttribute("flash", "¡Gracias por su compra!");
 		} else {
 			req.setAttribute("errors", errors);
 			req.setAttribute("flash", "No ha podido realizarse la compra");		

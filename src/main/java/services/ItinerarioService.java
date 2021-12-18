@@ -44,16 +44,5 @@ public class ItinerarioService {
 	public List<Sugerible> getItinerario() {
 		return itinerario;
 	}
-	
-	
-	/*public static void main(String[] args) throws InvalidNumberException, IOException {
-		
-		ItinerarioService itinerarioS = new ItinerarioService();
-		
-		Usuario Bruno = new Usuario(1, "Bruno", "AVENTURA", 10000, 12.00, "12345", true);
-		
-		itinerarioS.crearListaAtraccionesAceptadas(Bruno);	
-		
-	}*/
 
 }

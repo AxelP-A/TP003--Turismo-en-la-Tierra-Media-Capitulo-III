@@ -27,10 +27,7 @@ public class BuyPromocionServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		Integer promocionId = Integer.parseInt(req.getParameter("id"));
-	
-		//String esPromo = req.getParameter("ep");
-		
+		Integer promocionId = Integer.parseInt(req.getParameter("id"));	
 			
 		Usuario user = (Usuario) req.getSession().getAttribute("user");
 		Map<String, String> errors = buyPromocionService.buy(user.getId(), promocionId);
@@ -39,8 +36,8 @@ public class BuyPromocionServlet extends HttpServlet {
 		req.getSession().setAttribute("user", usuario);
 		
 		if (errors.isEmpty()) {
-			req.setAttribute("flash", "¡Gracias por comprar!");
-			//resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
+			req.setAttribute("flash", "¡Gracias por su compra!");
+			
 		} else {
 			req.setAttribute("errors", errors);
 			req.setAttribute("flash", "No ha podido realizarse la compra");

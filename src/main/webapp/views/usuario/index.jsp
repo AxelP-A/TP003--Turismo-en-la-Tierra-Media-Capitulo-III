@@ -126,17 +126,10 @@
 									Eliminado
 								</c:otherwise>
 								</c:choose></td>
-
-
-
-
-
-							<td class="open-promo"><a href="/Tp003-TurismoEnLaTierraMedia/usuario/listItinerario.do?id=${usuario.getId()}"> <i
-									class="fas fa-angle-double-right"></i></a></td>
-
-
-
-
+							<td class="open-promo"><a
+								href="/Tp003-TurismoEnLaTierraMedia/usuario/listItinerario.do?id=${usuario.getId()}">
+									<i class="fas fa-angle-double-right"></i>
+							</a></td>
 							<td><c:choose>
 									<c:when
 										test="${user.isAdmin() && (!usuario.isAdmin() || usuario.getId() == user.getId())}">
@@ -168,7 +161,6 @@
 				</tbody>
 			</table>
 		</div>
-
 
 
 		<c:forEach items="${listaUsuarios}" var="usuario">
@@ -231,12 +223,6 @@
 				</p>
 			</div>
 		</footer>
-
-
-
 	</main>
-
-
-
 </body>
 </html>

@@ -7,10 +7,8 @@
 <jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
 <body>
-	<!--<jsp:include page="/partials/nav.jsp"></jsp:include>-->
 
 	<main class="container">
-
 		<c:if test="${atraccion != null && !atraccion.isValid()}">
 			<div class="alert alert-danger">
 				<p>Se encontraron errores al crear la atracción.</p>

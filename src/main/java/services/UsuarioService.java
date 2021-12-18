@@ -24,7 +24,7 @@ public class UsuarioService {
 		return usuario;
 	}
 
-	public Usuario updateUsuario(int id, String nombre, String atraccionPreferida, int presupuesto, double tiempoDisponible, String password) {
+	public Usuario updateUsuario(int id, String nombre, String atraccionPreferida, int presupuesto, double tiempoDisponible, String password, boolean isAdmin) {
 		
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
 		Usuario usuario = usuarioDAO.findByUserId(id);
@@ -34,6 +34,7 @@ public class UsuarioService {
 		usuario.setPresupuesto(presupuesto);
 		usuario.setTiempoDisponible(tiempoDisponible);
 		usuario.setPassword(password);
+		usuario.setAdmin(isAdmin);
 
 		if (usuario.isValid()) {
 			usuarioDAO.update(usuario);
@@ -42,7 +43,6 @@ public class UsuarioService {
 		return usuario;
 	}
 
-	// Revisar manera de implementar correctamente, ya que nos null no los toma bien.
 	public void delete(int id) {
 		Usuario usuario = new Usuario(id);
 		
@@ -57,7 +57,6 @@ public class UsuarioService {
 		usuarioDAO.habilitar(usuario);
 	}
 	
-
 	public Usuario find(int id) {
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
 		return usuarioDAO.findByUserId(id);

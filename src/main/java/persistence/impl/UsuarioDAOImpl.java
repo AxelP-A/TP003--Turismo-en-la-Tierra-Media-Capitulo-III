@@ -15,7 +15,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	public int insert(Usuario user) {
 		try {
-			String sql = "INSERT INTO USUARIOS (NOMBRE_USUARIO, TIPO_ATRACCION, PRESUPUESTO_USUARIO, TIEMPO_DISPONIBLE, PASSWORD) VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO USUARIOS (NOMBRE_USUARIO, TIPO_ATRACCION, PRESUPUESTO_USUARIO, TIEMPO_DISPONIBLE, PASSWORD, ADMIN) VALUES (?, ?, ?, ?, ?, ?)";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -23,7 +23,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			statement.setString(2, user.getAtraccionPreferida());
 			statement.setInt(3, user.getPresupuesto());
 			statement.setDouble(4, user.getTiempoDisponible());
-			statement.setString(5, user.getPassword());
+			statement.setString(5, user.encryptedPassword(user.getPassword()));
+			statement.setInt(6, user.admin());
 			int rows = statement.executeUpdate();
 
 			return rows;
@@ -34,15 +35,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	public int update(Usuario user) {
 		try {
-			String sql = "UPDATE USUARIOS SET PRESUPUESTO_USUARIO = ?, TIEMPO_DISPONIBLE = ?, PASSWORD = ?, TIPO_ATRACCION = ?  WHERE NOMBRE_USUARIO = ?";
+			String sql = "UPDATE USUARIOS SET PRESUPUESTO_USUARIO = ?, TIEMPO_DISPONIBLE = ?, PASSWORD = ?, TIPO_ATRACCION = ?, NOMBRE_USUARIO = ?, ADMIN = ?  WHERE ID_USUARIO = ?";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, user.getPresupuesto());
 			statement.setDouble(2, user.getTiempoDisponible());
-			statement.setString(3, user.getNombre());
-			statement.setString(4, user.getPassword());
-			statement.setString(5, user.getAtraccionPreferida());
+			statement.setString(3, user.getPassword());
+			statement.setString(4, user.getAtraccionPreferida());
+			statement.setString(5, user.getNombre());
+			statement.setInt(6, user.admin());
+			statement.setInt(7, user.getId());
 			int rows = statement.executeUpdate();
 
 			return rows;
@@ -82,7 +85,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 	
 	
-	public Usuario findByUserId(Integer id) {	//deber�amos buscar por id?
+	public Usuario findByUserId(Integer id) {
 		try {
 			String sql = "SELECT * FROM USUARIOS WHERE ID_USUARIO = ?";
 			Connection conn = ConnectionProvider.getConnection();
@@ -137,8 +140,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	
 	private Usuario convertirUsuario(ResultSet resultados) throws SQLException {
 			
-		//TipoDeAtraccion tipo = TipoDeAtraccion.valueOf(resultados.getString(3));
-
 		return new Usuario(resultados.getInt("id_usuario"), resultados.getString("nombre_usuario"), resultados.getString("tipo_atraccion"), resultados.getInt("presupuesto_usuario"),
 				resultados.getDouble("tiempo_disponible"), resultados.getString("password"), resultados.getBoolean("admin"), resultados.getString("eliminado"));
 	}

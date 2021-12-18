@@ -18,9 +18,9 @@ public class PromocionAbsoluta extends Promocion {
 		super(id, null, null, null, null);
 	}
 	
-	/** En este m�todo, tenemos 2 ideas distintas sobre como deber�a funcionar, por lo tanto, dejamos ambos escritos, uno funcionando actualmente, y el otro comentado.
-	 *  Por un lado, entendemos que las promociones absolutas obtienen un descuento a partir de una cantidad de monedas que ingresa desde el archivo (caso funcionando actualmente).
-	 *  Por otro lado, interpretamos que tambi�n puede significar que el costo final va a ser el de las monedas que ingresen desde el archivo (ser�a el caso del return MONEDAS).
+	/** En este metodo, tenemos 2 ideas distintas sobre como deberia funcionar, por lo tanto, dejamos ambos escritos, uno funcionando actualmente, y el otro comentado.
+	 *  Por un lado, entendemos que las promociones absolutas obtienen un descuento a partir de una cantidad de monedas que ingresa desde la db(caso funcionando actualmente).
+	 *  Por otro lado, interpretamos que tambien puede significar que el costo final va a ser el de las monedas que ingresen desde el archivo (seria el caso del return MONEDAS).
 	 */
 	
 	@Override

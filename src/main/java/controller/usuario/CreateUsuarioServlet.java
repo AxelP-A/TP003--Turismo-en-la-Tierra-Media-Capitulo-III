@@ -12,11 +12,11 @@ import model.Usuario;
 import services.UsuarioService;
 
 @WebServlet("/usuario/create.do")
-public class CreateUsuarioService extends HttpServlet{
+public class CreateUsuarioServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -8444977424705041386L;
 	private UsuarioService usuarioService;
-	
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -32,38 +32,38 @@ public class CreateUsuarioService extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		int id = -1; // crear otro constructor sin id?
-		
+
+		int id = -1; //
+
 		String nombre = req.getParameter("nombre");
 		String preferida = req.getParameter("preferida");
 		int presupuesto = Integer.parseInt(req.getParameter("presupuesto"));
-		//double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
-		double tiempoDisponible = 1;
-		
-		
-		String admin = req.getParameter("admin");
-		Boolean isAdmin = convertToBoolean(admin);
-	
-		String password = req.getParameter("password");
+		double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
 
-		Usuario usuario = usuarioService.create(id, nombre, preferida, presupuesto, tiempoDisponible, password, isAdmin);
+		String admin = req.getParameter("admin");
+
+		Boolean isAdmin = convertToBoolean(admin);
+
+		String password = req.getParameter("password");
+		
+		Usuario usuario = usuarioService.create(id, nombre, preferida, presupuesto, tiempoDisponible, password,
+				isAdmin);
 		if (usuario.isValid()) {
 			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/usuario/index.do");
 		} else {
 			req.setAttribute("usuario", usuario);
 
-			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/views/usuario/create.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/usuario/create.jsp");
 			dispatcher.forward(req, resp);
 		}
 	}
-	
+
 	private boolean convertToBoolean(String value) {
-	    boolean returnValue = false;
-	    if ("Admin".equalsIgnoreCase(value) || "true".equalsIgnoreCase(value));
-	        returnValue = true;
-	    return returnValue;
+		boolean returnValue = false;
+		if ("on".equalsIgnoreCase(value)) {
+			returnValue = true;
+		}
+		return returnValue;
 	}
-	
+
 }

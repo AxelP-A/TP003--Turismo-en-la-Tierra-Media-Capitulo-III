@@ -15,7 +15,7 @@ public class PromocionPorcentual extends Promocion {
 	}
 
 	/**
-	 * Como el porcentaje estaba definido como int, no estaba realizando el c�lculo
+	 * Como el porcentaje estaba definido como int, no estaba realizando el calculo
 	 * correctamente al dividir por 100. 
 	 */
 	@Override

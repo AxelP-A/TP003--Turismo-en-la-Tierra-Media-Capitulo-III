@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!--<jsp:include page="/partials/head.jsp"></jsp:include>-->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,7 +62,6 @@
 		</div>
 	</header>
 	<jsp:useBean id="buscarEnLista" class="services.BuscarEnListaService" />
-	<!--<jsp:include page="/partials/nav.jsp"></jsp:include> -->
 	<main class="mainSugeribles">
 		<div class="background-seccionUno">
 			<c:if test="${flash != null}">
@@ -119,7 +117,6 @@
 
 
 
-
 						<c:if test="${user.isAdmin()}">
 							<tr>
 								<td><strong><c:out value="${atraccion.nombre}"></c:out></strong>
@@ -143,7 +140,7 @@
 								</c:if>
 								<c:choose>
 									<c:when test="${!atraccion.esPromocion()}">
-										<td><a href="#${atraccion.getId()}-promocion"><i
+										<td class="open-atraccion"><a href="#${atraccion.getId()}-promocion"><i
 												class="fas fa-angle-double-right"></i></a></td>
 									</c:when>
 									<c:otherwise>
@@ -151,7 +148,7 @@
 											href="#${atraccion.getId()}-atraccion"><i
 												class="fas fa-angle-double-right"></i></a></td>
 									</c:otherwise>
-								</c:choose>						
+								</c:choose>
 								<c:if test="${user.isAdmin()}">
 									<c:choose>
 										<c:when test="${!atraccion.esPromocion()}">
@@ -196,19 +193,6 @@
 								</c:if>
 							</tr>
 						</c:if>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -265,9 +249,6 @@
 								</tr>
 							</c:if>
 						</c:if>
-
-
-
 					</c:forEach>
 				</tbody>
 			</table>

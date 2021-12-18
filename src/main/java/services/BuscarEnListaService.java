@@ -25,7 +25,6 @@ public class BuscarEnListaService {
 		return noExisteEnLista(((Atraccion) sugerible), listaAtraccion);
 	}
 
-
 	private boolean noExisteEnLista(Atraccion atraccion, List<Atraccion> listaAtraccion) {
 
 		if (listaAtraccion == null) {
@@ -38,5 +37,4 @@ public class BuscarEnListaService {
 		}
 		return true;
 	}
-
 }

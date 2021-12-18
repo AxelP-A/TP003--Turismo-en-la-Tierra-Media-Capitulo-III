@@ -32,32 +32,6 @@ public class LoggedFilter  implements Filter  {
 	
 	
 	
-	/*
-	@Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-    }
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain); {
-
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpSession s = req.getSession();
-
-        Usuario user = (Usuario) s.getAttribute("user");
-
-        if(user != null && user.isAdmin()) {
-            //login
-            chain.doFilter(request, response);
-        } else {
-            System.out.println("NOT logged in. Please log in to see this page");
-            response.setContentType("text/html");
-            response.getWriter().println("<h1>NOT logged...</h1>");
-        }
-    }
-
-    @Override
-    public void destroy() {
-    }
-    */
+	
 
 }

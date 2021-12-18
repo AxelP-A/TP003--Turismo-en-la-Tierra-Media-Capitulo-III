@@ -42,14 +42,13 @@
         </div>
     </div>
     <div class="mb-3">
-        <label for="admin"
-            class='col-form-label ${usuario.errors.get("isAdmin") != null ? "is-invalid" : "" }'>Admin:</label>
-        <input class="form-control" type="text" id="descripcion" name="admin" required
-            value="${usuario.isAdmin()}"></input>
-        <div class="invalid-feedback">
-            <c:out value='${usuario.errors.get("isAdmin")}'></c:out>
-        </div>
-    </div>
+     <div class="ui checkbox">
+  <input type="checkbox" name="admin">
+  <label>Cuenta con permisos de administración</label>
+</div>
+     
+
+    
 <div>
     <button type="submit" class="btn btn-primary">Guardar</button>
     <a onclick="window.history.back();" class="btn btn-secondary"

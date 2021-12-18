@@ -39,16 +39,12 @@ public class BuyAttractionService {
 		if (errors.isEmpty()) {
 			
 			usuario.agregarAlItinerario(atraccion);
-			atraccion.restarCupo(); // Considerar poder poner un número entero y restar ese cupo, luego de comprobar si hay para tanta gente, para así poder comprar un pack familiar.
-
+			atraccion.restarCupo();
+			
 			atraccionDAO.update(atraccion);
 			usuarioDAO.update(usuario);
 			
-			
-			itinerarioDAO.insertAtraccion(userId, atraccionId);
-			
-			itinerarioDAO.insertPromocion(userId, atraccionId);
-			
+			itinerarioDAO.insertAtraccion(userId, atraccionId);		
 		}
 		return errors;
 	}

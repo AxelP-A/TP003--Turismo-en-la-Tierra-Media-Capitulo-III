@@ -23,15 +23,13 @@ public class ListItinerarioServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		this.itinerarioService = new ItinerarioService();
-		this.usuarioService = new UsuarioService();
-		
+		this.usuarioService = new UsuarioService();	
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Integer id = Integer.parseInt(req.getParameter("id"));
-		
 		
 		itinerarioService.cargarItinerario(usuarioService.find(id));
 			

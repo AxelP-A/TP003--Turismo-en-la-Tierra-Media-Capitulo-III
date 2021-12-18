@@ -570,6 +570,11 @@ div.img.doce{
 table tbody tr td.open-promo a i{
 	color: #196b04;
 }
+
+table tbody tr td.open-atraccion a i{
+	color: blue;
+}
+
 .popup-promo{
     width: 100%;
     max-width: 800px;

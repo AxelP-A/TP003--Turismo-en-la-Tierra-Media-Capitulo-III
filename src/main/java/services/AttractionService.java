@@ -42,7 +42,6 @@ public class AttractionService {
 		return atraccion;
 	}
 
-	// Revisar manera de implementar correctamente, ya que nos null no los toma bien.
 	public void delete(int id) {
 		Atraccion atraccion = new Atraccion(id);
 		

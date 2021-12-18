@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!--<jsp:include page="/partials/head.jsp"></jsp:include>-->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +61,6 @@
 		</div>
 	</header>
 
-
 	<main class="mainSugeribles">
 		<div class="background-seccionUno">
 
@@ -88,11 +86,11 @@
 									test="${itinerarioVar.esPromocion()}">
 
 									<p>
-										Que está compuesta de las atracciones: <br>
+										Compuesta por las atracciones:
 										<c:forEach items="${itinerarioVar.getAtraccionesIncluidas()}"
 											var="atraccion">
-											<c:out value="${atraccion.getNombre()}"></c:out>
-											<br>
+											<ul>
+											<li><c:out value="${atraccion.getNombre()}"></c:out></li></ul>
 										</c:forEach>
 									</p>
 								</c:if></td>

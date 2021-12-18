@@ -33,7 +33,7 @@ public class CreatePromocionServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int id = -1; // crear otro constructor sin id?
+		int id = -1;
 		
 		String nombre = req.getParameter("name");
 		int costo = Integer.parseInt(req.getParameter("cost"));

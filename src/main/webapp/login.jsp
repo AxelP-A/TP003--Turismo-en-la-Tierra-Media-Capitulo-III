@@ -5,7 +5,6 @@
 <html lang="en">
 <head>
 <jsp:include page="partials/head.jsp"></jsp:include>
-
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,53 +18,50 @@
 <body>
 	<header>
 		<div class="contenedor">
-			<p><img src="assets/img/tolkien-plano.jpg" alt="logo"></p>
+			<p>
+				<img src="assets/img/tolkien-plano.jpg" alt="logo">
+			</p>
+			<div class="enlaces-contenedor">
+				<a href="">Soporte</a>
+			</div>
 		</div>
+
 	</header>
 	<main>
 		<div class="background-seccionUno">
 
 			<div class="formulario-inicio-sesion">
 				<h1>Inicia Sesión</h1>
-				
+
 				<c:if test="${flash != null}">
-				<div class="alert alert-danger">
-					<p>
-						<c:out value="${flash}" />
-					</p>
-				</div>
-			</c:if>
-							
+					<div class="alert alert-danger">
+						<p>
+							<c:out value="${flash}" />
+						</p>
+					</div>
+				</c:if>
+
 				<form action="login" method="post">
 
 					<p>
-						<label for="username"><b>Nombre de usuario</b></label>
-						<input type="text" placeholder="Ingrese su usuario" name="username"
+						<label for="username"><b>Nombre de usuario</b></label> <input
+							type="text" placeholder="Ingrese su usuario" name="username"
 							required>
 					</p>
 					<p>
-						<label for="password"><b>Contraseña</b></label>
-						<input type="password" placeholder="Ingrese su contraseña"
+						<label for="password"><b>Contraseña</b></label> <input
+							type="password" placeholder="Ingrese su contraseña"
 							name="password" required>
 					</p>
-						<input type="checkbox" checked="checked"> Recuerdame
-						<p> 
-					</p>
+					<input type="checkbox" checked="checked"> Recuerdame
+					<p></p>
 					<button type="submit">Iniciar sesión</button>
-					<!-- <input type="number"
-					name="dni" placeholder="DNI"> <input type="email"
-					name="email" placeholder="Email"> <select name="paises">
-					<option value="1">Argentina</option>
-					<option value="2">Colombia</option>
-					<option value="3">Uruguay</option> </select> 
-				 <input type="submit" value="Iniciar Sesion">-->
 				</form>
 			</div>
 		</div>
 	</main>
 
-
-	<footer>
+		<footer>
 		<div class="contenedor">
 			<img src="assets/img/tolkien-plano.jpg" alt="logo">
 			<div class="enlaces-footer">
@@ -78,6 +74,5 @@
 			<p><i class="far fa-copyright"></i> 2021 - Todos los derechos reservados</p>
 		</div>
 	</footer>
-
 </body>
 </html>
