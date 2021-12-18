@@ -184,7 +184,7 @@
 					seguridad de sus atracciones, y por lo mas importante...porque nos
 					siguen eligiendo nuestros visitantes a diario!
 				</p>
-				<h3>Promociones 2021</h3>
+				<h3>Promociones 2022</h3>
 			</section>
 		</div>
 		<div class="background-seccionTres">
@@ -195,16 +195,14 @@
 					</div>
 					<img src="assets/img/MinasTirith/minastirith4.jpg" alt="promo1">
 					<h3>Promo Absoluta</h3>
-					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-						Corrupti, quae deserunt. Enim quis praesentium fugiat voluptate
-						labore illum eos officiis?.</p>
+					<p>Proximamente...</p>
 					<h4>Incluye</h4>
 					<ul>
 						<li>item 1</li>
 						<li>item 2</li>
 						<li>item 3</li>
 					</ul>
-					<button>Comprar</button>
+					<button type="button" disabled Style="background: gray;">Comprar</button>
 				</article>
 				<article>
 					<div class="background promoPorcentual">
@@ -213,16 +211,14 @@
 					<img class="imgProfileDos"
 						src="assets/img/AbismoDeHelm/abismodehelm3.jpg" alt="promo2">
 					<h3>Promo Porcentual</h3>
-					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-						Corrupti, quae deserunt. Enim quis praesentium fugiat voluptate
-						labore illum eos officiis?.</p>
+					<p>Proximamente...</p>
 					<h4>Incluye</h4>
 					<ul>
 						<li>item 1</li>
 						<li>item 2</li>
 						<li>item 3</li>
 					</ul>
-					<button>Comprar</button>
+					<button type="button" disabled Style="background: gray;">Comprar</button>
 				</article>
 				<article>
 					<div class="background promoAXB">
@@ -231,16 +227,14 @@
 					<img class="imgProfileDos" src="assets/img/anillopaisaje.jpg"
 						alt="promoaxb">
 					<h3>Promo AxB</h3>
-					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-						Corrupti, quae deserunt. Enim quis praesentium fugiat voluptate
-						labore illum eos officiis?.</p>
+					<p>Proximamente...</p>
 					<h4>Incluye</h4>
 					<ul>
 						<li>item 1</li>
 						<li>item 2</li>
 						<li>item 3</li>
 					</ul>
-					<button>Comprar</button>
+					<button type="button" disabled Style="background: gray;">Comprar</button>
 				</article>
 			</section>
 		</div>
