@@ -44,4 +44,16 @@ public class PromocionAbsoluta extends Promocion {
 	public int getCalculoDeCosto() {
 		return monedas;
 	}
+	
+	@Override
+	public String getTipoProm() {
+		return "ABSOLUTA";
+	}
+	
+	
+	
+	
+	
+	
+	
 }

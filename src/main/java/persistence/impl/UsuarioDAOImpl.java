@@ -9,6 +9,7 @@ import java.util.List;
 import persistence.commons.ConnectionProvider;
 import persistence.commons.MissingDataException;
 import model.Usuario;
+import model.nullobjects.NullUser;
 import persistence.UsuarioDAO;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
@@ -159,8 +160,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			statement.setString(1, username);
 			ResultSet resultados = statement.executeQuery();
 			
-			Usuario user = null;
-
+			Usuario user = NullUser.build();
+				
 			if (resultados.next()) {
 				user = convertirUsuario(resultados);
 			}

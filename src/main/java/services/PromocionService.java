@@ -18,7 +18,7 @@ public class PromocionService {
 		return DAOFactory.getPromocionDAO().findAll(atracciones);
 	}
 
-	public Promocion create(int id, String nombre, int costo, String tipo, String listaAtracciones,
+	public Promocion create(int id, String nombre, int costo, String tipo, String[] listaAtracciones,
 			String descripcion, String fechaBaja) {
 
 		List<Atraccion> atraccionesIncluidas = obtenerAtraccionesIncluidas(listaAtracciones);
@@ -36,22 +36,26 @@ public class PromocionService {
 			promocion = new PromocionAbsoluta(-1, nombre, atraccionesIncluidas, costo, descripcion, fechaBaja);
 			break;
 		}
+		
 
 		if (promocion.isValid()) {
 			PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
-			promocionDAO.insert(promocion);
+			int idPromocion = promocionDAO.insert(promocion);
 			// XXX: si no devuelve "1", es que hubo más errores
+			for(Atraccion atraccion : promocion.getAtraccionesIncluidas()) {
+				promocionDAO.insertarAtraccion(idPromocion, atraccion.getId());
+			}
+			
 		}
 		return promocion;
 	}
 
-	private List<Atraccion> obtenerAtraccionesIncluidas(String listaAtracciones) {
+	private List<Atraccion> obtenerAtraccionesIncluidas(String [] listaAtracciones) {
 
 		List<Atraccion> atracciones = new ArrayList<Atraccion>();
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 
-		String[] idAtraccionesIncluidas = listaAtracciones.split(";");
-		for (String atraccion : idAtraccionesIncluidas) {
+		for (String atraccion : listaAtracciones) {
 			int idAtraccion = Integer.parseInt(atraccion);
 
 			atracciones.add(atraccionDAO.findByAtraccionId(idAtraccion));
@@ -61,11 +65,13 @@ public class PromocionService {
 	}
 
 	public Promocion update(int id, String nombre, int costo, String descripcion,
-			String atraccionesIncluidas) {
+			String [] atraccionesIncluidas) {
 
 		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
-		AtraccionDAO atraccionDAO =DAOFactory.getAtraccionDAO();
-		Promocion promocion = promocionDAO.find(id);
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		
+			
+		Promocion promocion = promocionDAO.findByPromocionId(id,atraccionDAO.findAll());
 
 		promocion.setNombre(nombre);
 		promocion.setCalculoDeCosto(costo);
@@ -77,16 +83,16 @@ public class PromocionService {
 		
 		List<Atraccion> atraccionesAIncluir = new ArrayList<Atraccion>();
 		
-		String[] idAtraccionesIncluidas = atraccionesIncluidas.split(";");
-		for (String atraccion : idAtraccionesIncluidas) {
+		for (String atraccion : atraccionesIncluidas) {
 			int idAtraccion = Integer.parseInt(atraccion);
 			atraccionesAIncluir.add(atraccionDAO.findByAtraccionId(idAtraccion));
+			promocionDAO.insertarAtraccion(id,atraccionDAO.findByAtraccionId(idAtraccion).getId());
 		}
 		
 		promocion.setArrayAtracciones(atraccionesAIncluir);
 
 		if (promocion.isValid()) {
-			promocionDAO.update(promocion);
+				promocionDAO.update(promocion);
 			// XXX: si no devuelve "1", es que hubo más errores
 		}
 		return promocion;

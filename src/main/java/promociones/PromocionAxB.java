@@ -30,4 +30,8 @@ public class PromocionAxB extends Promocion {
 	public int getCalculoDeCosto() {
 		return 0;
 	}
+	@Override
+	public String getTipoProm() {
+		return "AXB";
+	}
 }

@@ -289,10 +289,10 @@
 								<p>
 									<c:out value="${atraccion.getDescripcion()}"></c:out>
 								</p>
-								<span><i class="fas fa-hourglass-start"></i> Tiempo:<c:out
-										value="${atraccion.tiempoNecesario}"></c:out></span> <span><i
+								<span Style="color: white;"><i class="fas fa-hourglass-start"></i> Tiempo:<c:out
+										value="${atraccion.tiempoNecesario}"></c:out></span> <span Style="color: white;"><i
 									class="fas fa-users"></i> Cupo:<c:out
-										value="${atraccion.getCupo()}"></c:out></span> <span><i
+										value="${atraccion.getCupo()}"></c:out></span> <span Style="color: white;"><i
 									class="fas fa-dollar-sign"></i> Precio:<c:out
 										value="${atraccion.costoDeVisita}"></c:out></span>
 							</div>

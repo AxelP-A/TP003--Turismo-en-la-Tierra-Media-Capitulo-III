@@ -13,5 +13,7 @@ public interface PromocionDAO extends GenericDAO<Promocion> {
 	public abstract List<Promocion> findAll(List<Atraccion> listaAtracciones);
 	public abstract Promocion findByPromocionId(int promocionId,List<Atraccion> listaAtracciones);
 	public abstract int eliminarAtraccion(int id, int id2);
-	public abstract int habilitar(Promocion promocion);	
+	public abstract int habilitar(Promocion promocion);
+	public int insertarAtraccion(int idPromocion, int idAtraccion);
+
 }

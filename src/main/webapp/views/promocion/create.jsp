@@ -16,7 +16,7 @@
 		</c:if>
 
 		<form action="/Tp003-TurismoEnLaTierraMedia/promocion/create.do" method="post">
-			<jsp:include page="/views/promocion/form.jsp"></jsp:include>
+			<jsp:include page="/views/promocion/form2.jsp"></jsp:include>
 		</form>
 	</main>
 </body>

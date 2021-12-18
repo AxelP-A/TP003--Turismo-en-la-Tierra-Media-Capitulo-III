@@ -52,7 +52,8 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 	
 	public int updateAtraccion(Atraccion atraccion) {
 		try {
-			String sql = "UPDATE ATRACCIONES SET (NOMBRE_ATRACCION = ? , COSTO_ATRACCION = ?, TIEMPO_ATRACCION = ?, CUPO_ATRACCION = ?, TIPO_ATRACCION = ?, DESCRIPCION = ?)  WHERE ID_ATRACCION = ?";
+			String sql = "UPDATE ATRACCIONES SET NOMBRE_ATRACCION = ? , COSTO_ATRACCION = ?, TIEMPO_ATRACCION = ?,"
+		               + " CUPO_ATRACCION = ?, TIPO_ATRACCION = ?, DESCRIPCION = ?  WHERE ID_ATRACCION = ?";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
