@@ -15,7 +15,6 @@ public abstract class Promocion implements Sugerible {
 	private String habilitada;
 	private int calculoDeCosto;
 	private String descripcion;
-	private String fechaBaja;
 	private Map <String, String> errors;
 
 	public Promocion(int id, String nombreDePromocion, List<Atraccion> listaAtracciones, String descripcion, String fechaBaja) {
@@ -23,7 +22,7 @@ public abstract class Promocion implements Sugerible {
 		this.setNombre(nombreDePromocion);
 		this.setArrayAtracciones(listaAtracciones);
 		this.descripcion = descripcion;
-		this.fechaBaja = fechaBaja;
+		this.habilitada = fechaBaja;
 	}
 	
 	public Promocion(int id, String nombreDePromocion, String descripcion) {
@@ -223,7 +222,7 @@ public abstract class Promocion implements Sugerible {
 	public String toString() {
 		return "Promocion [atraccionesIncluidas=" + atraccionesIncluidas + ", nombre=" + nombre + ", id=" + id
 				+ ", habilitada=" + habilitada + ", calculoDeCosto=" + calculoDeCosto + ", descripcion=" + descripcion
-				+ ", fechaBaja=" + fechaBaja + ", errors=" + errors + "]";
+				+ ", errors=" + errors + "]";
 	}
 
 	public abstract String getTipoProm();

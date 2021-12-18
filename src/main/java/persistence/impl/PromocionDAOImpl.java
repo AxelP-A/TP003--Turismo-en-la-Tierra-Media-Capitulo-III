@@ -21,7 +21,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 	public Promocion findByPromocion(String nombre) {
 
 		try {
-			String sql = "SELECT * FROM USUARIOS WHERE NOMBRE_USUARIO = ?";
+			String sql = "SELECT * FROM PROMOCIONES WHERE NOMBRE_PROMOCION = ?";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, nombre);

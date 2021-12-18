@@ -86,7 +86,7 @@
 				<div class="mb-3">
 					<a href="/Tp003-TurismoEnLaTierraMedia/usuario/create.do"
 						class="btn btn-primary" role="button"> <i
-						class="fas fa-plus-square fa-5x" Style="color: green;"></i>
+						class="fas fa-plus-square fa-5x" Style="color: green;" title="Crear nuevo usuario"></i>
 					</a>
 				</div>
 			</c:if>

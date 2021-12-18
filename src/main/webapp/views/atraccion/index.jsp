@@ -82,12 +82,16 @@
 				<h1>Estas son las atracciones de la Tierra Media</h1>
 			</div>
 			<p></p>
+
+
 			<c:if test="${user.isAdmin()}">
 				<div class="mb-3">
 					<a href="/Tp003-TurismoEnLaTierraMedia/atraccion/create.do"> <i
-						class="fas fa-plus-square fa-5x" Style="color: green;"></i>
+						class="fas fa-plus-square fa-5x" Style="color: green;"
+						title="Crear nueva atraccion"></i>
 					</a> <a href="/Tp003-TurismoEnLaTierraMedia/promocion/create.do"> <i
-						class="fas fa-plus-square fa-5x"></i></a>
+						class="fas fa-plus-square fa-5x" Style="color: lightblue;"
+						title="Crear nueva promocion"></i></a>
 				</div>
 			</c:if>
 			<table class="dataTable table-promocion" style="width: 99%">
@@ -112,11 +116,6 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${atraccion}" var="atraccion">
-
-
-
-
-
 						<c:if test="${user.isAdmin()}">
 							<tr>
 								<td><strong><c:out value="${atraccion.nombre}"></c:out></strong>
@@ -140,13 +139,14 @@
 								</c:if>
 								<c:choose>
 									<c:when test="${!atraccion.esPromocion()}">
-										<td class="open-atraccion"><a href="#${atraccion.getId()}-promocion"><i
-												class="fas fa-angle-double-right"></i></a></td>
+										<td class="open-atraccion"><a
+											href="#${atraccion.getId()}-promocion"><i
+												class="fas fa-angle-double-right" Style="color: green;"></i></a></td>
 									</c:when>
 									<c:otherwise>
 										<td class="open-promo"><a
 											href="#${atraccion.getId()}-atraccion"><i
-												class="fas fa-angle-double-right"></i></a></td>
+												class="fas fa-angle-double-right" Style="color: blue;"></i></a></td>
 									</c:otherwise>
 								</c:choose>
 								<c:if test="${user.isAdmin()}">
@@ -238,12 +238,12 @@
 									<c:choose>
 										<c:when test="${!atraccion.esPromocion()}">
 											<td><a href="#${atraccion.getId()}-promocion"><i
-													class="fas fa-angle-double-right"></i></a></td>
+													class="fas fa-angle-double-right" Style="color: green;"></i></a></td>
 										</c:when>
 										<c:otherwise>
 											<td class="open-promo"><a
 												href="#${atraccion.getId()}-atraccion"><i
-													class="fas fa-angle-double-right"></i></a></td>
+													class="fas fa-angle-double-right" Style="color: blue;"></i></a></td>
 										</c:otherwise>
 									</c:choose>
 								</tr>
@@ -289,12 +289,13 @@
 								<p>
 									<c:out value="${atraccion.getDescripcion()}"></c:out>
 								</p>
-								<span Style="color: white;"><i class="fas fa-hourglass-start"></i> Tiempo:<c:out
-										value="${atraccion.tiempoNecesario}"></c:out></span> <span Style="color: white;"><i
-									class="fas fa-users"></i> Cupo:<c:out
-										value="${atraccion.getCupo()}"></c:out></span> <span Style="color: white;"><i
-									class="fas fa-dollar-sign"></i> Precio:<c:out
-										value="${atraccion.costoDeVisita}"></c:out></span>
+								<span Style="color: white;"><i
+									class="fas fa-hourglass-start"></i> Tiempo:<c:out
+										value="${atraccion.tiempoNecesario}"></c:out></span> <span
+									Style="color: white;"><i class="fas fa-users"></i> Cupo:<c:out
+										value="${atraccion.getCupo()}"></c:out></span> <span
+									Style="color: white;"><i class="fas fa-dollar-sign"></i>
+									Precio:<c:out value="${atraccion.costoDeVisita}"></c:out></span>
 							</div>
 							<a href="#" class="btn-close-popup">X</a>
 						</div>

@@ -47,9 +47,6 @@ public class EditPromocionServlet extends HttpServlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String name = req.getParameter("name");
 		Integer cost = Integer.parseInt(req.getParameter("cost"));
-		// Integer cost = req.getParameter("cost").trim() == "" ? null :
-		// Integer.parseInt(req.getParameter("cost"));
-		//String atraccionesIncluidas = req.getParameter("atracciones");
 		String[] atraccionesIncluidas = req.getParameterValues("sellist2");
 		String descripcion = req.getParameter("descripcion");
 
