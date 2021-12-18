@@ -24,7 +24,7 @@ public class AttractionService {
 		return atraccion;
 	}
 
-	public Atraccion updateAtraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo) {
+	public Atraccion updateAtraccion(int id, String nombre, int costo, double tiempo, int cupo, String tipo, String descripcion) {
 		
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		Atraccion atraccion = atraccionDAO.findByAtraccionId(id);
@@ -34,9 +34,10 @@ public class AttractionService {
 		atraccion.setTiempoNecesario(tiempo);
 		atraccion.setCupo(cupo);
 		atraccion.setTipo(tipo);
+		atraccion.setDescripcion(descripcion);
 
 		if (atraccion.isValid()) {
-			atraccionDAO.update(atraccion);
+			atraccionDAO.updateAtraccion(atraccion);
 			// XXX: si no devuelve "1", es que hubo más errores
 		}
 		return atraccion;

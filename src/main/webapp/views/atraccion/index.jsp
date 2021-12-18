@@ -5,10 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atracciones y promociones</title>
+
+
+<!--<jsp:include page="../../partials/head.jsp"></jsp:include>-->
+
+<link rel="shortcut icon" href="/Tp003-TurismoEnLaTierraMedia/assets/favicon.ico">
+
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
 	integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
@@ -58,7 +65,6 @@
 							class="fas fa-sign-out-alt">Logout</i></a>
 				</ul>
 			</div>
-
 		</div>
 	</header>
 	<jsp:useBean id="buscarEnLista" class="services.BuscarEnListaService" />
@@ -82,7 +88,6 @@
 				<h1>Estas son las atracciones de la Tierra Media</h1>
 			</div>
 			<p></p>
-
 
 			<c:if test="${user.isAdmin()}">
 				<div class="mb-3">

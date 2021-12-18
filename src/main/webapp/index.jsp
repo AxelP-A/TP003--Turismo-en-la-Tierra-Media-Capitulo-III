@@ -41,11 +41,24 @@
 	<main>
 		<div class="background-seccionUno">
 			<section class="seccion-uno">
+			
+			
+			<c:if test="${user.getItinerario().isEmpty()}">
 				<h1>
-					Bienvenido a Turismo en la Tierra Media,
+					¡ Bienvenido a Turismo en la Tierra Media,
 					<c:out value="${user.nombre}" />
 					!
 				</h1>
+				</c:if>
+				<c:if test="${!user.getItinerario().isEmpty()}">
+				<h1>
+					¡ Bienvenido nuevamente a Turismo en la Tierra Media,
+					<c:out value="${user.nombre}" />
+					!
+				</h1>
+				</c:if>
+				
+				
 				<div class="barra">
 					<a href="views/giftshop.html">Giftshop</a> <a
 						href="views/galeria.html">Galeria de Fotos</a> <a

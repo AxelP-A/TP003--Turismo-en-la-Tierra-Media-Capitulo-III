@@ -100,6 +100,10 @@ public class Atraccion implements Sugerible {
 		return descripcion;
 	}
 	
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	public boolean isValid() {
 		validate();
 		return errors.isEmpty();

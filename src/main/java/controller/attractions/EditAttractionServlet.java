@@ -38,13 +38,13 @@ public class EditAttractionServlet extends HttpServlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String name = req.getParameter("name");
 		int cost = Integer.parseInt(req.getParameter("cost"));
-		// Integer cost = req.getParameter("cost").trim() == "" ? null : Integer.parseInt(req.getParameter("cost"));
 		double duration = Double.parseDouble(req.getParameter("duration"));
 		int capacity = Integer.parseInt(req.getParameter("capacity"));
+		String tipo = req.getParameter("tipo");
+		String descripcion = req.getParameter("descripcion");
 		
-		String tipo = "TEST"; // CREAR CAMPO PARA PARSEAR.
 
-		Atraccion attraction = attractionService.updateAtraccion(id, name, cost, duration, capacity, tipo);
+		Atraccion attraction = attractionService.updateAtraccion(id, name, cost, duration, capacity, tipo, descripcion);
 
 		if (attraction.isValid()) {
 			resp.sendRedirect("/Tp003-TurismoEnLaTierraMedia/atraccion/index.do");
